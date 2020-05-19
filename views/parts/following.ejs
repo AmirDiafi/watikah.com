@@ -1,0 +1,15 @@
+<div class="followings col-6 popup-following">
+    <h3 class="titles">Liked <%=user.followings.length%></h3>
+    <%if(user.followings.length !== 0){%>
+        <%for(let following of user.followings){%>
+            <div class="following">
+                <a href="/profile/<%=following.userId%>">
+                    <img src="/userPic/<%=following.userpicture%>" alt="follower" style="width: 30px;height: 30px; border-radius: 100%;">
+                    <span>
+                        <%=following.userfirstname%> <%=following.userlastname%>
+                    </span>
+                </a>
+            </div>
+        <%}%>
+    <%}%>
+</div>

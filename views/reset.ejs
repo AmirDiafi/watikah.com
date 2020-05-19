@@ -1,0 +1,60 @@
+
+<%- include('parts/header') %>
+<link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+<%# - include('parts/navbar')%>
+
+    <div class="row text-center">
+        <div class="design col col-12 col-lg-7" id='particles-js'>
+            <div class="logo">
+                <div class="the-logo">
+                    <div></div>
+                </div>
+                <p>Watikah</p>
+                <h2>You are at the right place</h2>
+            </div>
+        </div>
+        <div class="login col col-12 col-lg-5">
+            <div class="form">
+                <h3>Reset Password</h3>
+                <hr>
+                <p>
+                    <img src="/userPic/<%=user.picture%>" alt="picture"
+                    style="width:30px;height:30px;border-radius:100%">
+                    <span>Hi, <b> <%=user.firstname%> <%=user.lastname%></b></span>
+                </p>
+                <hr>
+                <form action="/reset/<%=token%>" method="POST" style="margin: 30px auto">
+                    <%let passwordErr = validationErr.find( err => err.param ==='password')%>
+                    <%if(passwordErr){%>
+                        <p class="alert alert-danger">
+                            <%=passwordErr.msg%>
+                        </p>
+                    <%}%>
+                    <div class="input">
+                        <input type="password" autocomplete="off" required name="password">
+                        <label for="text">New Password</label>
+                    </div>
+                    <%let confirmPasswordErr = validationErr.find( err => err.param ==='confirmPassword')%>
+                    <%if(confirmPasswordErr){%>
+                        <p class="alert alert-danger">
+                            <%=confirmPasswordErr.msg%>
+                        </p>
+                    <%}%>
+                    <div class="input">
+                        <input type="password" required name="confirmPassword">
+                        <label for="text">Confirm Password</label>
+                    </div>
+                    <button type="submit">Update <i class="fa fa-redo"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<%- include('parts/footer')%>
+<script src="/js/signup.js"></script>
+<script src="/js/particles.min.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+.alert{
+    padding: 0
+}
+
+.row{
+    height: 100vh;
+    width :100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: relative;
+}
+.design{
+    background: linear-gradient(45deg, #290688, #489765);
+    position: relative;
+}
+
+.design .logo {
+    position: absolute;
+    width:100%;
+    top: 50%;
+    left :0;
+    transform: translate(0, -50%);
+    text-align: start;
+}
+.design .logo .the-logo{
+    width: 120px;
+    height :120px;
+    background: #290688;
+    border-radius: 100%;
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.design .logo .the-logo div{
+    width:85px;
+    height: 85px;
+    border-radius: 50% 0 ;
+    background:#489765;
+    position: relative;
+    top: 15%;left: 15%;
+    animation: logo 5s infinite linear;
+    transform-origin: center center;
+}
+
+@keyframes logo {
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.design .logo p{
+    display: inline-block;
+    font-size: 50px;
+    color :#FFF;
+    position: relative;
+    top: -40px;
+    left: 5px
+}
+
+.design .info {
+    position: relative;
+    top: 56%
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.design h2{
+    color: #FFF;
+    position: relative;
+    left: 172px;
+    text-align: start;
+    top: -72px;
+}
+
+
+
+.design .info p{
+    font-size: 27px;
+    color :#eee;
+    text-align: start;
+    margin-left: 40px;
+}
+
+.form h3{
+    font-size: 40px;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, .1),
+    -3px -3px 3px rgba(0, 0, 0, .1);
+    margin: 40px auto 0;
+}
+
+.form hr{
+    margin: 30px auto;
+}
+
+.form form .input,
+.form form .policy-input {
+    width: 100%;
+    position: relative;
+    text-align: start;
+    margin: 25px auto;
+}
+
+.form form .policy-input {
+    text-align: center;
+    margin: 7px auto;
+}
+
+.form form .input input {
+    padding: 6px 10px;
+    width: 100%;
+    border: none;
+    border: 1px solid rgb(136, 134, 134);
+    border-radius: 10px;
+    z-index: 2;
+    border-radius: 50px;
+    background: transparent;
+}
+
+.form form input:focus{
+    outline: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, .2);
+}
+
+.form form label {
+    position: absolute;
+    top: 7px;
+    left: 3%;
+    color: #6c757d;
+    transition: all .2s linear;
+    z-index: -1;
+}
+
+.form form input:focus + label,
+.form form .input.has-val label{
+    top: -25px;
+    color :#000
+}
+
+
+.form form  button[type='reset'],
+.form form button[type='submit']{
+    font-family: 'Font Awesome 5 Free', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 10px 20px;
+    width: 130px;
+    margin: 10px 5px;
+    display: inline-block;
+    border: none;
+    color: #FFF;
+    font-size: 16px;
+    letter-spacing: .08rem;
+    cursor: pointer;
+    border-radius: 50px
+}
+
+.form form button[type='submit'] {
+    
+    background: #290688;
+}
+
+.form form  button[type='reset'] {
+    background-color: #000 ;
+}
+
+/* Start the mobile and tablet responvice */
+@media(min-width: 576px) and (max-width: 991.98px) {
+    .row{
+        margin:0
+    }
+    .design{
+        height: 20%;
+    }
+    .design .logo .the-logo{
+        width: 57px;
+        height: 57px;
+        margin-left: 40px;
+    }
+    
+    .design .logo .the-logo div{
+        width:40px;
+        height: 40px;
+        border-radius: 50% 0 ;
+    }
+    
+    .design .logo p{
+        font-size: 20px;
+        top: -20px;
+    }
+
+    .design h2{
+        margin:0;
+        font-size: 14px;
+        font-weight: bold;
+        width: 210px;
+        margin: 0;
+        top: -38px;
+        left: 106px !important;
+    }
+    .design .info {
+        top: 77px;
+        left: 0;
+        /* display: none; */
+    }
+    .design .info p {
+        font-size: 15px;
+        margin-top: -15px;
+    }
+    .form h3{
+        font-size: 25px;
+        margin-top: 10px;
+    }
+    .form hr {
+        margin: 10px auto
+    }
+    .form form .input {
+        width: 70%;
+        margin: 30px auto 10px;
+    }
+    .form form button[type='submit'],
+    .form form button[type='reset']{
+        margin: 0 auto;
+        padding: 5px;
+        font-size: 15px;
+    }
+}
+@media(max-width: 575.98px) {
+    .row{
+        margin:0
+    }
+    
+    .design{
+        height: 20%;
+    }
+
+    .design .logo .the-logo{
+        width: 55px;
+        height :55px;
+        margin-left: 20px;
+    }
+    
+    .design .logo .the-logo div{
+        width:40px;
+        height: 40px;
+        border-radius: 50% 0 ;
+    }
+    
+    .design .logo p{
+        font-size: 20px;
+        top: -22px
+    }
+
+    .design h2{
+        top:-44px;
+        margin:0;
+        font-size: 14px;
+        font-weight: bold;
+        width: 210px;
+        left: 85px !important
+    }
+    .design .info {
+        top: 71px;
+        left: 0;
+        display: none;
+    }
+    .design .info p {
+        font-size: 15px;
+    }
+    .form h3{
+        font-size: 25px;
+        margin-top: 10px;
+    }
+    .form hr {
+        margin: 10px auto
+    }
+    .form h3{
+        font-size: 20px;
+        margin: 10px auto 0;
+    }
+    
+    .form hr{
+        margin: 5px auto;
+    }
+    
+    .form form .input {
+        width: 80%;
+        margin: 20px auto 10px;
+    }
+    
+    .form form .input input {
+        padding: 0 5px;
+    }
+
+    .form form label {
+        font-size: 13px;
+        top: 4%;
+    }
+    
+    .form form input:focus + label,
+    .form form .input.has-val label{
+        top: -18px;
+        color :#000
+    }
+    
+    .form form button[type='submit'],
+    .form form button[type='reset']{
+        margin: 10px auto;
+        padding: 5px;
+        font-size: 13px;
+    }
+
+}

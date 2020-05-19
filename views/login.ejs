@@ -1,0 +1,93 @@
+
+<%- include('parts/header') %>
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+<%# - include('parts/navbar')%>
+
+    <div class="row text-center">
+        <div class="design col col-12 col-lg-7" id='particles-js'>
+            <div class="logo">
+                <div class="the-logo">
+                    <div></div>
+                </div>
+                <p>Watikah</p>
+                <h2>You are at the right place</h2>
+            </div>
+        </div>
+        
+        <div class="login col col-12 col-lg-5">
+            <div class="form">
+                <h3>تسجيل الدخول</h3>
+                <hr>
+                <%if(authErr){%>
+                    <p class="alert alert-danger">
+                        <%= authErr %>
+                    </p>
+                <%}%>
+                <%if(successMsg){%>
+                    <p class="alert alert-success">
+                        <%= successMsg %>
+                    </p>
+                <%}%>
+                <form action="/login" method="POST" style="margin: 30px auto">
+                    <%let emailErr = validationErr.find( err => err.param ==='email')%>
+                    <%if(emailErr){%>
+                        <p class="alert alert-danger">
+                            <%=emailErr.msg%>
+                        </p>
+                    <%}%>
+                    <div class="input">
+                        <input type="email" required autocomplete="off" name="email" >
+                        <label for="text">عنوان بريدك الإلكتروني</label>
+                    </div>
+                    <%let passwordErr = validationErr.find( err => err.param ==='password')%>
+                    <%if(passwordErr){%>
+                        <p class="alert alert-danger">
+                            <%=passwordErr.msg%>
+                        </p>
+                    <%}%>
+                    <div class="input">
+                        <input type="password" required autocomplete="off" name="password" >
+                        <label for="text">كلمة المرور</label>
+                    </div>
+                    <p class="forgot-password"><a href="/forgot">Forgotten password?</a></p>
+                    <button type="submit">Continue <i class="fa fa-arrow-right"></i></button>
+                </form>
+                <div>
+                    <p>ليس لديك حساب؟ <a href="/signup"> فتح حساب</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- *** Footer *** -->
+<div class="footer" style='position: relative; margin: 0;'>
+    <div>
+        <p>Developed and Designed with <i class="fa fa-heart"></i> & <i class="fa fa-coffee"></i> by Amir Diafi. All Rights are reserved &COPY; 2020. watikah.com</p>
+        <ul>
+            <li>
+                <a href="http://">
+                    <i class="fab fa-twitter fa-fw"></i>
+                </a>
+            </li>
+            <li>
+                <a href="http://">
+                    <i class="fab fa-facebook fa-fw"></i>
+                </a>
+            </li>
+            <li>
+                <a href="http://">
+                    <i class="fab fa-instagram fa-fw"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<%- include('parts/footer')%>
+<script src="/js/particles.min.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/signup.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!-- ****** Start The Header ****** -->
+
+<%- include('parts/header') %>
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/posts.css">
+<link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+
+<!-- *** Start hiiden inputs *** -->
+<input type="hidden" id="myfirstname" value='<%=myfirstname%>'>
+<input type="hidden" id="mylastname" value='<%=mylastname%>'>
+<input type="hidden" id="mypicture" value='<%=mypicture%>'>
+<input type="hidden" id="user" value='<%=id%>'>
+<input type="hidden" id="me" value='<%=userId%>'>
+
+<!-- ****** Start The Navbar ****** -->
+<%- include('parts/navbar')%>
+<div class="container post-cont">
+    <div class='post status inside-post'>
+        <%if(userId == post.owenerPostId) {%>
+            <i class='fas fa-ellipsis-v edit'></i>
+        <%}%>
+        <ul class='edit list-unstyled'>
+            <form>
+                <input type="hidden" name="postId" value='<%=post._id%>'>
+                <input type="hidden" name="owenerPostId" value='<%=userId%>'>
+                <input type="hidden" name="redirect" value='/profile/<%=post.owenerPostId%>'>
+                <li>
+                    <button type="submit" formaction="/profile/<%=post.owenerPostId%>/remove-post" formmethod="POST">
+                        <i class="fa fa-trash"></i> | Remove
+                    </button>
+                </li>
+            </form>
+        </ul>
+        <a href="/profile/<%=post.owenerPostId%>" class='anchor-pic'>
+            <img src="/userPic/<%=post.picture%>" alt="profile" class="profile-pic">
+            <span style="text-align: start;" dir="auto" class="username"> <%=post.firstname%> <%=post.lastname%></span>
+            <span class='timestamp' style="text-align: start;" dir="auto"> <%=post.postDate%></span>
+        </a>
+        <h4 style="text-align: start;" dir="auto"><%=post.title%></h4>
+        <p class='model' style="text-align:start" dir="auto">Feliere: <b><%=post.category%></b></p>
+        <p class='model' style="text-align:start" dir="auto">Module: <b><%=post.model%></b></p>
+        <hr>
+        <%if(post.image !== 'undefined'){%>
+            <img src="/<%=post.image%>" class='post-pic' alt="postPic">
+        <%}%>
+        <%if(post.file !== 'undefined'){%>
+            <input type="hidden" id="isFile" value="<%=post.file%>">
+            <div class="file-content">
+                <a href="" id='file-icon-download' class="file-design" download="<%=post.file%>">
+                    <img src="" alt="file" class="file">
+                </a> 
+                <h3 style="text-align: start;" dir="auto"> <%=post.title%></h3>
+            </div>
+        <%}%>
+        <div class="trim">
+            <p class='desc' style="text-align: start;" dir="auto"><%=post.description%></p>
+            <div class=comments id='comments'>
+            <form class="add-comment-form"  method='POST'>
+                <input type=hidden id='postId' value='<%=post._id%>'>
+                <input type=hidden id='owenerPostId' value='<%=post.owenerPostId%>'>
+                <input dir='auto' type=text id='comment-post-content' placeholder='add comment' >
+                <button id='commentBtn' type="submit" class="btn btn-primary">
+                    <i class='fas fa-paper-plane'></i>
+                </button>
+            </form>
+                <%for(let comment of post.comments) {%>
+                    <p class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
+                        <a href='/profile/<%=comment.me%>' >
+                            <img src="/userPic/<%=comment.mypicture%>" alt="profile" style="border-radius: 100%;width:30px;height:30px">
+                            <span style="text-align: start;" dir="auto" class='fullname'> <%=comment.myfirstname%> <%=comment.mylastname%></span>
+                        </a>
+                        <br>
+                        <span style="text-align: start;" dir="auto"><%=comment.comment%></span>
+                    </p>
+                <%}%>
+            </div>
+            <i class="fas fa-caret-down desc"></i>
+            <i class="fas fa-comment-alt comment"> <%=post.comments.length%></i>
+            <% if(post.image === 'undefined') { %>
+                <i class="fas fa-download" > <%=post.downloaders.length%></i>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<!-- ****** Start The Scripts ****** -->
+<%- include('parts/footer')%>
+<script src="/js/navbar.js"></script>
+<script src="/js/profile.js"></script>
+<!-- ****** Start the Sockets.io scripts ****** -->
+<script src="/socket.io/socket.io.js"></script>
+<!-- *** jQuery and socket post custom *** -->
+<script src="/js/post.js"></script>
+</body>
+</html>

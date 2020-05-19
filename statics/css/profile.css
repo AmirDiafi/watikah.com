@@ -1,0 +1,828 @@
+body{
+    position: relative;
+}
+.profile-header{
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.515);
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+    padding :10px;
+    height: 250px;
+    position: relative;
+    width: 100%;
+    margin: 0
+}
+
+.profile-header img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;bottom: 0;
+    left:0;right:0
+}
+
+.profile-header  .pop-btn.back{
+    border-radius: 5px;
+    position: absolute;
+    bottom:10px;
+    right :10px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-header .pop-btn i{
+    font-size: 20px;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.515);
+    color :#eee;
+    line-height: 50px;
+}
+
+.follow-btns .profile-header {
+    box-shadow: none;
+    top: -110px;
+    position: relative;
+    border-radius: 100%;
+    height: auto
+}
+
+.follow-btns .profile-header .userpic{
+    height: 180px;
+    width: 180px;
+    border-radius: 100%;
+    position: relative;
+}
+
+.follow-btns .profile-header .userpic .header {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-header .userpic .header img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    padding: 5px;
+    background: #FFF;
+}
+
+.profile-header .userpic .pop-btn{
+    width: 20%;
+    height: 20px;
+    position: absolute;
+    bottom:20%;
+    left: -5%;
+}
+
+.profile-header .userpic .pop-btn i {
+    font-size: 20px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.515);
+    padding: 13px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.profile-header .userpic h4 {
+    background-color: rgba(0, 0, 0, 0.515);
+    padding: 5px 10px;
+    border-radius: 10px;
+    position: relative;
+    top: -20px;
+    width:100%;
+    margin: auto;
+}
+
+.profile-header .userpic i.pop-btn{
+    background-color: rgba(0, 0, 0, 0.515);
+    width: 40px;
+    height:40px;
+    font-size: 20px;
+    top: 6%;
+    left: 0;
+    border-radius: 100%;
+    line-height:40px
+}
+
+.useredit .usereditform,
+.send-message,
+.profile-header .background .back-edit{
+    height: 200px !important;
+    position: fixed;
+    color: #FFF;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+}
+
+.send-message input[type='text']{
+    width: 70%;
+    display: inline-block;
+    margin: 0;
+    border-color :#062230;
+    border-radius: 50px 0 0 50px;
+}
+
+.send-message button[type='submit'] {
+    background-color: #062230;
+    color :#28a745;
+    display: inline-block;
+    width:25%;
+    margin-left: -5px;
+    border-radius: 0 50px 50px 0;
+    position: relative;
+    top: -2px
+}
+
+.send-message button.close-popup{
+    color :#FFF
+}
+
+.useredit .usereditform form,
+.profile-header .background .back-edit form {
+    padding: 20px;
+}
+
+.useredit .usereditform form .custom-file,
+.profile-header .background .back-edit form .custom-file {
+    padding: 0;
+    position: relative;
+    padding: 2px;
+    margin: 20px auto;
+    border-radius: 10px
+}
+
+.useredit .usereditform form .custom-file span,
+.profile-header .background .back-edit form .custom-file span {
+    display: inline-block;
+    background: none;
+    padding: 5px 10px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.useredit .usereditform form input[type="file"],
+.profile-header .background .back-edit form input[type="file"] {
+    position: absolute;
+    top:-5px;
+    left:-5px;
+    width: 100%;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer
+}
+
+.useredit .usereditform form input[type="text"],
+.profile-header .background .back-edit form input[type="text"] {
+    margin: 10px auto;
+}
+
+.useredit .usereditform form input[type='submit'],
+.profile-header .background .back-edit form input[type="submit"] {
+    padding: 8px;
+    width: 20%;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: #358ebb;
+    color: #FFF;
+    font-weight: bold;
+    border-radius: 50px
+}
+
+.useredit .usereditform .close-edit,
+.profile-header .background .back-edit .close-edit-back {
+    padding: 8px;
+    width: 20%;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #FFF;
+    font-weight: bold;
+}
+.container.status .titles{
+    font-weight: 700;
+    font-size: 30px;
+    color: #062230;
+    background-color: transparent;
+    padding: 10px;
+    border: 1px solid #062230;
+    border-radius: 50px;
+    margin-top: 20px;
+}
+
+.follow-btns .bio{
+    color: #333;
+    font-size: 16px;
+}
+
+.follow-btns .bio .bio-icon {
+    width: 15px;
+    height:15px;
+    display: inline-block;
+    background-color: #f10625;
+    border-radius: 100%;
+    margin-left: 5px;
+}
+
+/* Start Popup */
+.popup {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.815);
+    display: none;
+    z-index: 999
+}
+
+.popup .popup-inner {
+    width: 50%;
+    height: 65%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px ;
+    text-align: center;
+    border-radius :5px;
+    border: none;
+    margin: 0;
+    border-radius: 20px;
+}
+
+.popup .popup-inner form {
+    width: 100%;
+    height: 100%;
+}
+
+.popup .popup-inner form .title{
+    width: 80%;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    color :#222;
+    background: #e9ecef;
+    border-radius: 50px 50px 50px 10px;
+    margin: auto;
+}
+
+.popup .popup-inner form .article{
+    width: 80%;
+    height: 70px;
+    margin: 10px auto;
+    padding: 10px;
+    border: none;
+    background: #e9ecef;
+    border-radius: 10px 50px 50px 50px;
+    padding-inline-start: 10px;
+}
+
+.popup .popup-inner form .custom-file {
+    position: relative;
+    padding: 2px;
+    margin: 10px auto;
+    width: 80%;
+    background-color: #358ebb;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.515),
+    -2px -2px 2px rgba(251, 250, 250, 0.515);
+    color: #FFF;
+    border-radius: 50px
+}
+
+.popup .popup-inner form .custom-file span {
+    display: inline-block;
+    background: none;
+    padding: 5px 10px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.popup .popup-inner form input[type="file"] {
+    position: absolute;
+    top:-5px;
+    left:-5px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer
+}
+
+.popup .popup-inner form h4{
+    color :#333;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.popup .popup-inner form .select {
+    width: 80%;
+    margin: 10px auto;
+    border-radius: 50px;
+    background: #e9ecef;
+    border-radius: 50px 50px 50px 10px;
+}
+
+.popup .popup-inner form .select.model{
+    border-radius: 10px 50px 50px 50px;
+}
+
+.popup .popup-inner form .submit {
+    border-radius: 50px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 20%;
+    border: none;
+    font-size: 17px;
+    float: left;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.515),
+    -2px -2px 2px rgba(251, 250, 250, 0.515);
+    background-color: #2178db;
+}
+.popup .popup-inner .close-popup {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 20%;
+    border: none;
+    font-size: 17px;
+    float: right;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.515),
+    -2px -2px 2px rgba(251, 250, 250, 0.515);
+    border-radius: 50px;
+    background-color: rgb(199, 67, 89);
+}
+
+h3.titles{
+    text-align: center;
+    font-size: 30px;
+    color: #333
+}
+
+/* *** Start Follow Btn *** */
+.follow-btns {
+    text-align: center;
+    margin: 0;
+    max-height: 150px
+}
+
+.follow-count {
+    margin: 0;
+}
+
+.follow-count li {
+    display: inline-block;
+    margin: 5px;
+    font-weight: bold;
+    width:40%
+}
+
+.follow-count li.fllwr-btn-cont{
+    width:20%
+}
+.fllwr-btn-cont .btn,
+.follow-count li p {
+    display:block;
+    width:100%;
+    font-weight: normal;
+    padding: 5px 10px;
+    background-color: #004085;
+    border-radius: 50px;
+    border-color: #004085;
+    color: #FFF;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    height:auto
+}
+
+.fllwr-btn-cont .btn,
+.follow-count li p {
+    font-size: 16px;
+}
+
+
+.follow-count li p span {
+    font-weight: bold;
+}
+
+.notifications{
+    background-color: rgba(0, 0, 0, 0.815);
+    width:100%;
+    height: 100vh;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: none;
+}
+
+.notifications .notificationsList{
+    background-color: #192c35c9;
+    width:400px;
+    height: 400px;
+    overflow-y: scroll;
+    padding:0;
+    text-align: start;
+    background: #fff;
+    border-radius: 50px;
+    padding: 10px
+}
+
+.messages.notifications .notificationsList {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px;
+}
+
+.messages.notifications .notificationsList li.message{
+    margin: 5px 0 0;
+    background: #eee;
+    display: flex;
+    justify-items: center;
+    border-radius: 20px 20px 0 0;
+    padding: 0 10px;
+    line-height: 52px;
+    position: relative;
+}
+
+.messages.notifications .notificationsList li.message p {
+    margin-left: 5px;
+    margin-bottom: 0;
+}
+
+.messages.notifications .notificationsList p.msg-cntnt {
+    margin: 0 0 5px;
+    background: #eee;
+    color :#333;
+    padding: 10px 20px;
+    border-radius: 0 0 20px 20px;
+    display: none
+}
+
+.messages.notifications .notificationsList li.message a {
+    text-decoration: none;
+    color :#333
+}
+
+.messages.notifications .notificationsList li.message div.see {
+    position: absolute;
+    right: 20px;
+    color: #2178db;
+    cursor: pointer;
+}
+
+.notifications .notificationsList li{
+    padding-bottom: 5px;
+}
+
+.notifications .notificationsList li .notifics {
+    width:100%;
+    padding:10px;
+    border-radius: 20px;
+    color: #646464;
+    background-color: #e9ecef;
+    display: flex;
+}
+
+.notifications .notificationsList li .notifics a{
+    display: inline-block;
+    text-decoration: none;
+    height:100%;
+    color: inherit;
+}
+
+.notifications .notificationsList li .notifics:hover{
+    background-color: #062230;
+    color :#EEE
+}
+
+.notifications .notificationsList li a img{
+    width:30px;
+    height:30px;
+    border-radius: 30px;
+}
+
+.notifications .notificationsList .fullname{
+    font-size: 13px;
+}
+
+/* *** Start following and followers sections *** */
+
+.followers-following{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100vh;
+    background: rgba(0, 0, 0, 0.515);
+    z-index: 2;
+    display: none;
+}
+
+.followers-following .the-follow-inner {
+    width:70%;
+    height:80%;
+    background: #fff;
+    overflow-y: scroll;
+    position: relative;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+}
+.followers-following .the-follow-inner h3 {
+    border-bottom: 1px solid rgb(235, 235, 235);
+    margin: 10px auto;
+    padding: 10px 5px;
+    color: #646464;
+}
+.followers-following .the-follow-inner .followers .follower,
+.followers-following .the-follow-inner .followings .following{
+    border-bottom: 1px solid #eee;
+    padding: 5px 10px ;
+    text-align:left
+}
+
+.followers-following .the-follow-inner .followers .follower a,
+.followers-following .the-follow-inner .followings .following a{
+    color: #646464;
+    text-decoration: none;
+}
+
+#theposts .theposts-inner-empty{
+    background-size: cover;
+    margin: 50px auto;
+    height: 300px;
+    width:50%;
+    border-radius: 20px;
+    padding: 10px;
+    position: relative;
+}
+
+#theposts .theposts-inner-empty img {
+    width:100%;
+    height:100%;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
+}
+
+#theposts .theposts-inner-empty p{
+    position: absolute;
+    width:100%;
+    top:-40px;
+    right: 50%;
+    transform: translateX(50%);
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.515);
+    font-size: 25px;
+    text-align: center;
+}
+
+/* Start the mobile responvice */
+
+@media(min-width: 576px) and (max-width: 991.98px) {
+    #theposts .theposts-inner-empty{
+        width: 60%;
+    }
+    #theposts .theposts-inner-empty p{
+        font-size: 16px;
+    }
+
+    .profile-header {
+        height: 200px
+    }
+    
+    .follow-btns .profile-header {
+        top: -80px;
+    }
+    
+    .follow-btns .profile-header .userpic{
+        height: 150px;
+        width: 150px;
+    }
+    .profile-header .userpic i.pop-btn {
+        font-size:14px;
+        top: -1%;
+        left: 6%;
+        width: 30px;
+        height: 30px;
+        line-height: 30px
+    }
+
+    .profile-header .userpic h4 {
+        font-size: 16px
+    }
+
+    .fllwr-count-btn li{
+        margin: 0;
+        padding: 1px
+    }
+
+    .popup .popup-inner {
+        width:80%
+    }
+    .popup .popup-inner form .title,
+    .popup .popup-inner form .article,
+    .popup .popup-inner form .select{
+        font-size: 15px;
+        width:80%
+    }
+
+    .popup .popup-inner form .custom-file {
+        width: 80%;
+    }
+
+    .popup .popup-inner form .custom-file span {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 575.98px) {
+
+    #theposts .theposts-inner-empty{
+        width: 70%;
+    }
+    #theposts .theposts-inner-empty p{
+        font-size: 14px;
+    }
+
+    .fllwr-count-btn {
+        margin: 0;
+    }
+
+    .follow-btns {
+        padding: 0;
+    }
+
+    .fllwr-btn-cont .btn,
+    .follow-count li p{
+        font-size: 10px;
+    }
+
+    .follow-btns p.bio {
+        font-size: 12px;
+    }
+
+    .follow-count .fllwr-count-btn li {
+        margin: 0;
+        padding: 1px;
+        width: 48%
+    }
+
+    .follow-btns .bio .bio-icon {
+        width: 10px;
+        height:10px;
+    }
+    .profile-header{
+        padding :5px;
+        height: 100px;
+        width: 100%;
+    }
+    
+    .profile-header > img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top:0;bottom: 0;
+        left:0;right:0
+    }
+        
+    .profile-header .pop-btn.back{
+        width: 30px;
+        height: 30px;
+    }
+        
+    .profile-header .pop-btn i{
+        font-size: 15px;
+        padding: 0;
+        background: rgba(0, 0, 0, 0.815);
+        color :#eee;
+        line-height: 30px;
+    }
+
+    .follow-btns .profile-header {
+        top: -50px;
+    }
+    
+    .follow-btns .profile-header .userpic{
+        height: 80px;
+        width: 80px;
+    }
+    
+    .profile-header .userpic .header img{
+        padding: 2px;
+    }
+        
+    .profile-header .userpic i.pop-btn{
+        line-height: 20px;
+        font-size: 13px;
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+        top:-6%;
+        left: 6%;
+    }
+
+    .profile-header .userpic h4 {
+        font-size: 12px;
+        top: -15px;
+        padding: 2px
+    }
+
+    
+    /* Start Popup */
+    .popup .popup-inner {
+        width:80%
+    }
+    
+    .popup .popup-inner form .title,
+    .popup .popup-inner form .article{
+        font-size: 14px;
+        width:100%
+    }
+
+    .popup .popup-inner form .custom-file {
+        width: 100%;
+    }
+
+    .popup .popup-inner form .custom-file span {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .popup .popup-inner form h4{
+        font-size: 14px;
+    }
+
+    .popup .popup-inner form .select {
+        width: 100%;
+    }
+
+    .popup .popup-inner form .submit,
+    .popup .popup-inner .close-popup,
+    .useredit .usereditform form input[type='submit'],
+    .profile-header .background .back-edit form input[type="submit"],
+    .useredit .usereditform .close-edit,
+    .profile-header .background .back-edit .close-edit-back  {
+        width: 30%;
+    }
+
+    .notifications .notificationsList li a span:last-child{
+        font-size: 10px;
+    }
+
+    .followers-following .the-follow-inner h3 {
+        margin: 5px auto;
+        padding: 5px;
+        font-size:16px
+    }
+    .followers-following .the-follow-inner .followers .follower,
+    .followers-following .the-follow-inner .followings .following{
+        padding: 5px 0 ;
+    }
+    
+    .followers-following .the-follow-inner .followers .follower a,
+    .followers-following .the-follow-inner .followings .following a{
+        font-size: 10px;
+        display: block;
+        text-align: start;
+    }
+    .followers-following .the-follow-inner .followers .follower a img,
+    .followers-following .the-follow-inner .followings .following  img{
+        width:20px !important;
+        height:20px !important
+    }
+
+    h3.titles{
+        font-size: 20px !important
+    }
+
+    .messages.notifications .notificationsList li.message p {
+        font-size: 10px;
+    }
+
+}
+
+@media(max-width: 350px) {
+    .follow-btns {
+        padding: 0;
+    }
+    .fllwr-btn-cont .btn,
+    .follow-count li p{
+        padding: 5px
+    }
+}

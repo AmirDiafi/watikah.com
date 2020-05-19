@@ -1,0 +1,131 @@
+
+<%- include('parts/header') %>
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="/css/signup.css">
+</head>
+<body>
+<%#- include('parts/navbar')%>
+
+<div class='row text-center'>
+    <div class="design  col col-12 col-lg-7" id='particles-js'>
+        <div class="logo">
+            <div class="the-logo">
+                <div></div>
+            </div>
+            <p>
+                Watikah
+                <h2>You are at the right place</h2>
+            </p>
+        </div>
+        <div class="info">
+            <p dir="auto" style="text-align: start; padding: 10px;">
+                <q>
+                    هنا يوثّق كل ماهو متعلق بدراستك: بحوث، مذكرات، تمارين، وكتب.. حيث تفيد وتستفيد
+                </q>
+            </p>
+        </div>
+    </div>
+    <div class='form col  col col-12 col-lg-5'>
+        <h3>فتح حساب</h3>
+        <hr>
+        <%if(authErr){%>
+            <p class="alert alert-danger">
+                <%= authErr %>
+            </p>
+        <%}%>
+        <form action="/signup" method="POST">
+            <%let firstnameErr = validationErr.find( err => err.param ==='firstname')%>
+            <%if(firstnameErr){%>
+                <p class="alert alert-danger">
+                    <%=firstnameErr.msg%>
+                </p>
+            <%}%>
+            <div class="input">
+                <input type="text" required autocomplete="off" name="firstname">
+                <label for="text">الإسم الأول</label>
+            </div>
+            <%let lastnameErr = validationErr.find( err => err.param ==='lastname')%>
+            <%if(lastnameErr){%>
+                <p class="alert alert-danger">
+                    <%=lastnameErr.msg%>
+                </p>
+            <%}%>
+            <div class="input">
+                <input type="text" required autocomplete="off" name="lastname">
+                <label for="text">الإسم الأخير (اللقب)</label>
+            </div>
+            <%let emailErr = validationErr.find( err => err.param ==='email')%>
+            <%if(emailErr){%>
+                <p class="alert alert-danger">
+                    <%=emailErr.msg%>
+                </p>
+            <%}%>
+            <div class="input">
+                <input type="email" required autocomplete="off" name="email" >
+                <label for="text">عنوان بريدك الإلكنروني</label>
+            </div>
+            <%let passwordErr = validationErr.find( err => err.param ==='password')%>
+            <%if(passwordErr){%>
+                <p class="alert alert-danger">
+                    <%=passwordErr.msg%>
+                </p>
+            <%}%>
+            <div class="input">
+                <input type="password" required autocomplete="off" name="password">
+                <label for="text">كلمة المرور</label>
+            </div>
+            <%let confirmPasswordErr = validationErr.find( err => err.param ==='confirmPassword')%>
+            <%if(confirmPasswordErr){%>
+                <p class="alert alert-danger">
+                    <%=confirmPasswordErr.msg%>
+                </p>
+            <%}%>
+            <div class="input">
+                <input type="password" required autocomplete="off" name="confirmPassword">
+                <label for="text">تأكيد كلمة المرور</label>
+            </div>
+            <div class="policy-input" >
+                <input required dir="auto" checked type="checkbox">
+                <span><bdo dir="auto"><a href="/condition">شروط الإستخدام</a></bdo>  أوافق على </span>
+            </div>
+
+            <button type="submit" value="Create">Create <i class="fa fa-user-alt"></i></button>
+            <button type="reset" value=" Reset">Reset <i class="fa fa-undo"></i></button>
+
+        </form>
+        <div>
+            <p>لديك حساب بالفعل? <a href="/login"> سجل دخول </a></p>
+        </div>
+    </div>
+    
+</div>
+<!-- *** Footer *** -->
+<div class="footer" style='position: relative; margin: 0;'>
+    <div>
+        <p>Developed and Designed with <i class="fa fa-heart"></i> & <i class="fa fa-coffee"></i> by Amir Diafi. All Rights are reserved &COPY; 2020. | watikah.com</p>
+        <ul>
+            <li>
+                <a href="http://">
+                    <i class="fab fa-twitter fa-fw"></i>
+                </a>
+            </li>
+            <li>
+                <a href="http://">
+                    <i class="fab fa-facebook fa-fw"></i>
+                </a>
+            </li>
+            <li>
+                <a href="http://">
+                    <i class="fab fa-instagram fa-fw"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<%- include('parts/footer')%>
+<script src="/js/signup.js"></script>
+<script src="/js/particles.min.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

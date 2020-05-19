@@ -1,0 +1,257 @@
+
+<%- include('parts/header') %>
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/posts.css">
+<link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+<%- include('parts/navbar')%>
+
+<!-- *** Start hiiden inputs *** -->
+<input type="hidden" id="user" value='<%=id%>'>
+<input type="hidden" id="me" value='<%=userId%>'>
+<input type="hidden" id="mypicture" value='<%=mypicture%>'>
+<input type="hidden" id="myfirstname" value='<%=myfirstname%>'>
+<input type="hidden" id="mylastname" value='<%=mylastname%>'>
+<input type="hidden" id="userpicture" value='<%=user.picture%>'>
+<input type="hidden" id="userfirstname" value='<%=user.firstname%>'>
+<input type="hidden" id="userlastname" value='<%=user.lastname%>'>
+
+<!-- *** Profile header *** -->
+<div class="profile-header row">
+    <div class="background popup-edit-back popup" data-popup="popup-edit-back">
+        <div class="back-edit popup-inner image">
+            <form action="/profile/<%=user._id%>/background-edit" method="POST" enctype="multipart/form-data">
+                <input type="file" name="background" required accept="image/*">
+                <input type="submit" value="Change" class='btn'>
+            </form>
+            <button class="btn close-edit-back close-popup" >Cancel</button>
+        </div>
+    </div>
+    <img src="/userBack/<%=user.background%>" alt="background" >
+    <% if(id == userId) {%>
+    <div class="pop-btn back" data-popup="popup-edit-back">
+        <i class="fas fa-camera"></i>
+    </div>
+    <%}%>
+</div>
+
+<!-- ****** Follow Btns ******-->
+<div class="follow-btns row">
+    <div class="profile-header col col-4">   
+        <div class="userpic">
+            <div class="header">
+                <img src="/userPic/<%=user.picture%>" alt="profile" >
+            </div>
+            <h4 dir="auto"><%=user.firstname%> <%=user.lastname%></h4>
+            <%if (user.bio) {%>
+                <hr style="margin:2px auto">
+                <p class="bio"><%=user.bio%></p>
+            <%} else {%>
+                <% if(id == userId) {%>
+                    <hr style="margin:2px auto">
+                    <p class="bio">
+                        <a href="/edit/<%=userId%>" style="text-decoration: none;">
+                            أخبرهم عن نفسك <span class="bio-icon"></span>
+                        </a>
+                    </p>
+                <%}%>
+            <%}%>
+            <% if(id == userId) {%>
+            <i class="fas fa-plus pop-btn" data-popup="popup-edit"></i>
+            <%}%>
+        </div>
+    </div>
+    <ul class="follow-count list-unstyled col col-7">
+        <div class="fllwr-count-btn">
+            <li class="text-center">
+                <p class="pop-btn" data-popup="followers-following">
+                    Likers <span><%=user.followers.length%></span>
+                </p>
+            </li>
+            <li class="text-center">
+                <p class="pop-btn" data-popup="followers-following">
+                    Liked <span><%=user.followings.length%></span>
+                </p>
+            </li>
+        </div>
+        <% if(id != userId) {%>
+        <div class="msg-fllwr-icons">
+            <li class="fllwr-btn-cont" id='fllwr-btn-cont'>
+                <%if(!isFollower){%>
+                    <button class="btn btn-primary" id="followed">
+                        <i class="far fa-star"></i>
+                    </button>
+                <%}%>
+                <%if(isFollower){%>
+                    <button class="btn" id="unfollow">
+                        <i class="fas fa-star"></i>
+                    </button>
+                <%}%>
+            </li>
+            <li class="fllwr-btn-cont">
+                <button class="pop-btn btn" data-popup="popup-send-msg">
+                    <span class="fa fa-envelope fa-fw"></span>
+                </button>
+            </li>
+        </div>
+        <%}%>
+    </ul>
+</div>
+
+<!-- ****** popups ******-->
+<!-- ****** Add Btns and events ******-->
+<% if(id == userId) {%>
+    <div class="notifications popup popup-notifications" data-popup="popup-notifications">
+        <ul id='notificationsList' class="list-unstyled notificationsList popup-inner">
+            <%for(let notification of notifications){%>
+                <li>
+                    <%if(notification.postId !== 'undefined'){%>
+                        <div class="notifics">
+                            <a href="/profile/<%=notification.me%>">
+                                <img src='/userPic/<%=notification.mypicture%>'>
+                                <span style="text-align: start;" dir="auto" class="fullname">
+                                    <%=notification.myfirstname%> <%=notification.mylastname%> 
+                                </span>
+                            </a>
+                            <a href='/post/<%=notification.postId%>'>
+                                <span>| <%=notification.event%></span>
+                            </a>
+                        </div>
+                    <%} else if(notification.postId === 'undefined'){%>
+                        <div class="notifics">
+                            <a href="/profile/<%=notification.me%>">
+                                <img src='/userPic/<%=notification.mypicture%>'>
+                                <span style="text-align: start;" dir="auto" class="fullname">
+                                    <%=notification.myfirstname%> <%=notification.mylastname%> 
+                                </span>
+                                <span> | <%=notification.event%></span>
+                            </a>
+                        </div>
+                    <%}%>
+                </li>
+            <%}%>
+        </ul>
+    </div>
+    <div class="messages notifications popup popup-messages" data-popup="popup-messages">
+        <ul class='popup-inner list-unstyled notificationsList'>
+        <%for(let message of messages) {%>
+            <li class="message">
+                <a href="/profile/<%=message.me%>">
+                    <img src="/userPic/<%=message.mypicture%>" alt="user" style="width:30px;height:30px;border-radius: 100%">
+                    <span><%=message.myfirstname%> <%=message.mylastname%> | </span>
+                </a>
+                <p>Sent you a message</p>
+                <div class="see">
+                    <i class="fa fa-eye fa-fw"></i>
+                </div>
+            </li>
+            <p class='msg-cntnt' style="text-align: start;" dir="auto">
+                <%=message.message%>
+            </p>
+        <%}%>
+        </ul>
+    </div>
+<% } %>
+<!-- ****** Send Message Form ****** -->
+<% if(id !== userId) {%>
+    <div class="send-msg-form popup popup-send-msg" data-popup="popup-send-msg">
+        <div class="popup-inner send-message">
+            <form class="header-form">
+                <input type="hidden" name="myfirstname" value='<%=myfirstname%>'>
+                <input type="hidden" name="mylastname" value='<%=mylastname%>'>
+                <input type="hidden" name="mypicture" value='<%=mypicture%>'>
+                <input type="hidden" name="redirect" value='<%=id%>'>
+                <input type="hidden" name="userId" value='<%=id%>'>
+                <input type="hidden" name="me" value='<%=userId%>'>
+                <input type="text" dir="auto" autocomplete='off' name="message" required class='form-control' placeholder="Type Message">
+                <button type="submit" formaction="/profile/send-message" formmethod="POST" class="btn">
+                    <i class="fa fa-paper-plane"></i>
+                </button>
+            </form>
+            <button class="btn close-popup" >Cancel</button>
+        </div>
+    </div>
+<% } %>
+<!-- *** Follower and Following *** -->
+<div class="followers-following popup">
+    <div class="the-follow-inner row popup-inner">
+        <%-include('parts/followers')%>
+        <%-include('parts/following')%>
+    </div>
+</div>
+<div class="useredit popup popup-edit" data-popup="popup-edit">
+    <div class="usereditform popup-inner image">
+        <form class="header-form" action="/profile/<%=user._id%>/profile-edit" method="POST" enctype="multipart/form-data">
+            <input type="file" name="picture" required accept="image/*">
+            <input type="submit" value="Change" class='btn'>
+        </form>
+        <button class="btn close-edit close-popup" >Cancel</button>
+    </div>
+</div>
+<div class="popup popup-1st" data-popup="popup-1st">
+    <div class="popup-inner image">
+        <form action="/profile/<%=userId%>/post-statu" method="POST" enctype="multipart/form-data">
+            <!-- *** User Info for posts *** -->
+            <input type="hidden" name="mypicture" value="<%=user.picture%>">
+            <input type="hidden" name="myfirstname" value="<%=user.firstname%>">
+            <input type="hidden" name="mylastname" value="<%=user.lastname%>">
+            <input type="hidden" name='redirect' value='/profile/<%=userId%>'>
+            <input type="file" name="image" accept="image/*" required>
+            <input type="text" dir="auto" autocomplete="off" name="title" placeholder="Title" required class="form-control title">
+            <textarea name="description" autocomplete="off" dir="auto" id="description" cols="15" rows="5" required placeholder="Description" class="form-control article"></textarea>
+            <h4>Feliere & Module:</h4>
+            <input type="text" dir="auto" autocomplete="off" name="category" placeholder="Feliere" required class='form-control select'>
+            <input type="text" dir="auto" autocomplete="off" name="model" placeholder="Module" required class='form-control model select'>
+            <input type="submit" value="Post" class="btn btn-success submit" id="submit-post">
+        </form>
+        <button class='close-popup btn btn-danger'>Close</button>
+    </div>
+</div>
+<div class="popup popup-2nd" data-popup="popup-2nd">
+    <div class="popup-inner file">
+        <form action="/profile/<%=userId%>/post-file" method="POST" enctype="multipart/form-data">
+            <!-- *** User Info for files *** -->
+            <input type="hidden" name="mypicture" value="<%=user.picture%>">
+            <input type="hidden" name="myfirstname" value="<%=user.firstname%>">
+            <input type="hidden" name="mylastname" value="<%=user.lastname%>">
+            <input type="hidden" name='redirect' value='/profile/<%=userId%>'>
+            <input type="file" name="file" required max="1" accept='.doc, .docx, .pdf, .xlsx, xls, .ppt, .pptx, .pub, .txt,application/vnd.ms-word, application/vnd.ms-excel, application/mspowerpoint, text/plain, application/pdf'>
+            <input type="text" dir="auto" autocomplete="off" name="title" maxlength="25" required placeholder="Title" class="form-control title">
+            <textarea name="description" dir='auto' autocomplete="off" cols="15" required rows="5" required placeholder="Description" class="form-control article"></textarea>
+            <h4>Feliere & Module:</h4>
+            <input type="text" dir="auto" autocomplete="off" name="category" placeholder="Feliere" required class='form-control select'>
+            <input type="text" dir="auto" autocomplete="off" name="model" placeholder="Module" required class='form-control  model select'>
+            <input type="submit" value="Post" class="btn btn-success submit">
+        </form>
+        <button class='close-popup btn btn-danger'>Close</button>
+    </div>
+</div>
+<div class="container status">
+    <div class="row">
+        <div class="col col-12">
+            <div id="theposts"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ****** Call the footer ******-->
+<%- include('parts/footer')%>
+
+<!-- ****** Start the Sockets.io scripts ****** -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/sockets.io/init.js"></script>
+<script src="/js/sockets.io/posts.files.js"></script>
+<% if(id == userId) {%>
+    <script src="/js/sockets.io/notifications.js"></script>
+<%}%>
+<% if(id != userId) {%>
+    <script src="/js/sockets.io/follow.js"></script>  
+<%}%>
+
+<!-- ****** Start the custom scripts ****** -->
+<script src="/js/navbar.js"></script>
+<script src="/js/profile.js"></script>
+
+</body>
+</html>

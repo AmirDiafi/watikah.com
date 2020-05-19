@@ -1,0 +1,82 @@
+
+.logo {
+    position: relative;
+    top: 50%;
+    transform: translateY(50%);
+    text-align: start;
+}
+.logo .the-logo{
+    width: 160px;
+    height :160px;
+    background: #290688;
+    border-radius: 100%;
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.logo .the-logo div{
+    width:115px;
+    height: 115px;
+    border-radius: 50% 0 ;
+    background:#489765;
+    position: relative;
+    top: 15%;left: 15%;
+    animation: logo 5s infinite linear;
+    transform-origin: center center;
+}
+
+.logo p{
+    display: inline-block;
+    font-size: 80px;
+    color :rgb(24, 23, 23);
+    position: relative;
+    top: -50px;
+    left: 5px;
+    margin-bottom: 0;
+}
+
+span.mouth {
+    width: 100px;
+    height: 50px;
+    border-top: 5px solid #04421b9b;
+    display: block;
+    position: absolute;
+    top: 45px;
+    left: 18px;
+    transform: rotate(-45deg);
+    border-radius: 100%;
+}
+
+span.eye{
+    width:20px;
+    height:20px;
+    background: #04421b9b;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 100%;
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    color :rgba(2, 2, 2, 0.377);
+    line-height: 20px;
+    transform: rotate(-45deg);
+}
+
+span.eye.right{
+    top: 21px;
+    left: 35px
+}
+
+span.eye.left{
+    top: 42px;
+    right: 71px;
+}
+
+@keyframes logo {
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

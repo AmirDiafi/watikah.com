@@ -1,0 +1,204 @@
+<!-- ****** Start The Header ****** -->
+
+<%- include('parts/header') %>
+<link rel="stylesheet" href="/css/detectAdsBlock.css">
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/posts.css">
+<link rel="stylesheet" href="/css/profile.css">
+<link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+
+<!-- *** Start hiiden inputs *** -->
+<input type="hidden" id="user" value='<%=id%>'>
+<input type="hidden" id="me" value='<%=userId%>'>
+<input type="hidden" id="mypicture" value='<%=mypicture%>'>
+<input type="hidden" id="myfirstname" value='<%=myfirstname%>'>
+<input type="hidden" id="mylastname" value='<%=mylastname%>'>
+
+<!-- ****** Start The Navbar ****** -->
+<%- include('parts/navbar')%>
+
+<!-- ****** Start The Markup content ****** -->
+<div class="container">
+<!-- ****** Start the search bar ****** -->
+<div class="search-bar">
+    <form>
+        <input type="search" dir="auto" autocomplete="off" name="search-name" class="form-control" placeholder="إبحث عن شخص">
+        <button type="button" class="btn submit-filter btn-primary">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
+    <ul class="users-result list-unstyled" id="theusers"></ul>
+</div>
+
+<!-- ****** Add Btns and events ******-->
+<% if(id == userId) {%>
+    <div class="notifications popup popup-notifications" data-popup="popup-notifications">
+        <ul id='notificationsList' class="list-unstyled notificationsList popup-inner">
+            <%for(let notification of notifications){%>
+                <li>
+                    <%if(notification.postId !== 'undefined'){%>
+                        <div class="notifics">
+                            <a href="/profile/<%=notification.me%>">
+                                <img src='/userPic/<%=notification.mypicture%>'>
+                                <span style="text-align: start;" dir="auto" class="fullname">
+                                    <%=notification.myfirstname%> <%=notification.mylastname%>
+                                </span>
+                            </a>
+                            <a href='/post/<%=notification.postId%>'>
+                                <span> | <%=notification.event%></span>
+                            </a>
+                        </div>
+                    <%} else if(notification.postId == 'undefined'){%>
+                        <div class="notifics">
+                            <a href="/profile/<%=notification.me%>">
+                                <img src='/userPic/<%=notification.mypicture%>'>
+                                <span style="text-align: start;" dir="auto" class="fullname">
+                                    <%=notification.myfirstname%> <%=notification.mylastname%>
+                                </span>
+                                <span> | <%=notification.event%></span>
+                            </a>
+                        </div>
+                    <%}%>
+                </li>
+            <%}%>
+        </ul>
+    </div>
+    <div class="messages notifications popup popup-messages" data-popup="popup-messages">
+        <ul class='popup-inner list-unstyled notificationsList'>
+        <%for(let message of messages) {%>
+            <li class="message">
+                <a href="/profile/<%=message.me%>">
+                    <img src="/userPic/<%=message.mypicture%>" alt="user" style="width:30px;height:30px;border-radius: 100%">
+                    <span><%=message.myfirstname%> <%=message.mylastname%> | </span>
+                </a>
+                <p>أرسل لك رسالة</p>
+                <div class="see">
+                    <i class="fa fa-eye fa-fw"></i>
+                </div>
+            </li>
+            <p class='msg-cntnt' style="text-align: start;" dir="auto">
+                <%=message.message%>
+            </p>
+        <%}%>
+        </ul>
+    </div>
+<%}%>
+
+<!-- ****** popups ****** -->
+<div class="popup popup-1st" data-popup="popup-1st">
+    <div class="popup-inner image">
+        <form action="/profile/<%=userId%>/post-statu" method="POST" enctype="multipart/form-data">
+            <!-- *** User Info for posts *** -->
+            <input type="hidden" name="mypicture" value="<%=user.picture%>">
+            <input type="hidden" name="myfirstname" value="<%=user.firstname%>">
+            <input type="hidden" name="mylastname" value="<%=user.lastname%>">
+            <input type="hidden" name='redirect' value='/<%=userId%>'>
+            <input type="file" name="image" accept="image/*" required>
+            <input type="text" dir="auto" autocomplete="off" name="title" placeholder="Title" required class="form-control title">
+            <textarea name="description" autocomplete="off" dir="auto" id="description" cols="15" rows="5" required placeholder="Description" class="form-control article"></textarea>
+            <h4>Feliere & Module:</h4>
+            <input type="text" dir="auto" autocomplete="off" name="category" placeholder="Feliere" required class='form-control select'>
+            <input type="text" dir="auto" autocomplete="off" name="model" placeholder="Module" required class='form-control select model'>
+            <input type="submit" value="Post" class="btn btn-success submit" id="submit-post">
+        </form>
+        <button class='close-popup btn btn-danger'>Close</button>
+    </div>
+</div>
+<div class="popup popup-2nd" data-popup="popup-2nd">
+    <div class="popup-inner file">
+        <form action="/profile/<%=userId%>/post-file" method="POST" enctype="multipart/form-data">
+            <!-- *** User Info for files *** -->
+            <input type="hidden" name="mypicture" value="<%=user.picture%>">
+            <input type="hidden" name="myfirstname" value="<%=user.firstname%>">
+            <input type="hidden" name="mylastname" value="<%=user.lastname%>">
+            <input type="hidden" name='redirect' value='/<%=userId%>'>
+            <input type="file" name="file" required max="1" accept='.doc, .docx, .pdf, .xlsx, xls, .ppt, .pptx, .pub, .txt,application/vnd.ms-word, application/vnd.ms-excel, application/mspowerpoint, text/plain, application/pdf'>
+            <input type="text" dir="auto" autocomplete="off" name="title" maxlength="200" required placeholder="Title" class="form-control title">
+            <textarea name="description" autocomplete="off" dir="auto" cols="15" required rows="5" required placeholder="Description" class="form-control article"></textarea>
+            <h4>Feliere & Module:</h4>
+            <input type="text" dir="auto" autocomplete="off" name="category" placeholder="Feliere" required class='form-control select'>
+            <input type="text" dir="auto" autocomplete="off" name="model" placeholder="Module" required class='form-control select model'>
+            <input type="submit" value="Post" class="btn btn-success submit">
+        </form>
+        <button class='close-popup btn btn-danger'>Close</button>
+    </div>
+</div>
+</div>
+
+<!-- ****** Start the home sections ******  -->
+<div class="section main" >
+    <img src="/home-images/home.jpg" alt="sections">
+    <div class="ovarlay" id='particles-js'>
+        <div class="down">
+            <i class="fas fa-chevron-down go-down"></i>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="home-sections">
+        <div class="row">
+        <!-- ****** Start Embeded Ads ****** -->
+        <div class="ads ads-right col col-12">
+            <div>
+                <iframe src="" frameborder="0" id="BlockAdsApp"></iframe>
+            </div>
+            <i class="fa fa-times-circle"></i>
+        </div>
+            <div class="col col-12">
+                <div class="search-post">
+                    <form>
+                        <input type="search" dir="auto" name="search-post" class="form-control" placeholder="Search Module. e.x: Maths">
+                        <button type="button" class="btn submit-filter-model btn-primary">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="allposts" class='allposts'></div>
+    </div>
+</div>
+
+<div id="BlockAdsMsg">
+    <div class="innerCountainer">
+        <h4 class="text-center">Stop AdBlock</h4>
+        <p class="alert alert-danger">
+            من فضلك قم بإقاف معطل اللإعلانات من على موقعنا لإكمال التصفح.
+        </p>
+        <p class="alert alert-success">
+            نقوم بعرض إعلانات على صفحتنا لكي نضمن أن لا تتوقف سيرفاراتنا. فنحن ندفع من أجل هذا.
+            وحيث أن هذه الإعلانات لن تضرك أبدا.. فنحن لا نعرضها بشكل مزعج أو بشكل عشوائي.. ولا حتى ضمن محتوانا الأكاديمي, 
+            أو في مكان مزعج لك.
+        </p>
+    </div>
+</div>
+
+<!-- ****** Start The Scripts ****** -->
+<%- include('parts/footer')%>
+
+<!-- ****** Start the Sockets.io scripts ****** -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/sockets.io/posts.files.home.js"></script>
+<script src="/js/sockets.io/users.list.js"></script>
+<% if(id == userId) {%>
+    <script src="/js/sockets.io/notifications.js"></script>
+<%}%>
+<!-- ****** Start My jQueries Custom -->
+<script src="/js/navbar.js"></script>
+<script src="/js/filters.js"></script>
+<script src="/js/profile.js"></script>
+<script src="/js/particles.min.js"></script>
+<script src="/js/app.js"></script>
+
+<!-- ****** Start Setect Adblock ****** -->
+<script>
+    if (!document.getElementById('BlockAdsApp')) {
+        document.getElementById('BlockAdsMsg').style.display = 'block'
+    } else {
+        document.getElementById('BlockAdsMsg').style.display = 'none'
+    }
+</script>
+</body>
+</html>

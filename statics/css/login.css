@@ -1,0 +1,246 @@
+.alert{
+    padding: 0
+}
+
+.forgot-password {
+    text-align: end;
+    margin-top: -20px;
+}
+
+.row{
+    height: 100vh;
+    width :100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: relative;
+}
+.design{
+    background: linear-gradient(45deg, #290688, #489765);
+}
+
+.design .logo {
+    position: absolute;
+    width:100%;
+    top: 50%;
+    left :0;
+    transform: translate(0, -50%);
+    text-align: start;
+}
+.design .logo .the-logo{
+    width: 160px;
+    height :160px;
+    background: #290688;
+    border-radius: 100%;
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.design .logo .the-logo div{
+    width:115px;
+    height: 115px;
+    border-radius: 50% 0 ;
+    background:#489765;
+    position: relative;
+    top: 15%;left: 15%;
+    animation: logo 5s infinite linear;
+    transform-origin: center center;
+}
+
+@keyframes logo {
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.design .logo p{
+    display: inline-block;
+    font-size: 80px;
+    color :#FFF;
+    position: relative;
+    top: -28px;
+    left: 5px;
+    margin-bottom: 0;
+}
+
+.design h2{
+    color :#FFF;
+    position: relative;
+    top: -55px;
+    left: 200px;
+    text-align: start;
+}
+
+.form h3{
+    font-size: 40px;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, .1),
+    -3px -3px 3px rgba(0, 0, 0, .1);
+    margin: 70px auto 0;
+}
+
+.form hr{
+    margin: 30px auto;
+}
+
+.form form .input {
+    width: 100%;
+    position: relative;
+    text-align: start;
+    margin: 25px auto;
+}
+
+.form form .input input {
+    padding: 6px 10px;
+    width: 100%;
+    border: none;
+    border: 1px solid rgb(136, 134, 134);
+    border-radius: 50px;
+    z-index: 2;
+    background: transparent
+}
+
+.form form input:focus{
+    outline: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, .2);
+}
+
+.form form label {
+    position: absolute;
+    top: 7px;
+    left: 3%;
+    color: #6c757d;
+    transition: all .2s linear;
+    z-index: -1;
+}
+
+.form form input:focus + label,
+.form form .input.has-val label{
+    top: -25px;
+    color :#000
+}
+
+.form form button[type='submit']{
+    text-align: center;
+    padding: 10px 20px;
+    width: 150px;
+    margin: 10px 5px;
+    display: inline-block;
+    background: #290688;
+    border: none;
+    border-radius: 50px;
+    color: #FFF;
+    font-size: 16px;
+    letter-spacing: .08rem;
+    cursor: pointer;
+}
+
+/* Start the mobile and tablet responvice */
+@media(min-width: 576px) and (max-width: 991.98px) {
+    .row{
+        margin:0
+    }
+    .design{
+        height: 20%;
+    }
+    .design .logo .the-logo{
+        width: 80px;
+        height :80px;
+        margin-left: 40px;
+    }
+    
+    .design .logo .the-logo div{
+        width:60px;
+        height: 60px;
+        border-radius: 50% 0 ;
+    }
+    
+    .design .logo p{
+        font-size: 30px;
+    }
+
+    .design h2{
+        font-size: 17px;
+        font-weight: bold;
+        width:250px;
+        margin:0;
+        top: -40px;
+        left: 130px;
+    }
+    .form form .input {
+        width: 70%;
+        margin: 30px auto 10px;
+    }
+    .forgot-password {
+        text-align: end;
+        margin-top: -10px;
+        margin-bottom: 5px;
+        margin-right: 80px;
+    }
+}
+@media(max-width: 575.98px) {
+    .row{
+        margin:0
+    }
+
+    .design{
+        height: 20%
+    }
+
+    .design .logo .the-logo{
+        width: 55px;
+        height :55px;
+        margin-left: 20px;
+    }
+    
+    .design .logo .the-logo div{
+        width:40px;
+        height: 40px;
+        border-radius: 50% 0 ;
+    }
+    
+    .design .logo p{
+        font-size: 20px;
+        top: -30px
+    }
+
+    .design h2{
+        font-size: 14px;
+        font-weight: bold;
+        width:210px;
+        margin:0;
+        top: -30px;
+        left: 80px;
+    }
+
+    .form h3{
+        font-size: 30px;
+        margin: 30px auto 0;
+    }
+    
+    .form hr{
+        margin: 10px auto;
+    }
+    
+    .form form .input {
+        width: 80%;
+        margin: 30px auto 10px;
+    }
+    
+    .form form .input input {
+        padding: 5px;
+    }
+    
+    .form form button[type='submit']{
+        margin: 0 auto
+    }
+
+    .forgot-password {
+        text-align: end;
+        margin-top: -10px;
+        margin-bottom: 5px;
+    }
+    
+
+}
+
