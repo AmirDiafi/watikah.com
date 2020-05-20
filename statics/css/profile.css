@@ -1,6 +1,7 @@
 body{
     position: relative;
 }
+
 .profile-header{
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.515);
     background-size: cover;
@@ -204,6 +205,11 @@ body{
     color: #FFF;
     font-weight: bold;
 }
+
+.container.status {
+    margin-top: 20px;
+}
+
 .container.status .titles{
     font-weight: 700;
     font-size: 30px;
@@ -517,7 +523,6 @@ h3.titles{
 }
 
 /* *** Start following and followers sections *** */
-
 .followers-following{
     position: fixed;
     top: 0;

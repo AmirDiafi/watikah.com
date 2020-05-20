@@ -42,6 +42,18 @@ $(document).ready(function() {
         }
     }
     
+        // *** Trim the name of file *** //
+        function TrimText(selector, maxLength) {
+            $(selector).each(function () {
+                if ($(this).text().length > maxLength) {
+                    var TrimmedText = $(this).text().slice(0, maxLength);
+                    $(this).text(TrimmedText + "...")
+                }
+            });
+        };
+    
+        TrimText(".file-content h3", 25);
+    
 })
 
 // *** Start The Comment Socket.io *** //

@@ -94,6 +94,7 @@
 .post h4{
     margin: 0;
     text-align: start;
+    font-weight: normal;
 }
 
 .post p.model {
@@ -258,7 +259,8 @@ form.add-comment-form button[type='submit'] i{
     position: relative;
 }
 
-.file-content .file-design img {
+.file-content .file-design img,
+.file-content .file-design i {
     position: absolute;
     width:100%;
     height: 100%;
@@ -266,6 +268,21 @@ form.add-comment-form button[type='submit'] i{
     display: block;
     top:50%;left:50%;
     transform: translate(-50%,-50%);
+}
+
+.file-content .file-design i {
+    font-size: 36px;
+    display: block;
+    color: #28a745 !important;
+    background-color: #062230;
+    transition: all .2s linear;
+    line-height: 35px;
+    text-align: center;
+    opacity: 0;
+}
+
+.file-content .file-design i:hover {
+    opacity: 1;
 }
 
 .file-content h3{
@@ -279,17 +296,25 @@ form.add-comment-form button[type='submit'] i{
     .post{
         width: 70%
     }
+    .post h4 {
+        font-size: 15px;
+
+    }
 }
 
 @media(max-width: 575.98px) {
     .post{
-        width: 80%
+        width: 90%
     }
     .post h4{
         font-size: 15px;
     }
     .remove-comment-form button {
         right: 30px;
+    }
+
+    .file-content h3{
+        font-size: 10px;
     }
 
 }

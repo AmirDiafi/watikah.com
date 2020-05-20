@@ -41,7 +41,7 @@ router.post('/:id/post-statu',
                 cb(null, 'images')
             },
             filename: (req, file, cb) => {
-                cb(null, "post" + Date.now() + '' + file.originalname)
+                cb(null, "images-" + Date.now() + '-' + file.originalname)
             }
         })
 }).single('image'),
@@ -55,7 +55,7 @@ router.post('/:id/post-file',
                 cb(null, 'files')
             },
             filename: (req, file, cb) => {
-                cb(null, "file" + Date.now() + '' + file.originalname)
+                cb(null, "file-" + Date.now() + '-' + file.originalname)
             }
         })
 }).single('file'),

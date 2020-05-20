@@ -56,6 +56,7 @@ socket.on('postsHome', posts => {
                 `<div class="file-content">
                     <a href="" id='file-icon-download-${post._id}' class="file-design" download="${post.file}">
                         <img src="" alt="file" class="file">
+                        <i class="fas fa-arrow-down"></i>
                     </a>
                     <h3 style="text-align: start;" dir="auto"> ${post.title}</h3>
                 </div>`
@@ -99,7 +100,7 @@ socket.on('postsHome', posts => {
                 <i class="fas fa-comment-alt comment"> ${post.comments.length}</i>`
                 if(post.image === 'undefined'){
                     thepost +=
-                    `<i class="fas fa-download" > ${post.downloaders.length}</i>`
+                    `<i class="fas fa-arrow-down" > ${post.downloaders.length}</i>`
                 }
         thepost +=  `
             </div>
@@ -226,7 +227,7 @@ socket.on('postsHome', posts => {
         $('.remove-cmnt-edit-icon').on('click', function() {
             $(this).next('.trash-btn').slideToggle()
         })
-        //I *** nitialization Nicescroll *** //
+        //*** nitialization Nicescroll *** //
         $('#theusers, .popup-inner').niceScroll({
             zindex:999,
             cursorcolor: '#004085',
@@ -234,5 +235,18 @@ socket.on('postsHome', posts => {
             cursorborderradius: 0,
             cursorwidth: 7,
         })
+
+        // *** Trim the name of file *** //
+        function TrimText(selector, maxLength) {
+            $(selector).each(function () {
+                if ($(this).text().length > maxLength) {
+                    var TrimmedText = $(this).text().slice(0, maxLength);
+                    $(this).text(TrimmedText + "...")
+                }
+            });
+        };
+    
+        TrimText(".file-content h3", 25);
+
     })
 })

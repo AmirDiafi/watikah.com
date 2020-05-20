@@ -50,6 +50,7 @@
             <div class="file-content">
                 <a href="" id='file-icon-download' class="file-design" download="<%=post.file%>">
                     <img src="" alt="file" class="file">
+                    <i class="fas fa-arrow-down"></i>
                 </a> 
                 <h3 style="text-align: start;" dir="auto"> <%=post.title%></h3>
             </div>
@@ -79,7 +80,7 @@
             <i class="fas fa-caret-down desc"></i>
             <i class="fas fa-comment-alt comment"> <%=post.comments.length%></i>
             <% if(post.image === 'undefined') { %>
-                <i class="fas fa-download" > <%=post.downloaders.length%></i>
+                <i class="fas fa-arrow-down" > <%=post.downloaders.length%></i>
             <% } %>
         </div>
     </div>
