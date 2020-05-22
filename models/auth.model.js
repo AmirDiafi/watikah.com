@@ -232,7 +232,6 @@ exports.getUserProfileById = id => {
             return User.findById(id)
         })
         .then((user) => {
-            mongoose.disconnect()
             resolve(user)
         })
         .catch(err =>{
@@ -251,7 +250,6 @@ exports.getPostsProfile = (userId) => {
             })
         })
         .then((post) => {
-            mongoose.disconnect()
             resolve(post)
         })
         .catch(err =>{
@@ -270,7 +268,6 @@ exports.getAllPosts = () => {
             })
         })
         .then((post) => {
-            mongoose.disconnect()
             resolve(post)
         })
         .catch(err =>{
@@ -287,7 +284,6 @@ exports.getPostById = (postId) => {
             return Post.findOne({_id:postId})
         })
         .then((post) => {
-            mongoose.disconnect()
             resolve(post)
         })
         .catch(err =>{
@@ -519,7 +515,6 @@ exports.getUsersToHome = () => {
             return User.find()
         })
         .then((users) => {
-            mongoose.disconnect()
             resolve(users)
         })
         .catch(err =>{
@@ -543,7 +538,6 @@ exports.addComment = async data => {
                 }
             }
         })
-        mongoose.disconnect()
     } catch (error) {
         mongoose.disconnect()
         throw new Error(error)
@@ -564,7 +558,6 @@ exports.removeComment = async (CommentData) => {
                 postId: CommentData.postId
             }}}
         )
-        mongoose.disconnect()
     } catch (error) {
         mongoose.disconnect()
         throw new Error(error)
@@ -592,7 +585,6 @@ exports.newFollower = async (data) => {
                 userlastname: data.userlastname,
              }}}
         )
-        mongoose.disconnect()
     }  catch (error) {
         mongoose.disconnect()
         throw new Error(error)
@@ -620,7 +612,6 @@ exports.removeFollower = async (data) => {
                 postId: data.userId
              }}}
         )
-        mongoose.disconnect()
     }  catch (error) {
         mongoose.disconnect()
         throw new Error(error)

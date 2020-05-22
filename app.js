@@ -40,6 +40,7 @@ const session = require('express-session')
 const sessionStore = require('connect-mongodb-session')(session)
 const STORE = new sessionStore({
     uri: 'mongodb+srv://DiafiAmir:18265432171004@cluster0-3wwqa.mongodb.net/watikaDB?retryWrites=true&w=majority',
+    // uri: 'mongodb://localhost:27017/clientDB',
     collection: 'session'
 })
 

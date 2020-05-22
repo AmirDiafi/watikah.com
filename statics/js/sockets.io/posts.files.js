@@ -99,6 +99,24 @@ socket.on('postsProfile', posts => {
 
     // *** Start The Comment Socket.io *** //
     for(let post of posts) {
+
+    // *** Custom the file icon *** //
+    if(post.file !== 'undefined'){
+        if($(`#file-icon-download-${post._id}`).attr('download').endsWith('.pdf')) {
+            $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/pdf.png')
+        } else if ($(`#file-icon-download-${post._id}`).attr('download').endsWith('.docx')) {
+            $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/wrd.png')
+        } else if ($(`#file-icon-download-${post._id}`).attr('download').endsWith('.pub')) {
+            $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/Publisher.png')
+        } else if ($(`#file-icon-download-${post._id}`).attr('download').endsWith('.xlsx')) {
+            $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/excel.png')
+        } else if ($(`#file-icon-download-${post._id}`).attr('download').endsWith('.pptx')) {
+            $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/powerpoint.png')
+        } else {
+            $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/file.png')
+        }
+    }
+
         document.getElementById(post._id).onclick = (e) => {
             e.preventDefault()
             socket.emit('newComment', {
@@ -110,6 +128,16 @@ socket.on('postsProfile', posts => {
                 mypicture,
                 me 
             })
+            
+            document.getElementById(`comments-${document.getElementById('postId-'+post._id).value}`).innerHTML +=
+                `<p class='comment-at-the-post the-comment'>
+                    <a href='/profile/${me}'>
+                        <img src="/userPic/${mypicture}" alt="profile" style='border-radius: 100%;width:30px;height:30px'>
+                        <span class='fullname'> ${myfirstname} ${mylastname}</span>
+                    </a>
+                    <br>
+                    <span style="text-align: start;" dir="auto">${document.getElementById("comment-post-content-"+post._id).value}</span>
+                </p>`
             
             if(me !== post.owenerPostId){
                 socket.emit('sendNotification', {
@@ -123,18 +151,6 @@ socket.on('postsProfile', posts => {
                     me
                 })
             }
-            
-            socket.on('commented', data => {
-                document.getElementById(`comments-${data.postId}`).innerHTML +=
-                    `<p class='comment-at-the-post the-comment'>
-                        <a href='/profile/${data.me}' >
-                            <img src="/userPic/${data.mypicture}" alt="profile" style='border-radius: 100%;width:30px;height:30px'>
-                            <span style="text-align: start;" dir="auto" class='fullname'> ${data.myfirstname} ${data.mylastname}</span>
-                        </a>
-                        <br>
-                        <span style="text-align: start;" dir="auto">${data.comment}</span>
-                    </p>`
-                })
         
         }
         
@@ -142,36 +158,16 @@ socket.on('postsProfile', posts => {
             if(comment.me == me){
             document.getElementById(post._id+'-'+comment._id).onclick = (e) => {
                 e.preventDefault()
+                document.getElementById(`comment-${comment._id}`).remove()
+                document.getElementById(`post-trash-${comment._id}`).remove()
                 socket.emit('removeComment', {
                     owenerPostId: post.owenerPostId,
                     commentId: comment._id,
                     postId: post._id,
                     me: me
                 })
-
-                socket.on('commentRemoved', data => {
-                    document.getElementById(`comment-${data.commentId}`).remove()
-                    document.getElementById(`post-trash-${data.commentId}`).remove()
-                })
             }
         }}
-
-        // *** Custom the file icon *** //
-        if(post.file !== 'undefined'){
-            if($(`#file-icon-download-${post._id}`).attr('download').endsWith('.pdf')) {
-                $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/pdf.png')
-            } else if ($(`#file-icon-download-${post._id}`).attr('download').endsWith('.docx')) {
-                $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/wrd.png')
-            } else if ($(`#file-icon-download-${post._id}`).attr('download').endsWith('.pub')) {
-                $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/Publisher.png')
-            } else if ($(`#file-icon-download-${post._id}`).attr('download').endsWith('.xlsx')) {
-                $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/excel.png')
-            } else if ($(`#file-icon-download-${post._id}`).attr('download').endsWith('.pptx')) {
-                $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/powerpoint.png')
-            } else {
-                $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/file.png')
-            }
-        }
     }
     }
     

@@ -1,36 +1,30 @@
 $(document).ready(function() {
 // Start Search bar by Category
-
-$(".navbar .search-bar .submit-filter").on('click', function (e) {
-    e.preventDefault()
-    let value = $(".navbar .search-bar select.select").val().toLowerCase();
-    window.location = '/'
-    $('.status').fadeIn(500)
-    $('.status').filter(function () {
-        $(this).toggle($(this).find('.category').text().Start(value) >=0);
-    });
-});
+// $(".navbar .search-bar .submit-filter").on('click', function (e) {
+//     e.preventDefault()
+//     let value = $(".navbar .search-bar select.select").val().toLowerCase();
+//     window.location = '/'
+//     $('.status').fadeIn(500)
+//     $('.status').filter(function () {
+//         $(this).toggle($(this).find('.category').text().Start(value) >=0);
+//     });
+// });
 
     // Show The Popup By The Button Of Popup
-
     $('.pop-btn').on('click', function () {
         $('.'+ $(this).data('popup')).fadeIn(500);
     })
 
     // Fade Out The Popup By Click at It
-
     $('.popup').on('click', function () {
         $('.popup').fadeOut(500);
     })
 
     // Make Stop To The Popup Event That FadeOut It!
-
     $('.popup-inner').on('click', function (e) {
         e.stopPropagation();
     });
-
     // FadeOut  The Popup With Close Button
-
     $('.close-popup').on('click', function () {
         $(this).parentsUntil('.popup').parent().fadeOut(500);
     })

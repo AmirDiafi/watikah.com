@@ -1,5 +1,5 @@
 
-if(document.getElementById('notificationsList')) {
+// if(document.getElementById('notificationsList')) {
 
 document.getElementById('notifications-icon')
 .style.color = localStorage.getItem('notify-icon')
@@ -46,5 +46,5 @@ document.getElementById('message-notify-'+userId)
         localStorage.removeItem('notify-icon')
     }
     
-}
+// }
 

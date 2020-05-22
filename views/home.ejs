@@ -34,66 +34,17 @@
 
     <!-- ****** Add Btns and events ******-->
     <% if(id == userId) {%>
-        <div class="notifications popup popup-notifications" data-popup="popup-notifications">
-            <ul id='notificationsList' class="list-unstyled notificationsList popup-inner">
-                <%for(let notification of notifications){%>
-                    <li>
-                        <%if(notification.postId !== 'undefined'){%>
-                            <div class="notifics">
-                                <a href="/profile/<%=notification.me%>">
-                                    <img src='/userPic/<%=notification.mypicture%>'>
-                                    <span style="text-align: start;" dir="auto" class="fullname">
-                                        <%=notification.myfirstname%> <%=notification.mylastname%>
-                                    </span>
-                                </a>
-                                <a href='/post/<%=notification.postId%>'>
-                                    <span> | <%=notification.event%></span>
-                                </a>
-                            </div>
-                        <%} else if(notification.postId == 'undefined'){%>
-                            <div class="notifics">
-                                <a href="/profile/<%=notification.me%>">
-                                    <img src='/userPic/<%=notification.mypicture%>'>
-                                    <span style="text-align: start;" dir="auto" class="fullname">
-                                        <%=notification.myfirstname%> <%=notification.mylastname%>
-                                    </span>
-                                    <span> | <%=notification.event%></span>
-                                </a>
-                            </div>
-                        <%}%>
-                    </li>
-                <%}%>
-            </ul>
-        </div>
-        <div class="messages notifications popup popup-messages" data-popup="popup-messages">
-            <ul class='popup-inner list-unstyled notificationsList'>
-            <%for(let message of messages) {%>
-                <li class="message">
-                    <a href="/profile/<%=message.me%>">
-                        <img src="/userPic/<%=message.mypicture%>" alt="user" style="width:30px;height:30px;border-radius: 100%">
-                        <span><%=message.myfirstname%> <%=message.mylastname%> | </span>
-                    </a>
-                    <p>أرسل لك رسالة</p>
-                    <div class="see">
-                        <i class="fa fa-eye fa-fw"></i>
-                    </div>
-                </li>
-                <p class='msg-cntnt' style="text-align: start;" dir="auto">
-                    <%=message.message%>
-                </p>
-            <%}%>
-            </ul>
-        </div>
-    <%}%>
+        <div id="theNotification"></div>
+    <% } %>
 
     <!-- ****** popups ****** -->
     <div class="popup popup-1st" data-popup="popup-1st">
         <div class="popup-inner image">
             <form action="/profile/<%=userId%>/post-statu" method="POST" enctype="multipart/form-data">
                 <!-- *** User Info for posts *** -->
-                <input type="hidden" name="mypicture" value="<%=user.picture%>">
-                <input type="hidden" name="myfirstname" value="<%=user.firstname%>">
-                <input type="hidden" name="mylastname" value="<%=user.lastname%>">
+                <input type="hidden" name="mypicture" value="<%=mypicture%>">
+                <input type="hidden" name="myfirstname" value="<%=myfirstname%>">
+                <input type="hidden" name="mylastname" value="<%=mylastname%>">
                 <input type="hidden" name='redirect' value='/<%=userId%>'>
                 <input type="file" name="image" accept="image/*" required>
                 <input type="text" dir="auto" autocomplete="off" name="title" placeholder="Title" required class="form-control title">
@@ -110,9 +61,9 @@
         <div class="popup-inner file">
             <form action="/profile/<%=userId%>/post-file" method="POST" enctype="multipart/form-data">
                 <!-- *** User Info for files *** -->
-                <input type="hidden" name="mypicture" value="<%=user.picture%>">
-                <input type="hidden" name="myfirstname" value="<%=user.firstname%>">
-                <input type="hidden" name="mylastname" value="<%=user.lastname%>">
+                <input type="hidden" name="mypicture" value="<%=mypicture%>">
+                <input type="hidden" name="myfirstname" value="<%=myfirstname%>">
+                <input type="hidden" name="mylastname" value="<%=mylastname%>">
                 <input type="hidden" name='redirect' value='/<%=userId%>'>
                 <input type="file" name="file" required max="1" accept='.doc, .docx, .pdf, .xlsx, xls, .ppt, .pptx, .pub, .txt,application/vnd.ms-word, application/vnd.ms-excel, application/mspowerpoint, text/plain, application/pdf'>
                 <input type="text" dir="auto" autocomplete="off" name="title" maxlength="200" required placeholder="Title" class="form-control title">
@@ -157,7 +108,86 @@
                 </div>
             </div>
         </div>
-        <div id="allposts" class='allposts'></div>
+        <div id="allposts" class='allposts'>
+            <div>
+                <%for(let post of posts) {%>
+                    <div class='post status'>
+                        <%if(userId == post.owenerPostId) {%>
+                            <i class='fas fa-ellipsis-v edit'></i>
+                        <%}%>
+                        <ul class='edit list-unstyled'>
+                            <form>
+                                <input type="hidden" name="postId" value='<%=post._id%>'>
+                                <input type="hidden" name="owenerPostId" value='<%=userId%>'>
+                                <input type="hidden" name="redirect" value='<%=post.owenerPostId%>'>
+                                <li>
+                                    <button type="submit" formaction="/profile/<%=post.owenerPostId%>/remove-post" formmethod="POST">
+                                        <i class="fa fa-trash"></i> | حذف
+                                    </button>
+                                </li>
+                            </form>
+                        </ul>
+                        <a href="/profile/<%=post.owenerPostId%>" class='anchor-pic'>
+                            <img src="/userPic/<%=post.picture%>" alt="profile" class="profile-pic">
+                            <span style="text-align: start;" dir="auto" class="username"> <%=post.firstname%> <%=post.lastname%></span>
+                            <span class='timestamp' style="text-align: start;" dir="auto"> <%=post.postDate%></span>
+                        </a>
+                        <h4 style="text-align: start;" dir="auto"><%=post.title%></h4>
+                        <p class='model' style="text-align:start">Feliere:<b> <%=post.category%> </b></p>
+                        <p class='model' style="text-align:start">Module:<b> <%=post.model%></b></p>
+                        <hr>
+                        <%if(post.image !== 'undefined'){%>
+                            <img src="/<%=post.image%>" class='post-pic' alt="postPic">
+                        <%}%>
+                        <%if(post.file !== 'undefined'){%>
+                            <div class="file-content">
+                                <a href="" id='file-icon-download-<%=post._id%>' class="file-design" download="<%=post.file%>">
+                                    <img src="" alt="file" class="file">
+                                    <i class="fas fa-arrow-down"></i>
+                                </a>
+                                <h3 style="text-align: start;" dir="auto"> <%=post.title%></h3>
+                            </div>
+                        <%}%>
+                        <div class="trim">
+                            <p class='desc' style="text-align: start;" dir="auto"><%=post.description%></p>
+                            <div class=comments id='comments-<%=post._id%>'>
+                            <form class="add-comment-form" method='POST'>
+                                <input type=hidden id='postId-<%=post._id%>' value='<%=post._id%>'>
+                                <input type=hidden id='owenerPostId-<%=post.owenerPostId%>' value='<%=post.owenerPostId%>'>
+                                <input dir='auto' type=text id='comment-post-content-<%=post._id%>' placeholder='add comment' >
+                                <button id='<%=post._id%>' type="submit" class="btn btn-primary">
+                                    <i class='fas fa-paper-plane'></i>
+                                </button>
+                            </form>
+                                <%for(let comment of post.comments) {%>
+                                    <p style="text-align: start;" dir="auto" class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
+                                        <a href='/profile/<%=comment.me%>' >
+                                            <img src="/userPic/<%=comment.mypicture%>" alt="profile" style="border-radius: 100%;width:30px;height:30px">
+                                            <span style="text-align: start;" dir="auto" class='fullname'> <%=comment.myfirstname%> <%=comment.mylastname%></span>
+                                        </a>
+                                        <br>
+                                        <span style="text-align: start;" dir="auto"><%=comment.comment%></span>
+                                    </p>
+                                    <%if(comment.me == userId){%>
+                                        <form class='remove-comment-form trash-the-post' id='post-trash-<%=comment._id%>'>
+                                            <i class='fas fa-ellipsis-v remove-cmnt-edit-icon'></i>
+                                            <button class='trash-btn' id='<%=post._id%>-<%=comment._id%>'>
+                                                <i class="fa fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    <%}%>
+                                <%}%> 
+                        </div>
+                            <i class="fas fa-caret-down desc"></i>
+                            <i class="fas fa-comment-alt comment"> <%=post.comments.length%></i>
+                            <%if(post.image === 'undefined'){%>
+                                <i class="fas fa-arrow-down" > <%=post.downloaders.length%></i>
+                            <%}%>
+                    </div>
+                </div>
+                <%}%>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -184,6 +214,7 @@
 <script src="/js/sockets.io/users.list.js"></script>
 <% if(id == userId) {%>
     <script src="/js/sockets.io/notifications.js"></script>
+    <script src="/js/sockets.io/userHome.js"></script>
 <%}%>
 <!-- ****** Start My jQueries Custom -->
 <script src="/js/navbar.js"></script>

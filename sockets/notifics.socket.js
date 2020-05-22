@@ -6,7 +6,7 @@ module.exports = (io) => {
             newNotification(data).then(() => {
                 io.to(data.userId).emit('newNotification', data)
             }).catch(err=>{
-                socket.emit('notificationFailed')
+                socket.emit('notificationFailed', err)
             })
         })
     })

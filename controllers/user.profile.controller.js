@@ -8,10 +8,8 @@ exports.getUserProfile = (req, res, next) => {
     let id = req.params.id
     authModel.getUserProfileById(id)
     .then( (user) => {
-        let notifications = user.notifications
-        let messages = user.messages
-        notifications.sort((a,b) => (a.dateOfComment < b.dateOfComment)?1:-1)
-        messages.sort((a,b) => (a.dateOfMessage < b.dateOfMessage)?1:-1)
+        let notifications = user.notifications.sort((a,b) => (a.dateOfEvent < b.dateOfEvent)?1:-1)
+        let messages = user.messages.sort((a,b) => (a.dateOfMessage < b.dateOfMessage)?1:-1)
         res.render('profile', {
             notifications,      //For sorting By Date
             myfirstname,        //For Navbar Links
