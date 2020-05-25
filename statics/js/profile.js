@@ -1,14 +1,4 @@
 $(document).ready(function() {
-// Start Search bar by Category
-// $(".navbar .search-bar .submit-filter").on('click', function (e) {
-//     e.preventDefault()
-//     let value = $(".navbar .search-bar select.select").val().toLowerCase();
-//     window.location = '/'
-//     $('.status').fadeIn(500)
-//     $('.status').filter(function () {
-//         $(this).toggle($(this).find('.category').text().Start(value) >=0);
-//     });
-// });
 
     // Show The Popup By The Button Of Popup
     $('.pop-btn').on('click', function () {
@@ -22,7 +12,7 @@ $(document).ready(function() {
 
     // Make Stop To The Popup Event That FadeOut It!
     $('.popup-inner').on('click', function (e) {
-        e.stopPropagation();
+        e.stopPropagation()
     });
     // FadeOut  The Popup With Close Button
     $('.close-popup').on('click', function () {
@@ -56,9 +46,10 @@ $(document).ready(function() {
     // Start Messages
     $('.messages.notifications .notificationsList li.message div.see')
     .on('click', function () {
+        $(this).find('i').toggleClass('openMsg')
+        $(this).parent('li.message').siblings().find('i').removeClass('openMsg')
         $(this).parent('li.message').siblings().next('p.msg-cntnt').slideUp(500)
         $(this).parent('li.message').next('p.msg-cntnt').slideToggle(500)
     })
-
 
 })

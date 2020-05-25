@@ -116,7 +116,6 @@ socket.on('postsProfile', posts => {
             $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/file.png')
         }
     }
-
         document.getElementById(post._id).onclick = (e) => {
             e.preventDefault()
             socket.emit('newComment', {
@@ -142,8 +141,9 @@ socket.on('postsProfile', posts => {
             if(me !== post.owenerPostId){
                 socket.emit('sendNotification', {
                     msg: ' علق على منشور لك',
+                    dateOfEvent: new Date().toLocaleString(),
                     userId: post.owenerPostId,
-                    dateOfEvent: new Date(),
+                    sortByDate: new Date(),
                     postId: post._id,
                     myfirstname,
                     mylastname,

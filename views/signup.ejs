@@ -41,7 +41,7 @@
                 </p>
             <%}%>
             <div class="input">
-                <input type="text" required autocomplete="off" name="firstname">
+                <input type="text" required autocomplete="off" maxlength="15" name="firstname">
                 <label for="text">الإسم الأول</label>
             </div>
             <%let lastnameErr = validationErr.find( err => err.param ==='lastname')%>
@@ -51,7 +51,7 @@
                 </p>
             <%}%>
             <div class="input">
-                <input type="text" required autocomplete="off" name="lastname">
+                <input type="text" required autocomplete="off" maxlength="15" name="lastname">
                 <label for="text">الإسم الأخير (اللقب)</label>
             </div>
             <%let emailErr = validationErr.find( err => err.param ==='email')%>

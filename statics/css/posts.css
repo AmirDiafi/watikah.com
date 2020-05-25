@@ -177,26 +177,44 @@ form.add-comment-form {
 
 form.add-comment-form input[type='text']{
     width:75%;
-    border-radius: 50px 10px 10px 50px;
+    border-radius: 50px 0 0 50px;
     box-shadow: none;
     border: 1px solid #062230;
     text-align: start;
     direction: auto;
     padding-inline-start: 10px;
 }
+
+form.add-comment-form input[type='text']:focus{
+    border: 1px solid #28a745;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.933);
+    outline: 0;
+}
+
 form.add-comment-form button[type='submit'] {
     border-radius: 5px;
     background-color: #062230;
     border-color: #062230;
     width:25%;
-    border-radius: 10px 50px 50px 10px;
+    border-radius: 0 50px 50px 0;
 }
+form.add-comment-form button[type='submit']:hover{
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
 form.add-comment-form button[type='submit'] i{
     color: #28a745;
     padding:0;
     margin: 0;
     font-size: 18px;
     border: none;
+}
+
+
+form.add-comment-form button[type='submit']:hover i{
+    color: #062230;
+    background: #28a745
 }
 
 .remove-comment-form{

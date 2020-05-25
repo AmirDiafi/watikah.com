@@ -240,8 +240,12 @@ body{
 .search-bar form input[type='search']{
     background: #ffffffc2;
 }
-.search-bar form input[type='search']:focus{
+.search-bar form input[type='search']:focus,
+.search-post form input[type='search']:focus{
     background: #ffffff;
+    outline: 0;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+    border-color: #28a745;
 }
 
 .search-active{
@@ -416,6 +420,11 @@ ul.users-result li i{
         left: 25%;
         top: 0;
     }
+
+    .search-post{
+        width: 100%;
+    }
+
     .load-screen .logo.cont .the-logo {
         transform: translate(-50%, -50%);
         position: absolute;
@@ -440,5 +449,8 @@ ul.users-result li i{
     }
     .the-navbar .logo p {
         font-size: 14px;
+    }
+    .search-post{
+        width: 100%;
     }
 }

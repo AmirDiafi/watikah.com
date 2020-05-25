@@ -62,8 +62,9 @@ socket.on('postsHome', posts => {
             if(me !== post.owenerPostId){
                 socket.emit('sendNotification', {
                     msg: ' علق على منشور  لك',
+                    dateOfEvent: new Date().toLocaleString(),
                     userId: post.owenerPostId,
-                    dateOfEvent: new Date(),
+                    sortByDate: new Date(),
                     postId: post._id,
                     myfirstname,
                     mylastname,

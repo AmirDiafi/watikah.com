@@ -17,7 +17,8 @@ if(followBtn) {
         })
         socket.emit('sendNotification', {
             msg:' معجب بصفحتك',
-            dateOfEvent: new Date(),
+            dateOfEvent: new Date().toLocaleString(),
+            sortByDate: new Date(),
             postId: 'undefined',
             myfirstname,
             mylastname,

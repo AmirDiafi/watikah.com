@@ -108,6 +108,11 @@ body{
     line-height:40px
 }
 
+.profile-header .userpic i.pop-btn:hover {
+    color: #062230;
+    background-color: #28a745;
+}
+
 .useredit .usereditform,
 .send-message,
 .profile-header .background .back-edit{
@@ -128,6 +133,12 @@ body{
     border-radius: 50px 0 0 50px;
 }
 
+.send-message input[type='text']:focus {
+    border: 1px solid #28a745;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.933);
+    outline: 0;
+}
+
 .send-message button[type='submit'] {
     background-color: #062230;
     color :#28a745;
@@ -137,6 +148,11 @@ body{
     border-radius: 0 50px 50px 0;
     position: relative;
     top: -2px
+}
+
+.send-message button[type='submit']:hover{
+    background-color: #28a745;
+    color: #062230
 }
 
 .send-message button.close-popup{
@@ -432,7 +448,7 @@ h3.titles{
 
 .notifications .notificationsList{
     background-color: #192c35c9;
-    width:400px;
+    width:60%;
     height: 400px;
     overflow-y: scroll;
     padding:0;
@@ -475,6 +491,11 @@ h3.titles{
     display: none
 }
 
+.messages.notifications .notificationsList p.msg-cntnt span {
+    display: block;
+    border-top: 1px solid #646464;
+}
+
 .messages.notifications .notificationsList li.message a {
     text-decoration: none;
     color :#333
@@ -487,8 +508,24 @@ h3.titles{
     cursor: pointer;
 }
 
+.messages.notifications .notificationsList li.message div.see i {
+    background: #062230;
+    color: #28a745;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    transition: all .2s linear
+}
+
+.messages.notifications .notificationsList li.message div.see i:hover,
+.openMsg {
+    background: #28a745 !important;
+    color: #062230 !important
+}
+
 .notifications .notificationsList li{
-    padding-bottom: 5px;
+    padding-bottom: 5px
 }
 
 .notifications .notificationsList li .notifics {
@@ -654,6 +691,10 @@ h3.titles{
     .popup .popup-inner form .custom-file span {
         font-size: 14px;
     }
+
+    .notifications .notificationsList .fullname{
+        font-size: 12px;
+    }
 }
 
 @media(max-width: 575.98px) {
@@ -752,6 +793,10 @@ h3.titles{
     /* Start Popup */
     .popup .popup-inner {
         width:80%
+    }
+
+    .popup .popup-inner.notificationsList {
+        width:90%
     }
     
     .popup .popup-inner form .title,

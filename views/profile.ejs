@@ -111,11 +111,11 @@
                             <a href="/profile/<%=notification.me%>">
                                 <img src='/userPic/<%=notification.mypicture%>'>
                                 <span style="text-align: start;" dir="auto" class="fullname">
-                                    <%=notification.myfirstname%> <%=notification.mylastname%> 
+                                    <%=notification.myfirstname%> <%=notification.mylastname%>  
                                 </span>
-                            </a>
+                            </a> 
                             <a href='/post/<%=notification.postId%>'>
-                                <span>| <%=notification.event%></span>
+                                <span> | <%=notification.event%> | <span dir="ltr"> <%=notification.dateOfEvent%></span></span>
                             </a>
                         </div>
                     <%} else if(notification.postId === 'undefined'){%>
@@ -124,8 +124,8 @@
                                 <img src='/userPic/<%=notification.mypicture%>'>
                                 <span style="text-align: start;" dir="auto" class="fullname">
                                     <%=notification.myfirstname%> <%=notification.mylastname%> 
-                                </span>
-                                <span> | <%=notification.event%></span>
+                                </span> 
+                                <span> | <%=notification.event%> |<span dir="ltr"> <%=notification.dateOfEvent%></span></span>
                             </a>
                         </div>
                     <%}%>
@@ -141,13 +141,16 @@
                     <img src="/userPic/<%=message.mypicture%>" alt="user" style="width:30px;height:30px;border-radius: 100%">
                     <span><%=message.myfirstname%> <%=message.mylastname%> | </span>
                 </a>
-                <p>Sent you a message</p>
+                <p>أرسل لك رسالة</p>
                 <div class="see">
                     <i class="fa fa-eye fa-fw"></i>
                 </div>
             </li>
             <p class='msg-cntnt' style="text-align: start;" dir="auto">
                 <%=message.message%>
+                <span>
+                    <%=message.dateOfMessage%>
+                </span>
             </p>
         <%}%>
         </ul>

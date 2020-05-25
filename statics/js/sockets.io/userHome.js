@@ -6,8 +6,8 @@ socket.on('userHome', user => {
     if(user) {
         if(id == userId) {
             // *** Sorting the messages & notifications *** //
-            user.notifications.sort((a,b) => (a.dateOfEvent < b.dateOfEvent)?1:-1)
-            user.messages.sort((a,b) => (a.dateOfMessage < b.dateOfMessage)?1:-1)
+            user.notifications.sort((a,b) => (a.sortByDate < b.sortByDate)?1:-1)
+            user.messages.sort((a,b) => (a.sortByDate < b.sortByDate)?1:-1)
             
             let theNotification =
             // *** Start Notification List *** // 
@@ -26,7 +26,7 @@ socket.on('userHome', user => {
                                         </span>
                                     </a>
                                     <a href='/post/${notification.postId}'>
-                                        <span> | ${notification.event}</span>
+                                        <span> | ${notification.event} | <span dir="ltr"> ${notification.dateOfEvent}</span></span>
                                     </a>
                                 </div>`
                             } else if(notification.postId == 'undefined'){
@@ -37,7 +37,7 @@ socket.on('userHome', user => {
                                         <span style="text-align: start;" dir="auto" class="fullname">
                                             ${notification.myfirstname} ${notification.mylastname}
                                         </span>
-                                        <span> | ${notification.event}</span>
+                                        <span> | ${notification.event} |<span dir="ltr"> ${notification.dateOfEvent}</span></span>
                                     </a>
                                 </div>`
                             }
@@ -63,6 +63,9 @@ socket.on('userHome', user => {
                             </li>
                             <p class='msg-cntnt' style="text-align: start;" dir="auto">
                                 ${message.message}
+                                <span>
+                                    ${message.dateOfMessage}
+                                </span>
                             </p>`
                     }
                     theNotification +=  
@@ -88,10 +91,12 @@ socket.on('userHome', user => {
     })
 
     // *** Start Messages *** //
-    $('.messages.notifications .notificationsList li.message div.see')
-    .on('click', function () {
-        $(this).parent('li.message').siblings().next('p.msg-cntnt').slideUp(500)
-        $(this).parent('li.message').next('p.msg-cntnt').slideToggle(500)
-    })
+   $('.messages.notifications .notificationsList li.message div.see')
+   .on('click', function () {
+       $(this).find('i').toggleClass('openMsg')
+       $(this).parent('li.message').siblings().find('i').removeClass('openMsg')
+       $(this).parent('li.message').siblings().next('p.msg-cntnt').slideUp(500)
+       $(this).parent('li.message').next('p.msg-cntnt').slideToggle(500)
+   })
 
 })

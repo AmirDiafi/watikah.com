@@ -28,7 +28,7 @@ exports.editUserProfile = (req, res, next) => {
         {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
-            email:req.body.email,
+            // email:req.body.email, // it's off.
             bio: req.body.bio
         }
     ).then(()=>{

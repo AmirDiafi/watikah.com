@@ -13,7 +13,7 @@
 
 #BlockAdsMsg .innerCountainer {
     width:70%;
-    height: 50%;
+    height: auto;
     background: #eee;
     border: #28a745;
     border-radius: 10px;

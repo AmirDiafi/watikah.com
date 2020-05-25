@@ -31,8 +31,9 @@ const userSchema = mongoose.Schema({
     notifications: {
         type: [{
             myfirstname: String,
+            dateOfEvent: String,
+            sortByDate: String,
             mylastname: String,
-            dateOfEvent: Date,
             mypicture: String,
             postId: String,
             event:String,
@@ -44,6 +45,7 @@ const userSchema = mongoose.Schema({
         type: [{
             dateOfMessage: String,
             myfirstname: String,
+            sortByDate: String,
             mylastname: String,
             mypicture: String,
             message: String,
@@ -55,8 +57,8 @@ const userSchema = mongoose.Schema({
 const postSchema = mongoose.Schema({
     owenerPostId: String,
     description: String,
+    sortByDate: String,
     firstname: String,
-    sortByDate: Date,
     lastname: String,
     postDate: String,
     category: String,
@@ -85,8 +87,8 @@ const postSchema = mongoose.Schema({
 })
 
 // ------ URL DB and Schema Declaration ------ //
-const DB_URL = 'mongodb+srv://DiafiAmir:18265432171004@cluster0-3wwqa.mongodb.net/watikaDB?retryWrites=true&w=majority'
-// const DB_URL = 'mongodb://localhost:27017/clientDB'
+// const DB_URL = 'mongodb+srv://DiafiAmir:18265432171004@cluster0-3wwqa.mongodb.net/watikaDB?retryWrites=true&w=majority'
+const DB_URL = 'mongodb://localhost:27017/clientDB'
 const User = mongoose.model('user', userSchema)
 const Post = mongoose.model('post', postSchema)
 const bcrypt = require('bcryptjs')
@@ -626,6 +628,7 @@ exports.message = async (data) => {
              { $push: { messages: {
                 dateOfMessage: data.dateOfMessage,
                 myfirstname: data.myfirstname,
+                sortByDate: data.sortByDate,
                 mylastname: data.mylastname,
                 mypicture: data.mypicture,
                 message: data.message,
@@ -647,6 +650,7 @@ exports.newNotification = async data => {
              { $push: { notifications: {
                 dateOfEvent: data.dateOfEvent,
                 myfirstname: data.myfirstname,
+                sortByDate: data.sortByDate,
                 mylastname: data.mylastname,
                 mypicture: data.mypicture,
                 postId: data.postId,
