@@ -302,7 +302,7 @@ exports.editUserProfile  = (id, newData) => {
             return User.updateOne({_id:id}, {
                 firstname: newData.firstname,
                 lastname: newData.lastname,
-                email: newData.email,
+                // email: newData.email, // it's off.
                 bio: newData.bio
             })
         })
