@@ -164,8 +164,7 @@ body{
 .profile-header .background .back-edit form .custom-file {
     padding: 0;
     position: relative;
-    padding: 2px;
-    margin: 0 auto;
+    margin: 10px auto;
     border-radius: 10px
 }
 
@@ -833,11 +832,16 @@ h3.titles{
     }
 
     .popup .popup-inner.small {
-        max-height: 22%
+        max-height: 22%;
+        overflow: auto;
     }
 
     .popup .popup-inner .close-popup {
-        bottom: 32px;
+        bottom: 60px;
+    }
+
+    .popup .popup-inner.small .close-popup {
+        bottom: 60px;
     }
 
     .popup .popup-inner.notificationsList {
@@ -851,7 +855,7 @@ h3.titles{
     }
 
     .popup .popup-inner form .custom-file {
-        width: 100%;
+        width: 80%;
     }
 
     .popup .popup-inner form .custom-file span {
