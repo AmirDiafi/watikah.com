@@ -357,7 +357,7 @@ body{
 
 .popup .popup-inner form .submit {
     border-radius: 50px;
-    position: absolute;
+    /* position: absolute; */
     bottom: 10px;
     left: 10px;
     width: 20%;
@@ -369,8 +369,8 @@ body{
     background-color: #2178db;
 }
 .popup .popup-inner .close-popup {
-    position: absolute;
-    bottom: 10px;
+    position: relative;
+    bottom: 60px;
     right: 10px;
     width: 20%;
     border: none;
@@ -830,7 +830,14 @@ h3.titles{
     
     /* Start Popup */
     .popup .popup-inner {
-        width:80%
+        width: 80%;
+        max-height: 30%;
+        overflow: scroll;
+        top: 30%;
+    }
+
+    .popup .popup-inner .close-popup {
+        bottom: 0;
     }
 
     .popup .popup-inner.notificationsList {
