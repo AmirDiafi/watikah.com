@@ -75,13 +75,13 @@ $(document).ready(function() {
             $(this).next('.trash-btn').slideToggle()
         })
         //*** nitialization Nicescroll *** //
-        $('#theusers, .popup-inner').niceScroll({
-            zindex:999,
-            cursorcolor: '#004085',
-            cursorborder: "none",
-            cursorborderradius: 0,
-            cursorwidth: 7,
-        })
+        // $('#theusers, .popup-inner').niceScroll({
+        //     zindex:999,
+        //     cursorcolor: '#004085',
+        //     cursorborder: "none",
+        //     cursorborderradius: 0,
+        //     cursorwidth: 7,
+        // })
 
         // *** Trim the name of file *** //
         function TrimText(selector, maxLength) {
