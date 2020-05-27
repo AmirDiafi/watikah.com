@@ -837,11 +837,15 @@ h3.titles{
     }
 
     .popup .popup-inner .close-popup {
-        bottom: 60px;
+        bottom: 45px;
     }
 
     .popup .popup-inner.small .close-popup {
-        bottom: 60px;
+        bottom: 52px;
+    }
+
+    .popup .popup-inner.small.back-edit .close-popup {
+        bottom: 10px
     }
 
     .popup .popup-inner.notificationsList {
