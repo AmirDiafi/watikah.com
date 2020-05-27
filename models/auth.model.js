@@ -112,7 +112,7 @@ exports.createUser = ( firstname, lastname, password, email ) => {
                     return bcrypt.hash(password, saltRounds)
                 }
             }).then( (hashedPassword) => {
-                mongoose.disconnect()
+                // mongoose.disconnect()
                 let user = new User({
                     background: 'defaultBackground.jpg',
                     username: firstname+lastname,
