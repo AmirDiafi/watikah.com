@@ -122,7 +122,7 @@ body{
     top: 50%;
     left:50%;
     transform: translate(-50%, -50%);
-    border-radius: 10px;
+    border-radius: 10px
 }
 
 .send-message input[type='text']{
@@ -232,7 +232,7 @@ body{
     color: #062230;
     background-color: transparent;
     padding: 10px;
-    border: 1px solid #062230;
+    box-shadow: 0 2px 3px #007bff;
     border-radius: 50px;
     margin-top: 20px;
 }
@@ -409,15 +409,40 @@ h3.titles{
 .follow-count li.fllwr-btn-cont{
     width:20%
 }
+
+.follow-count li.fllwr-btn-cont button{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.follow-count li.fllwr-btn-cont button{
+    color: #28a745;
+    background-color: #062230;
+    box-shadow: 0 2px 3px #28a745;
+}
+
+.follow-count li.fllwr-btn-cont button.fav {
+    right: 10px;
+    bottom: 10px;
+}
+
+.follow-count li.fllwr-btn-cont button.message {
+    right: 10px;
+    bottom: 65px;
+}
+
 .fllwr-btn-cont .btn,
 .follow-count li p {
     display:block;
     width:100%;
     font-weight: normal;
     padding: 5px 10px;
-    background-color: #004085;
+    background-color: #062230;
     border-radius: 50px;
-    border-color: #004085;
+    border-color: #062230;
+    box-shadow: 0 2px 3px #28a745;
     color: #FFF;
     letter-spacing: 1.2px;
     cursor: pointer;
@@ -733,6 +758,19 @@ h3.titles{
         width: 10px;
         height:10px;
     }
+
+    .follow-count li.fllwr-btn-cont button {
+        right: 10px;
+        bottom: 65px;
+        z-index: 2;
+        width: 30px;
+        height: 30px;
+    }
+
+    .follow-count li.fllwr-btn-cont button.message {
+        bottom: 40px;
+    }
+
     .profile-header{
         padding :5px;
         height: 100px;

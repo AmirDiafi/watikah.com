@@ -39,15 +39,16 @@ socket.on('postsHome', posts => {
 
         document.getElementById(post._id).onclick = (e) => {
             e.preventDefault()
-            socket.emit('newComment', {
-                owenerPostId:document.getElementById('owenerPostId-'+post.owenerPostId).value,
-                comment:document.getElementById("comment-post-content-"+post._id).value,
-                postId: document.getElementById('postId-'+post._id).value,
-                myfirstname,
-                mylastname,
-                mypicture,
-                me
-            })
+            if(document.getElementById("comment-post-content-"+post._id).value !== '') {
+                socket.emit('newComment', {
+                    owenerPostId:document.getElementById('owenerPostId-'+post.owenerPostId).value,
+                    comment:document.getElementById("comment-post-content-"+post._id).value,
+                    postId: document.getElementById('postId-'+post._id).value,
+                    myfirstname,
+                    mylastname,
+                    mypicture,
+                    me
+                })
             
             document.getElementById(`comments-${document.getElementById('postId-'+post._id).value}`).innerHTML +=
             `<p class='comment-at-the-post the-comment'>
@@ -73,6 +74,7 @@ socket.on('postsHome', posts => {
                 })
             }
         }
+    }
         
         // *** Start count of downloads *** //
         if(post.file !== 'undefined'){

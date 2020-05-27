@@ -118,6 +118,7 @@ socket.on('postsProfile', posts => {
     }
         document.getElementById(post._id).onclick = (e) => {
             e.preventDefault()
+            if(document.getElementById("comment-post-content-"+post._id).value !== '') {
             socket.emit('newComment', {
                 owenerPostId: document.getElementById('owenerPostId-'+post.owenerPostId).value,
                 comment: document.getElementById("comment-post-content-"+post._id).value,
@@ -153,6 +154,7 @@ socket.on('postsProfile', posts => {
             }
         
         }
+    }
         
         for(let comment of post.comments) {
             if(comment.me == me){

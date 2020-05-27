@@ -7,7 +7,7 @@ if(followBtn) {
         e.preventDefault()
         fllwrBtnCont.innerHTML = 
         `
-        <button class="btn btn-primary" id="unfollow" >
+        <button class="btn fav" id="unfollow" >
             <i class="fa fa-check"></i>
         </button>
         `
@@ -35,7 +35,7 @@ if(unfollowBtn) {
         e.preventDefault()
         fllwrBtnCont.innerHTML = 
         `
-        <button class="btn btn-primary" id="followed" >
+        <button class="btn fav" id="followed" >
             <i class="fa fa-check"></i>
         </button>
         `

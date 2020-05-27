@@ -52,7 +52,7 @@
                     <hr style="margin:2px auto">
                     <p class="bio">
                         <a href="/edit/<%=userId%>" style="text-decoration: none;">
-                            أخبرهم عن نفسك <span class="bio-icon"></span>
+                            إقتبس عن نفسك <span class="bio-icon"></span>
                         </a>
                     </p>
                 <%}%>
@@ -66,12 +66,12 @@
         <div class="fllwr-count-btn">
             <li class="text-center">
                 <p class="pop-btn" data-popup="followers-following">
-                    Likers <span><%=user.followers.length%></span>
+                    يفضله <span><%=user.followers.length%></span>
                 </p>
             </li>
             <li class="text-center">
                 <p class="pop-btn" data-popup="followers-following">
-                    Liked <span><%=user.followings.length%></span>
+                    يفضل <span><%=user.followings.length%></span>
                 </p>
             </li>
         </div>
@@ -79,19 +79,19 @@
         <div class="msg-fllwr-icons">
             <li class="fllwr-btn-cont" id='fllwr-btn-cont'>
                 <%if(!isFollower){%>
-                    <button class="btn btn-primary" id="followed">
+                    <button class="btn fav" id="followed">
                         <i class="far fa-star"></i>
                     </button>
                 <%}%>
                 <%if(isFollower){%>
-                    <button class="btn" id="unfollow">
+                    <button class="btn fav" id="unfollow">
                         <i class="fas fa-star"></i>
                     </button>
                 <%}%>
             </li>
             <li class="fllwr-btn-cont">
-                <button class="pop-btn btn" data-popup="popup-send-msg">
-                    <span class="fa fa-envelope fa-fw"></span>
+                <button class="pop-btn btn message" data-popup="popup-send-msg">
+                    <span class="fas fa-paper-plane fa-fw"></span>
                 </button>
             </li>
         </div>
@@ -242,19 +242,19 @@
 <%- include('parts/footer')%>
 
 <!-- ****** Start the Sockets.io scripts ****** -->
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/sockets.io/init.js"></script>
-<script src="/js/sockets.io/posts.files.js"></script>
+<script defer src="/socket.io/socket.io.js"></script>
+<script defer src="/js/sockets.io/init.js"></script>
+<script defer src="/js/sockets.io/posts.files.js"></script>
 <% if(id == userId) {%>
-    <script src="/js/sockets.io/notifications.js"></script>
+    <script defer src="/js/sockets.io/notifications.js"></script>
 <%}%>
 <% if(id != userId) {%>
-    <script src="/js/sockets.io/follow.js"></script>  
+    <script defer src="/js/sockets.io/follow.js"></script>  
 <%}%>
 
 <!-- ****** Start the custom scripts ****** -->
-<script src="/js/navbar.js"></script>
-<script src="/js/profile.js"></script>
+<script defer src="/js/navbar.js"></script>
+<script defer src="/js/profile.js"></script>
 
 </body>
 </html>
