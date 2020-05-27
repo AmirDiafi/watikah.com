@@ -105,14 +105,14 @@ exports.createUser = ( firstname, lastname, password, email ) => {
         mongoose.connect(DB_URL).then( () => {
             User.findOne( {email:email} ).then(result => {
                 if(result) {
-                    // mongoose.disconnect()
+                    mongoose.disconnect()
                     reject('this email is aready exist')
                 }
                 else {
                     return bcrypt.hash(password, saltRounds)
                 }
             }).then( (hashedPassword) => {
-                // mongoose.disconnect()
+                mongoose.disconnect()
                 let user = new User({
                     background: 'defaultBackground.jpg',
                     username: firstname+lastname,
