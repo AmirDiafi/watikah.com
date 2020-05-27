@@ -831,7 +831,7 @@ h3.titles{
     /* Start Popup */
     .popup .popup-inner {
         width: 80%;
-        max-height: 30%;
+        max-height: 50%;
         overflow: scroll;
         top: 30%;
     }
