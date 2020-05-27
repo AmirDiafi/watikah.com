@@ -20,7 +20,7 @@
 <!-- *** Profile header *** -->
 <div class="profile-header row">
     <div class="background popup-edit-back popup" data-popup="popup-edit-back">
-        <div class="back-edit popup-inner image">
+        <div class="back-edit popup-inner image small">
             <form action="/profile/<%=user._id%>/background-edit" method="POST" enctype="multipart/form-data">
                 <input type="file" name="background" required accept="image/*">
                 <input type="submit" value="Change" class='btn'>
@@ -184,7 +184,7 @@
     </div>
 </div>
 <div class="useredit popup popup-edit" data-popup="popup-edit">
-    <div class="usereditform popup-inner image">
+    <div class="usereditform popup-inner image small">
         <form class="header-form" action="/profile/<%=user._id%>/profile-edit" method="POST" enctype="multipart/form-data">
             <input type="file" name="picture" required accept="image/*">
             <input type="submit" value="Change" class='btn'>
