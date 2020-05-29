@@ -41,7 +41,7 @@
                 </p>
             <%}%>
             <div class="input">
-                <input type="text" required autocomplete="off" maxlength="15" name="firstname">
+                <input type="text" dir="auto" style="text-align: start;" required autocomplete="off" maxlength="15" name="firstname">
                 <label for="text">الإسم الأول</label>
             </div>
             <%let lastnameErr = validationErr.find( err => err.param ==='lastname')%>
@@ -51,7 +51,7 @@
                 </p>
             <%}%>
             <div class="input">
-                <input type="text" required autocomplete="off" maxlength="15" name="lastname">
+                <input type="text" dir="auto" style="text-align: start;" required autocomplete="off" maxlength="15" name="lastname">
                 <label for="text">الإسم الأخير (اللقب)</label>
             </div>
             <%let emailErr = validationErr.find( err => err.param ==='email')%>
@@ -61,7 +61,7 @@
                 </p>
             <%}%>
             <div class="input">
-                <input type="email" required autocomplete="off" name="email" >
+                <input type="email" dir="auto" style="text-align: start;" required autocomplete="off" name="email" >
                 <label for="text">عنوان بريدك الإلكنروني</label>
             </div>
             <%let passwordErr = validationErr.find( err => err.param ==='password')%>
@@ -71,7 +71,7 @@
                 </p>
             <%}%>
             <div class="input">
-                <input type="password" required autocomplete="off" name="password">
+                <input type="password" dir="auto" style="text-align: start;" required autocomplete="off" name="password">
                 <label for="text">كلمة المرور</label>
             </div>
             <%let confirmPasswordErr = validationErr.find( err => err.param ==='confirmPassword')%>
@@ -81,7 +81,7 @@
                 </p>
             <%}%>
             <div class="input">
-                <input type="password" required autocomplete="off" name="confirmPassword">
+                <input dir="auto" style="text-align: start;" type="password" required autocomplete="off" name="confirmPassword">
                 <label for="text">تأكيد كلمة المرور</label>
             </div>
             <div class="policy-input" >
@@ -89,8 +89,8 @@
                 <span><bdo dir="auto"><a href="/condition">شروط الإستخدام</a></bdo>  أوافق على </span>
             </div>
 
-            <button type="submit" value="Create">Create <i class="fa fa-user-alt"></i></button>
-            <button type="reset" value=" Reset">Reset <i class="fa fa-undo"></i></button>
+            <button type="submit" value="Create">إنشاء <i class="fa fa-user-alt"></i></button>
+            <!-- <button type="reset" value=" Reset">Reset <i class="fa fa-undo"></i></button> -->
 
         </form>
         <div>

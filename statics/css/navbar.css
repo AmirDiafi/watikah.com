@@ -1,6 +1,6 @@
 /* ****** start custom the navbar ***** */
 body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Almarai', sans-serif;
     padding-left: 74px;
     position: relative;
 }
@@ -25,6 +25,10 @@ body{
 .nav-content a{
     text-align: center;
     display: block;
+}
+
+.nav-content > a {
+    margin-top: 30px
 }
 
 .navbar ul li {

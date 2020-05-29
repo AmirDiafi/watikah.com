@@ -1,0 +1,36 @@
+
+<%- include('parts/header') %>
+<link rel="stylesheet" href="/css/users.css">
+<link rel="stylesheet" href="/css/navbar.css">
+</head>
+<body>
+<%- include('parts/navbar')%>
+
+<div class="users container">
+    <div class="searchbar">
+        <input type="search" dir="auto" class="form-control" placeholder="إبحث عن شخص">
+        <i class='fa fa-search'> Search |</i>
+    </div>
+    <% for(let user of users) { %>
+            <div class="user">
+                <div class="media">
+                    <img src="/userBack/<%=user.background%>" alt="user" class="background">
+                    <img src="/userPic/<%=user.picture%>" alt="user" class="profile">
+                </div>
+                <div class="info">
+                    <p class='username'><%=user.firstname%> <%=user.lastname%></p>
+                    <hr>
+                    <p><%=user.followers.length%> يفضله</p>
+                    <p><%=user.followings.length%> يفضل</p>
+                    <p><%=user.bio%></p>
+                </div>
+                <a href="/profile/<%=user._id%>" class="btn">View Profile</a>
+            </div>
+    <%}%>
+</div>
+
+<%- include('parts/footer')%>
+<script src="/js/navbar.js"></script>
+<script src="/js/users.js"></script>
+</body>
+</html>

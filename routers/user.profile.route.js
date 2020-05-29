@@ -34,20 +34,6 @@ router.post('/:id/background-edit', authProtect.isAuth, multer({
     }).single('background'),
 userProfileController.uploadProfileBack)
 
-router.post('/:id/post-statu',
-    multer({
-        storage: multer.diskStorage({
-            destination: (req, file, cb) => {
-                cb(null, 'images')
-            },
-            filename: (req, file, cb) => {
-                cb(null, "images-" + Date.now() + '-' + file.originalname)
-            }
-        })
-}).single('image'),
-bodyParser.urlencoded({extended:true}),
-userProfileController.postPosts)
-
 router.post('/:id/post-file',
     multer({
         storage: multer.diskStorage({

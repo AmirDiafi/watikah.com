@@ -1,3 +1,7 @@
+body {
+    font-family: 'Almarai', sans-serif;
+}
+
 .alert{
     padding: 0
 }
@@ -97,7 +101,7 @@
     border: 1px solid rgb(136, 134, 134);
     border-radius: 50px;
     z-index: 2;
-    background: transparent
+    background: transparent;
 }
 
 .form form input:focus{
@@ -108,7 +112,7 @@
 .form form label {
     position: absolute;
     top: 7px;
-    left: 3%;
+    right: 3%;
     color: #6c757d;
     transition: all .2s linear;
     z-index: -1;

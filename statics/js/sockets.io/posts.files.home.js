@@ -22,15 +22,15 @@ socket.on('postsHome', posts => {
     for(let post of posts) {
         // *** Custom the file icon *** //
         if(post.file !== 'undefined'){
-            if($(`#file-icon-download-${post._id}`).attr('download').endsWith('.pdf')) {
+            if($(`#file-icon-download-${post._id}`).attr('href').endsWith('.pdf')) {
                 $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/pdf.png')
-            } else if ($(`#file-icon-download-${post._id}`).attr('download').endsWith('.docx')) {
+            } else if ($(`#file-icon-download-${post._id}`).attr('href').endsWith('.docx')) {
                 $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/wrd.png')
-            } else if ($(`#file-icon-download-${post._id}`).attr('download').endsWith('.pub')) {
+            } else if ($(`#file-icon-download-${post._id}`).attr('href').endsWith('.pub')) {
                 $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/Publisher.png')
-            } else if ($(`#file-icon-download-${post._id}`).attr('download').endsWith('.xlsx')) {
+            } else if ($(`#file-icon-download-${post._id}`).attr('href').endsWith('.xlsx')) {
                 $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/excel.png')
-            } else if ($(`#file-icon-download-${post._id}`).attr('download').endsWith('.pptx')) {
+            } else if ($(`#file-icon-download-${post._id}`).attr('href').endsWith('.pptx')) {
                 $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/powerpoint.png')
             } else {
                 $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/file.png')

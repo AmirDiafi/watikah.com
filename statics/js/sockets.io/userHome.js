@@ -13,6 +13,13 @@ socket.on('userHome', user => {
             // *** Start Notification List *** // 
                 `<div class="notifications popup popup-notifications" data-popup="popup-notifications">
                     <ul id='notificationsList' class="list-unstyled notificationsList popup-inner">`
+                    if(user.notifications.length == 0){
+                        theNotification += 
+                        `<div class="no-notifications">
+                            <p>لا يوجد أي تنبيهات بعد &#128237</p>
+                            <img src="/home-images/notification.png" alt="">
+                        </div>`
+                    }
                     for(let notification of user.notifications){
                         theNotification += 
                         `<li>`
@@ -49,6 +56,13 @@ socket.on('userHome', user => {
                 </div>
                 <div class="messages notifications popup popup-messages" data-popup="popup-messages">
                     <ul class='popup-inner list-unstyled notificationsList'>`
+                    if(user.notifications.length == 0){
+                        theNotification += 
+                        `<div class="no-notifications">
+                            <p>لا يوجد أي رسائل بعد &#128237</p>
+                            <img src="/home-images/message.png" alt="">
+                        </div>`
+                    }
                     for(let message of user.messages) {
                         theNotification += 
                             `<li class="message">

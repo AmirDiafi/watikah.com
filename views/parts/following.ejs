@@ -1,5 +1,5 @@
 <div class="followings col-6 popup-following">
-    <h3 class="titles">Liked <%=user.followings.length%></h3>
+    <h3 class="titles">يفضل <%=user.followings.length%></h3>
     <%if(user.followings.length !== 0){%>
         <%for(let following of user.followings){%>
             <div class="following">
@@ -11,5 +11,10 @@
                 </a>
             </div>
         <%}%>
+    <%} else {%>
+        <div class="no-followers">
+            <p>لا يوجد مفضلين بعد</p>
+            <img src="/home-images/follower.png" alt="">
+        </div>
     <%}%>
 </div>

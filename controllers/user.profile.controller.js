@@ -57,28 +57,40 @@ exports.uploadProfileBack = (req, res, next) => {
     })
 }
 
-exports.postPosts = (req, res, next) => {
-    authModel.postUserPosts({
-        postDate: new Date().toLocaleString(),
-        description: req.body.description,
-        owenerPostId: req.session.userId,
-        firstname: req.body.myfirstname,
-        lastname: req.body.mylastname,
-        picture: req.body.mypicture,
-        category: req.body.category,
-        image: req.file.filename,
-        sortByDate: Date.now(),
-        title: req.body.title,
-        model: req.body.model,
-        file:'undefined'
-    }).then(()=>{
-        res.redirect(req.body.redirect)
-    }).catch(err => {
-        console.log(err)
-    })
-}
+// exports.postPosts = (req, res, next) => {
+//     authModel.postUserPosts({
+//         postDate: new Date().toLocaleString(),
+//         description: req.body.description,
+//         owenerPostId: req.session.userId,
+//         firstname: req.body.myfirstname,
+//         lastname: req.body.mylastname,
+//         picture: req.body.mypicture,
+//         category: req.body.category,
+//         image: req.file.filename,
+//         sortByDate: Date.now(),
+//         title: req.body.title,
+//         model: req.body.model,
+//         file:'undefined'
+//     }).then(()=>{
+//         res.redirect(req.body.redirect)
+//     }).catch(err => {
+//         console.log(err)
+//     })
+// }
 
 exports.postFiles = (req, res, next) => {
+
+    let file = req.file.filename
+    let image
+
+    if(file.endsWith('.pdf') || file.endsWith('.docx') || file.endsWith('.pub') || file.endsWith('.xlsx') || file.endsWith('.pptx') || file.endsWith('.txt') ) {
+        file = req.file.filename
+        image = 'undefined'
+    } else {
+        image = req.file.filename
+        file = 'undefined'
+    }
+
     authModel.postUserPosts({
         postDate: new Date().toLocaleString(),
         description: req.body.description,
@@ -87,11 +99,11 @@ exports.postFiles = (req, res, next) => {
         lastname: req.body.mylastname,
         picture: req.body.mypicture,
         category: req.body.category,
-        file: req.file.filename,
         sortByDate: Date.now(),
         title: req.body.title,
         model: req.body.model,
-        image: 'undefined'
+        image: image,
+        file: file
     }).then(()=>{
         res.redirect(req.body.redirect)
     }).catch(err => {

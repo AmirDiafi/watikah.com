@@ -17,7 +17,7 @@ io.on('connection', socket => {
     require('./sockets/init.socket')(socket)
 })
 require('./sockets/posts.files.socket')(io)
-require('./sockets/users.list.socket')(io)
+require('./sockets/user.socket')(io)
 require('./sockets/notifics.socket')(io)
 require('./sockets/download.socket')(io)
 require('./sockets/comment.socket')(io)
@@ -31,7 +31,7 @@ const homeRouter = require('./routers/home.route')
 const authRouter = require('./routers/auth.route')
 const postRouter = require('./routers/post.route')
 const editRouter = require('./routers/edit.route')
-
+const usersRouter = require('./routers/users')
 // ------ Call the flash for expresss Valedator ------ //
 const flash = require('connect-flash')
 
@@ -58,6 +58,7 @@ app.set('views', 'views')
 // ------ setup the Static Paths ------ //
 app.use(express.static(path.join(__dirname , 'statics')))
 app.use(express.static(path.join(__dirname , 'images')))
+app.use(express.static(path.join(__dirname , 'files')))
 
 // ------ Trigger the flash for all EndPoint (Routers) ------//
 app.use(flash())
@@ -66,6 +67,7 @@ app.use(flash())
 app.use('/', conditionRouter)
 app.use('/', policyRouter)
 app.use('/', authRouter)
+app.use('/', usersRouter)
 app.use('/', postRouter)
 app.use('/', homeRouter)
 app.use('/', editRouter)

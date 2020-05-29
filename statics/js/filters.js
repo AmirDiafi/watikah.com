@@ -1,27 +1,11 @@
 /*global $, document, alert, console, log*/
 $(document).ready(function() {
     
-    // *** filter just for select category that choosen *** //
-    let category = $('.param-category').text()
+    // *** filter just for select module that choosen *** //
+    let module = $('.param-category').text()
     $('.status.container .status-filter .status').filter(function () {
-        $(this).toggle($(this).find('.category-val').text().search(category) >= 0);
+        $(this).toggle($(this).find('.category-val').text().search(module) >= 0);
     });
-
-    // *** Start Search for users *** //
-    $(".search-bar form input[type='search']").on('blur', function() {
-        $('ul.users-result').slideUp(500)
-        $('.search-bar form input[type="search"]').removeClass('search-active')
-        $('.search-bar form button').removeClass('search-icon-active')
-    })
-    $(".search-bar form input[type='search']").on('keyup', function () {
-        let user = $(this).val().toLowerCase();
-        $('ul.users-result').slideDown(500)
-        $('ul.users-result li').filter(function () {
-            $(this).toggle($(this).find('p').text().toLowerCase().search(user) >=0);
-        })
-        $('.search-bar form input[type="search"]').addClass('search-active')
-        $('.search-bar form button').addClass('search-icon-active')
-    })
 
     // *** Satrt Go Down Button *** //
     $('.go-down').click(function () {

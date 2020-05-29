@@ -4,6 +4,7 @@ const userSchema = mongoose.Schema({
     picture: String,
     resetPasswordExpires: Date,
     resetPasswordToken: String,
+    dateOfCreate: String,
     firstname: String,
     lastname: String,
     password: String,
@@ -100,13 +101,13 @@ mongoose.set( 'useFindAndModify', false )
 mongoose.set( 'useCreateIndex', true )
 mongoose.set( 'useUnifiedTopology', true )
 
-exports.createUser = ( firstname, lastname, password, email ) => {
+exports.createUser = ( firstname, lastname, password, email, dateOfCreate ) => {
     return new Promise( (resolve, reject) => {
         mongoose.connect(DB_URL).then( () => {
             User.findOne( {email:email} ).then(result => {
                 if(result) {
                     mongoose.disconnect()
-                    reject('this email is aready exist')
+                    reject('هذا البريد الإلكتروني يملك حساب بالفعل.')
                 }
                 else {
                     return bcrypt.hash(password, saltRounds)
@@ -120,6 +121,7 @@ exports.createUser = ( firstname, lastname, password, email ) => {
                     password: hashedPassword,
                     firstname: firstname,
                     lastname: lastname,
+                    dateOfCreate: dateOfCreate,
                     email: email
                 })
                 return user.save()
@@ -140,12 +142,12 @@ exports.login = (email, password) => {
             User.findOne({email:email}).then(user => {
                 if(!user) {
                     mongoose.disconnect()
-                    reject('This email is not exist')
+                    reject('لا يوجد أي حساب بهذا البريد الإلكتروني.')
                 } else {
                     mongoose.disconnect()
                     bcrypt.compare(password, user.password).then(same => {
                         if(!same) {
-                            reject('Password is incerrect')
+                            reject('كلمة مرور خاطئة')
                         } else {
                             resolve(user)
                         }
@@ -510,11 +512,12 @@ exports.removePost = async (postData) => {
     }
 }
 
-exports.getUsersToHome = () => {
+exports.getUsers = () => {
     return new Promise((resolve, reject) => {
         mongoose.connect(DB_URL)
         .then( () => {
-            return User.find()
+            return User.find({}, {},
+                {sort: {dateOfCreate: -1}})
         })
         .then((users) => {
             resolve(users)

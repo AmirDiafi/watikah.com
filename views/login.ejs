@@ -39,7 +39,7 @@
                         </p>
                     <%}%>
                     <div class="input">
-                        <input type="email" required autocomplete="off" name="email" >
+                        <input type="email" dir="auto" style="text-align: start;" required autocomplete="off" name="email" >
                         <label for="text">عنوان بريدك الإلكتروني</label>
                     </div>
                     <%let passwordErr = validationErr.find( err => err.param ==='password')%>
@@ -49,14 +49,14 @@
                         </p>
                     <%}%>
                     <div class="input">
-                        <input type="password" required autocomplete="off" name="password" >
+                        <input dir="auto" style="text-align: start;" type="password" required autocomplete="off" name="password" >
                         <label for="text">كلمة المرور</label>
                     </div>
                     <p class="forgot-password"><a href="/forgot">نسيت كلمة السر?</a></p>
-                    <button type="submit">Continue <i class="fa fa-arrow-right"></i></button>
+                    <button type="submit">دخول <i class="fa fa-arrow-right"></i></button>
                 </form>
                 <div>
-                    <p>ليس لديك حساب؟ <a href="/signup"> فتح حساب</a></p>
+                    <p>ليس لديك حساب؟ <a href="/signup"> فتح حساب جديد</a></p>
                 </div>
             </div>
         </div>

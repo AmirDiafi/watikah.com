@@ -27,15 +27,15 @@ $(document).ready(function() {
 
     // *** Custom the file icon *** //
     if($('#isFile').val !== 'undefined'){
-        if($(`#file-icon-download`).attr('download').endsWith('.pdf')) {
+        if($(`#file-icon-download`).attr('href').endsWith('.pdf')) {
             $(`#file-icon-download`).find('img').attr('src', '/home-images/pdf.png')
-        } else if ($(`#file-icon-download`).attr('download').endsWith('.docx')) {
+        } else if ($(`#file-icon-download`).attr('href').endsWith('.docx')) {
             $(`#file-icon-download`).find('img').attr('src', '/home-images/wrd.png')
-        } else if ($(`#file-icon-download`).attr('download').endsWith('.pub')) {
+        } else if ($(`#file-icon-download`).attr('href').endsWith('.pub')) {
             $(`#file-icon-download`).find('img').attr('src', '/home-images/Publisher.png')
-        } else if ($(`#file-icon-download`).attr('download').endsWith('.xlsx')) {
+        } else if ($(`#file-icon-download`).attr('href').endsWith('.xlsx')) {
             $(`#file-icon-download`).find('img').attr('src', '/home-images/excel.png')
-        } else if ($(`#file-icon-download`).attr('download').endsWith('.pptx')) {
+        } else if ($(`#file-icon-download`).attr('href').endsWith('.pptx')) {
             $(`#file-icon-download`).find('img').attr('src', '/home-images/powerpoint.png')
         } else {
             $(`#file-icon-download`).find('img').attr('src', '/home-images/file.png')

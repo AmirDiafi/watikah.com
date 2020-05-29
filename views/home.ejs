@@ -21,16 +21,6 @@
 
 <!-- ****** Start The header content ****** -->
 <div class="container">
-    <!-- ****** Start the search bar ****** -->
-    <div class="search-bar">
-        <form>
-            <input type="search" dir="auto" autocomplete="off" name="search-name" class="form-control" placeholder="إبحث عن شخص">
-            <button type="button" class="btn submit-filter btn-primary">
-                <i class="fa fa-users"></i>
-            </button>
-        </form>
-        <ul class="users-result list-unstyled" id="theusers"></ul>
-    </div>
 
     <!-- ****** Add Btns and events ******-->
     <% if(id == userId) {%>
@@ -38,25 +28,6 @@
     <% } %>
 
     <!-- ****** popups ****** -->
-    <div class="popup popup-1st" data-popup="popup-1st">
-        <div class="popup-inner image">
-            <form action="/profile/<%=userId%>/post-statu" method="POST" enctype="multipart/form-data">
-                <!-- *** User Info for posts *** -->
-                <input type="hidden" name="mypicture" value="<%=mypicture%>">
-                <input type="hidden" name="myfirstname" value="<%=myfirstname%>">
-                <input type="hidden" name="mylastname" value="<%=mylastname%>">
-                <input type="hidden" name='redirect' value='/<%=userId%>'>
-                <input type="file" name="image" accept="image/*" required>
-                <input type="text" dir="auto" autocomplete="off" name="title" placeholder="Title" required class="form-control title">
-                <textarea name="description" autocomplete="off" dir="auto" id="description" cols="15" rows="5" required placeholder="Description" class="form-control article"></textarea>
-                <h4>Feliere & Module:</h4>
-                <input type="text" dir="auto" autocomplete="off" name="category" placeholder="Feliere" required class='form-control select'>
-                <input type="text" dir="auto" autocomplete="off" name="model" placeholder="Module" required class='form-control select model'>
-                <input type="submit" value="Post" class="btn btn-success submit" id="submit-post">
-            </form>
-            <button class='close-popup btn btn-danger'>Close</button>
-        </div>
-    </div>
     <div class="popup popup-2nd" data-popup="popup-2nd">
         <div class="popup-inner file">
             <form action="/profile/<%=userId%>/post-file" method="POST" enctype="multipart/form-data">
@@ -65,15 +36,15 @@
                 <input type="hidden" name="myfirstname" value="<%=myfirstname%>">
                 <input type="hidden" name="mylastname" value="<%=mylastname%>">
                 <input type="hidden" name='redirect' value='/<%=userId%>'>
-                <input type="file" name="file" required max="1" accept='.doc, .docx, .pdf, .xlsx, xls, .ppt, .pptx, .pub, .txt,application/vnd.ms-word, application/vnd.ms-excel, application/mspowerpoint, text/plain, application/pdf'>
-                <input type="text" dir="auto" autocomplete="off" name="title" maxlength="200" required placeholder="Title" class="form-control title">
+                <input type="file" name="file" required max="1" accept='image/*, .doc, .docx, .pdf, .xlsx, xls, .ppt, .pptx, .pub, .txt,application/vnd.ms-word, application/vnd.ms-excel, application/mspowerpoint, text/plain, application/pdf'>
+                <input type="text" dir="auto" autocomplete="off" name="title" maxlength="250" required placeholder="Title" class="form-control title">
                 <textarea name="description" autocomplete="off" dir="auto" cols="15" required rows="5" required placeholder="Description" class="form-control article"></textarea>
                 <h4>Feliere & Module:</h4>
                 <input type="text" dir="auto" autocomplete="off" name="category" placeholder="Feliere" required class='form-control select'>
                 <input type="text" dir="auto" autocomplete="off" name="model" placeholder="Module" required class='form-control select model'>
                 <input type="submit" value="Post" class="btn btn-success submit">
             </form>
-            <button class='close-popup btn btn-danger'>Close</button>
+            <!-- <button class='close-popup btn btn-danger'>Close</button> -->
         </div>
     </div>
 </div>
@@ -81,10 +52,19 @@
 <!-- ****** Start the home sections ******  -->
 <div class="section main" >
     <img src="/home-images/home.jpg" alt="sections">
-    <div class="ovarlay" id='particles-js'>
+    <div class="text">
+        <h4>مرحبا بكم في منصة الطالب</h4>
+        <hr>
+        <p>هل تعبت من تضييع وقتك والبحث عن مذكرات تخرج، بحوث، كتب، دروس, كنت بأمس الحاجة لها، حسنا ليس بعد الأن مع منصتنا نتشارك 
+            كل ما هو متعلق بذلك، سوف تجد كل ما تحتاج
+        </p>
+        <hr>
+        <h3>        لنجعل الحياة مكان أفضل        </h3>
         <div class="down">
             <i class="fas fa-chevron-down go-down"></i>
         </div>
+    </div>
+    <div class="ovarlay" id='particles-js'>
     </div>
 </div>
 <div class="container">
@@ -102,7 +82,7 @@
                     <form>
                         <input type="search" dir="auto" name="search-post" class="form-control" placeholder="Search Module. e.x: Maths">
                         <button type="button" class="btn submit-filter-model btn-primary">
-                            <i class="fa fa-search"></i>
+                            <i class="fa fa-filter"></i>
                         </button>
                     </form>
                 </div>
@@ -137,11 +117,11 @@
                         <p class='model' style="text-align:start">Module:<b> <%=post.model%></b></p>
                         <hr>
                         <%if(post.image !== 'undefined'){%>
-                            <img src="/<%=post.image%>" class='post-pic' alt="postPic">
+                            <img src="<%=post.image%>" class='post-pic' alt="post">
                         <%}%>
                         <%if(post.file !== 'undefined'){%>
                             <div class="file-content">
-                                <a href="" id='file-icon-download-<%=post._id%>' class="file-design" download="<%=post.file%>">
+                                <a href="<%=post.file%>" id='file-icon-download-<%=post._id%>' class="file-design" download='watikah-resourses'>
                                     <img src="" alt="file" class="file">
                                     <i class="fas fa-arrow-down"></i>
                                 </a>
@@ -162,7 +142,7 @@
                                 <%for(let comment of post.comments) {%>
                                     <p style="text-align: start;" dir="auto" class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
                                         <a href='/profile/<%=comment.me%>' >
-                                            <img src="/userPic/<%=comment.mypicture%>" alt="profile" style="border-radius: 100%;width:30px;height:30px">
+                                            <img src="/userPic/<%=comment.mypicture%>" alt="" style="border-radius: 100%;width:30px;height:30px">
                                             <span style="text-align: start;" dir="auto" class='fullname'> <%=comment.myfirstname%> <%=comment.mylastname%></span>
                                         </a>
                                         <br>
@@ -211,7 +191,6 @@
 <!-- ****** Start the Sockets.io scripts ****** -->
 <script defer src="/socket.io/socket.io.js"></script>
 <script defer src="/js/sockets.io/posts.files.home.js"></script>
-<script defer src="/js/sockets.io/users.list.js"></script>
 <% if(id == userId) {%>
     <script defer src="/js/sockets.io/notifications.js"></script>
     <script defer src="/js/sockets.io/userHome.js"></script>

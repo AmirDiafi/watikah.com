@@ -19,18 +19,18 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/profile/<%=userId%>">
-            <img src="/userPic/<%=mypicture%>" alt="userpic">
+            <img src="/userPic/<%=mypicture%>" alt="">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users">
+            <i class="fa fa-users"></i>
           </a>
         </li>
         <% if(id == userId) {%>
           <li class="nav-item">
-            <span id='posted' class="pop-btn nav-link" data-popup="popup-1st">
-                <i class="fa fa-file-image add"></i>
-            </span>
-          </li>
-          <li class="nav-item">
             <span class="pop-btn nav-link" data-popup="popup-2nd">
-                <i class="fa fa-file-upload add"></i>
+                <i class="fa fa-plus add"></i>
             </span>
           </li>
           <li class="nav-item">

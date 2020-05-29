@@ -1,0 +1,87 @@
+.searchbar {
+    margin: 30px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.searchbar input {
+    display: inline-block;
+    border-radius: 50px;
+    border-color: #004085;
+    padding-left: 100px;
+    height: 40px;
+    width: 100%;
+    text-align: right;
+}
+
+.searchbar i {
+    position: absolute;
+    top: 0%;
+    left: 15px;
+    z-index: 2;
+    width: auto;
+    height: 40px;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    color :#004085
+
+}
+
+.users .user {
+    width:40%;
+    margin: 20px;
+    display: inline-block;
+    background: rgb(27, 27, 27);
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    color :#FFF;
+    text-align: center;
+    padding: 10px;
+}
+
+.users .user .media {
+    height: 150px;
+    position: relative;
+}
+
+.users .user .media .background {
+    height:60%;
+    width:100%;
+    display: block;
+    border-radius: 10px 10px 0 0 ;
+}
+
+.users .user .media .profile {
+    position: absolute;
+    width:100px;
+    height: 100px;
+    border-radius: 100%;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50px);
+    border: 2px solid rgb(27, 27, 27)
+}
+
+.users .user hr {
+    margin: 5px auto 20px;
+    width:80%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, .75), rgba(255,255, 255, 0));
+}
+
+.users .user .btn {
+    background: #004085;
+    border-radius: 50px;
+    margin: 0 auto 10px auto;
+    color :#FFF
+}
+
+
+@media(max-width: 575.98px) {
+    .users .user {
+        width: 80%;
+    }
+}

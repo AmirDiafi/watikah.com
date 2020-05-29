@@ -20,7 +20,8 @@ exports.postSignup = (req, res, next) => {
             req.body.firstname,
             req.body.lastname,
             req.body.password,
-            req.body.email
+            req.body.email,
+            Date.now()
         ).then( () => {
             res.redirect('/login')
         }).catch( err => {
@@ -31,7 +32,6 @@ exports.postSignup = (req, res, next) => {
     } else {
         req.flash('validationErr', validationResult(req).array())
         res.redirect('/signup')
-        console.log(validationResult(req).array())
     }
 }
 
