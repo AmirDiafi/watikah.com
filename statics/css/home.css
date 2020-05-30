@@ -162,12 +162,15 @@ body{
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(0, 0, 0, .75), rgba(255,255, 255, 0));
 }
 
+.buttons-filter ul.slider {
+    margin: auto;
+}
+
 .buttons-filter .category{
     background: #290688;
     color: #FFF;
     border-radius: 50px;
     width:70% !important;
-    margin: auto;
     text-align: center;
     padding: 5px;
 }
