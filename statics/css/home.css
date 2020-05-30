@@ -162,6 +162,11 @@ body{
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(0, 0, 0, .75), rgba(255,255, 255, 0));
 }
 
+.buttons-filter ul{
+    text-align: center;
+    margin: auto
+}
+
 .buttons-filter ul.slider li {
     padding: 5px ;
     width: 70% !important;
@@ -175,7 +180,6 @@ body{
 .buttons-filter ul.slick-dots li{
     width: 5px !important;
     height: 5px !important;
-    background :rgba(0, 0, 0, 0.845) !important;
     padding: 3px;
 
 }
