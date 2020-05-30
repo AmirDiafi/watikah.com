@@ -101,7 +101,7 @@ $(document).ready(function() {
                 infinite: true
             }
         }],
-        rows: 1,
+        rows: 3,
         slideToShow: 3,
         swipe :true,
     })
