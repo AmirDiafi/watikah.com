@@ -173,7 +173,7 @@ body{
 }
 
 .buttons-filter ul li {
-    padding: 5px 10px;
+    padding: 5px !important;
     color :#FFF;
     background: #290688;
     border-radius: 50px;
