@@ -2,18 +2,16 @@
 body{
     padding-left: 0;
 }
+
 .container{
     padding-left: 74px;
     position: relative;
 }
 
-.the-navbar {
-    background-color: #004085ab;
-}
-
 .home-sections {
     margin: 50px auto;
 }
+
 .home-sections .section{
     overflow: hidden;
     height: 150px;
@@ -157,6 +155,8 @@ body{
 
 .buttons-filter {
     margin-left: 55px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .buttons-filter hr {

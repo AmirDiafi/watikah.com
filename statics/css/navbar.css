@@ -14,9 +14,9 @@ body{
     -ms-transition: all .3s linear;
     -o-transition: all .3s linear;
     transition: all .3s linear;
-    background-color: #004085;
-    position: fixed;
+    background-color:#004085ab;
     overflow: hidden;
+    position: fixed;
     height: 100vh;
     width:74px;
     z-index: 2;
