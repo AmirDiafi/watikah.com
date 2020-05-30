@@ -111,6 +111,71 @@ body{
 }
 
 
+/* ****** Start The Search users Result ****** */
+
+.search-post{
+    margin: 30px auto;
+    width: 70%;
+}
+
+.search-post form{
+    display: flex;
+}
+
+.search-post form input[type='search']{
+    border-radius: 50px 0 0 50px;
+    height: 50px;
+}
+
+.search-post form input[type='search']:focus{
+    background: #ffffff;
+    outline: 0;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+    border-color: #28a745;
+}
+
+.search-active{
+    border-radius: 30px 0 0 0 !important
+}
+
+.search-icon-active{
+    border-radius: 0 30px 0 0  !important
+}
+
+/* *** Search bar *** */
+.search-post button {
+    border-radius: 0 50px 50px 0;
+    background-color: #290688;
+    border-color: #290688;
+}
+
+.search-post button:hover{
+    background-color: #489765;
+    border-color: #489765;
+}
+
+.buttons-filter hr {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, .75), rgba(0, 0, 0, 0));
+}
+
+.buttons-filter ul {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.buttons-filter ul li {
+    padding: 5px 10px;
+    color :#FFF;
+    background: #dab512;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.515);
+}
+
+
 @media(max-width: 575.98px) {
 
     .section.main{
@@ -118,9 +183,9 @@ body{
     }
 
     .section .text {
-        top: 40%;
-        left: 65%;
-        transform: translate(-65%, -40%);
+        top: 30%;
+        left: 75%;
+        transform: translate(-75%, -30%);
         width: 75%;
     }
 
