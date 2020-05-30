@@ -104,5 +104,6 @@ $(document).ready(function() {
         rows: 1,
         slideToShow: 3,
         swipe :true,
+        slidesPerRow: 3
     })
 })
