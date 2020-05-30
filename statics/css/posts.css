@@ -233,11 +233,13 @@ form.add-comment-form button[type='submit']:hover i{
     position: relative;
     width: 20%;
     right: -35px;
-    padding:0 !important
+    padding:0 !important;
+    z-index: 2;
 }
 
 .remove-comment-form button {
-    right: 85px;
+    right: 50px;
+    z-index: 2;
     position: relative;
     width:70%;
     display: inline-block;
@@ -250,11 +252,11 @@ form.add-comment-form button[type='submit']:hover i{
 
 .remove-comment-form button i.fa-trash-alt {
     border: none;
-    color: #ced4da;
+    color: #333;
     padding-right: 0;
     background: transparent;
     font-size: 12px;
-    padding:0 !important
+    padding:0 !important;
 }
 
 /* Start File content */

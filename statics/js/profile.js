@@ -55,9 +55,9 @@ $(document).ready(function() {
     //  some custom when on the scrool to the navbar
     $(window).on('scroll', function () {
         if ($(window).scrollTop() <=  200) {
-            $('.logo-anchor').css({marginTop: 30})
+            $('.logo-anchor').css({marginTop: 70})
         } else {
-            $('.logo-anchor').css({marginTop: 60})
+            $('.logo-anchor').css({marginTop: 30})
         }
     })
 
