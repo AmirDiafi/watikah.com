@@ -166,7 +166,8 @@ body{
     background: #290688;
     color: #FFF;
     border-radius: 50px;
-    width:70%;
+    width:70% !important;
+    text-align: center;
 }
 
 
