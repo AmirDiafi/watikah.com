@@ -84,7 +84,7 @@ $(document).ready(function() {
         adaptiveHieght: false,
         autoplay: false,
         centerMode: true,
-        centerPadding: 20px,
+        centerPadding: '20px',
         cssEase: 'ease',
         dots: false,
         draggable:true,
