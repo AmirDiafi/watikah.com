@@ -248,7 +248,7 @@ body{
     .slick-dots {
         margin: 20px auto;
         position: relative;
-        display: block;
+        display: block !important;
     }
     
 }
