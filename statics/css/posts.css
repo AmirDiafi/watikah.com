@@ -239,7 +239,7 @@ form.add-comment-form button[type='submit']:hover i{
 
 .remove-comment-form button {
     right: 50px;
-    z-index: 2;
+    z-index: 3;
     position: relative;
     width:70%;
     display: inline-block;

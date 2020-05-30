@@ -10,12 +10,12 @@ $(document).ready(function() {
     // *** Satrt Go Down Button *** //
     $('.go-down').click(function () {
         $('html, body').animate({
-            scrollTop: ($('.allposts').offset().top - 120)
+            scrollTop: ($('.allposts').offset().top - 90)
         }, 700)
     })
 
     // *** Make The Navbar Transparent Whene It Gose To First Section *** //
-
+    $('.the-navbar').css({backgroundColor: "#004085ab"})
     $(window).on('scroll', function () {
         if ($(window).scrollTop() <=  200) {
             $('.the-navbar').css({backgroundColor: "#004085ab"})

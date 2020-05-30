@@ -175,15 +175,26 @@ body{
     padding: 5px;
 }
 
+.slick-initialized .slick-slide {
+    text-align: center
+}
+
+.slick-dots {
+    margin: 20px auto;
+    position: relative;
+}
+
 .slick-dots li button:before,
 .slick-dots li button:before{
     background-color: rgba(0, 0, 0, .75);
+    border-radius: 100%;
+    width: 10px;
+    height: 10px
 }
 
 .slick-dots li button:hover:before,
 .slick-dots li button:focus:before{
-    background-color: #290688;
-    border-radius: 100%;
+    background-color: #28a745;
 }
 
 
