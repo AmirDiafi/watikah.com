@@ -83,6 +83,7 @@ $(document).ready(function() {
         infinite: false,
         slidesToShow: 2,
         arrows: false,
-        dots: true
+        dots: true,
+        // infinite: true
     })
 })
