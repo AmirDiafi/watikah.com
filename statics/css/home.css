@@ -167,7 +167,20 @@ body{
     color: #FFF;
     border-radius: 50px;
     width:70% !important;
+    margin: auto;
     text-align: center;
+    padding: 5px;
+}
+
+.slick-dots li button:before,
+.slick-dots li button:before{
+    background-color: rgba(0, 0, 0, .75);
+}
+
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before{
+    background-color: #290688;
+    border-radius: 100%;
 }
 
 
