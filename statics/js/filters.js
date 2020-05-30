@@ -82,10 +82,10 @@ $(document).ready(function() {
     $('.slider').slick({
         autoplay: false,
         draggable:true,
-        infinite: true,
-        initialSlide: 3,
+        infinite: false,
+        slideToScroll: 2,
         mobileFirst: true,
-        slideToShow: 3,
+        slideToShow: 2,
         swipe :true,
     })
 })
