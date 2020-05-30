@@ -164,6 +164,7 @@ body{
 
 .buttons-filter ul.slider {
     margin: auto;
+    margin-bottom: 20px;
 }
 
 .buttons-filter .category{
@@ -185,7 +186,7 @@ body{
 }
 
 .slick-dots {
-    display: none;
+    display: none !important;
     position: relative;
 }
 
