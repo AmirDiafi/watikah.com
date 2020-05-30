@@ -4,10 +4,6 @@ $('.nav-item.list > .list-button').on('click', function() {
     $(this).next('ul').slideToggle(500)
 })
 
-$('body').on('click', function() {
-    // $('.nav-item.list > ul').fadeOut(500)
-})
-
 $('.nav-item.list > ul, .navbar').on('click', function(e) {
     e.stopPropagation()
 })

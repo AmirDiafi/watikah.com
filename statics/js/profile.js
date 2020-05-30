@@ -52,4 +52,13 @@ $(document).ready(function() {
         $(this).parent('li.message').next('p.msg-cntnt').slideToggle(500)
     })
 
+    //  some custom when on the scrool to the navbar
+    $(window).on('scroll', function () {
+        if ($(window).scrollTop() <=  200) {
+            $('.logo-anchor').css({top: 30})
+        } else {
+            $('.logo-anchor').css({top: 60})
+        }
+    })
+
 })

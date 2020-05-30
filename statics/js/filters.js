@@ -18,9 +18,9 @@ $(document).ready(function() {
 
     $(window).on('scroll', function () {
         if ($(window).scrollTop() <=  200) {
-            $('.the-navbar').css({backgroundColor: "#004085ab"})
+            $('.logo-anchor').css({top: 30})
         } else {
-            $('.the-navbar').css({backgroundColor: "#004085"})
+            $('.logo-anchor').css({top: 60})
         }
     })
 
