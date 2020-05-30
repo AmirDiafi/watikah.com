@@ -320,17 +320,6 @@ body{
         margin-top: 75px
     }
 
-    .search-bar {
-        position: absolute;
-        z-index: 2;
-        left: 25%;
-        top: 0;
-    }
-
-    .search-post{
-        width: 100%;
-    }
-
     .load-screen .logo.cont .the-logo {
         transform: translate(-50%, -50%);
         position: absolute;
