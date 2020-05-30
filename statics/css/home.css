@@ -177,11 +177,11 @@ body{
 
 .slick-initialized .slick-slide {
     text-align: center;
-    width: 120px;
+    width: 10% !important;
 }
 
 .slick-initialized .slick-slide > div {
-    width: 100%
+    width: 100% !important
 }
 
 .slick-dots {
@@ -194,7 +194,8 @@ body{
     color: rgba(0, 0, 0, .75);
     border-radius: 100%;
     width: 10px;
-    height: 10px
+    height: 10px;
+    background-color: #28a745;
 }
 
 
@@ -236,10 +237,10 @@ body{
     }
     
     .slick-initialized .slick-slide {
-        width: 316px;
+        width: 20% !important;
     }
     
     .slick-initialized .slick-slide > div {
-        width: 100%
+        width: 100% !important
     }
 }
