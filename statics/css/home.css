@@ -185,7 +185,8 @@ body{
 }
 
 .slick-dots {
-    display: none
+    display: none;
+    position: relative;
 }
 
 .slick-dots li button:before,
@@ -242,7 +243,7 @@ body{
     .slick-initialized .slick-slide > div {
         width: 100% !important
     }
-    
+
     .slick-dots {
         margin: 20px auto;
         position: relative;
