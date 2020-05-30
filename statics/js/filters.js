@@ -80,12 +80,8 @@ $(document).ready(function() {
 
     // *** Call the plugin *** //
     $('.slider').slick({
-        autoplay: false,
-        draggable:true,
         infinite: false,
         slideToScroll: 2,
-        mobileFirst: true,
         slideToShow: 2,
-        swipe :true,
     })
 })
