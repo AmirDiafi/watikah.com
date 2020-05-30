@@ -80,30 +80,12 @@ $(document).ready(function() {
 
     // *** Call the plugin *** //
     $('.slider').slick({
-        accessisibility: true,
-        adaptiveHieght: false,
         autoplay: false,
-        centerMode: true,
-        centerPadding: '20px',
-        cssEase: 'ease',
-        dots: false,
         draggable:true,
-        easing: 'linear',
-        focusOnSelect: true,
-        focusOnChange: true,
         infinite: true,
         initialSlide: 3,
         mobileFirst: true,
-        responsive: [{
-            breakpoint: 1024,
-            settings: {
-                slideToShow: 3,
-                infinite: true
-            }
-        }],
-        rows: 1,
         slideToShow: 3,
         swipe :true,
-        slidesPerRow: 3
     })
 })
