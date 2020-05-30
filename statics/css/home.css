@@ -155,8 +155,16 @@ body{
     border-color: #489765;
 }
 
+.buttons-filter {
+    margin-left: 55px;
+}
+
 .buttons-filter hr {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, .75), rgba(0, 0, 0, 0));
+    margin: 10px auto 20px;
+    width:80%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, .75), rgba(255,255, 255, 0));
 }
 
 .buttons-filter ul {
