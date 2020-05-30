@@ -159,18 +159,7 @@ body{
     width:80%;
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, .75), rgba(255,255, 255, 0));
-}
-
-.buttons-filter ul {
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    text-align: center;
-    margin: 20px auto;
-    color: #290688;
-    padding: 0;
-    overflow: hidden;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(0, 0, 0, .75), rgba(255,255, 255, 0));
 }
 
 .buttons-filter ul.slider li {
@@ -180,15 +169,14 @@ body{
     background: #290688;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.515);
-    margin: 15px 5px ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.515)
 }
 
 .buttons-filter ul.slick-dots li{
     width: 5px !important;
     height: 5px !important;
     background :rgba(0, 0, 0, 0.845) !important;
-    padding: 0;
+    padding: 3px;
 
 }
 
