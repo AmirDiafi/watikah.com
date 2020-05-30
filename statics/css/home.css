@@ -176,7 +176,12 @@ body{
 }
 
 .slick-initialized .slick-slide {
-    text-align: center
+    text-align: center;
+    width: 120px;
+}
+
+.slick-initialized .slick-slide > div {
+    width: 100%
 }
 
 .slick-dots {
@@ -186,15 +191,10 @@ body{
 
 .slick-dots li button:before,
 .slick-dots li button:before{
-    background-color: rgba(0, 0, 0, .75);
+    color: rgba(0, 0, 0, .75);
     border-radius: 100%;
     width: 10px;
     height: 10px
-}
-
-.slick-dots li button:hover:before,
-.slick-dots li button:focus:before{
-    background-color: #28a745;
 }
 
 
@@ -233,5 +233,13 @@ body{
 
     .section .text h5 {
         font-size: 15px;
+    }
+    
+    .slick-initialized .slick-slide {
+        width: 316px;
+    }
+    
+    .slick-initialized .slick-slide > div {
+        width: 100%
     }
 }
