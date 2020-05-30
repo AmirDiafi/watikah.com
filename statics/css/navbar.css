@@ -9,6 +9,11 @@ body{
 .the-navbar {
     box-shadow: 0 3px 2px rgba(0, 0, 0, 0.5);
     border-radius: 0 0 50px 50px !important;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
     background-color: #004085;
     position: fixed;
     height: 100vh;
@@ -28,7 +33,12 @@ body{
 }
 
 .nav-content > a {
-    margin-top: 30px
+    margin-top: 30px;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
 }
 
 .navbar ul li {
