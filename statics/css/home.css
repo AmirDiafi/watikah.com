@@ -118,9 +118,9 @@ body{
     }
 
     .section .text {
-        top: 40%;
+        top: 30%;
         left: 65%;
-        transform: translate(-65%, -40%);
+        transform: translate(-65%, -30%);
         width: 75%;
     }
 
