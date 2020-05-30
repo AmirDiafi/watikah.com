@@ -1,6 +1,6 @@
 const authModel = require('../models/auth.model')
 
-exports.userToHome = (req, res, next) => {
+exports.postsToHome = (req, res, next) => {
     let myfirstname = req.session.myfirstname
     let mylastname = req.session.mylastname
     let mypicture = req.session.mypicture

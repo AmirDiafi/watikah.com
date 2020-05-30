@@ -5,5 +5,5 @@ exports.isAuth = (req, res, next) => {
 
 exports.isNotAuth = (req, res, next) => {
     if(!req.session.userId) next()
-    else res.redirect('/login')
+    else res.redirect('/')
 }

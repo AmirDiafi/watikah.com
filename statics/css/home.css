@@ -114,24 +114,33 @@ body{
 @media(max-width: 575.98px) {
 
     .section.main{
-        height: calc(100vh - 50px)
+        height: 100vh
     }
 
     .section .text {
         top: 50%;
-        left: 60%;
+        left: 65%;
         transform: translate(-60%, -50%);
+        width: 75%;
     }
 
     .section .text h4 {
-        font-size: 25px;
+        font-size: 23px;
+    }
+
+    .section .text hr {
+        margin: 3px auto;
     }
 
     .section .text p {
         font-size:17px;
     }
 
-    .section .text h3 {
+    .section .text .down {
+        padding: 0;
+    }
+
+    .section .text h5 {
         font-size: 15px;
     }
 }

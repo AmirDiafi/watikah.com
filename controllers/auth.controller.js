@@ -53,7 +53,7 @@ exports.postLogin = (req, res, next) => {
             req.body.email,
             req.body.password
         ).then( (user) => {
-            req.session.userId = user.id,
+            req.session.userId = user._id,
             req.session.mypicture = user.picture,
             req.session.myfirstname = user.firstname,
             req.session.mylastname = user.lastname,

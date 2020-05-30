@@ -218,33 +218,20 @@ body{
 
 /* ****** Start The Search users Result ****** */
 
-.search-bar,
 .search-post{
     margin: 30px auto;
     width: 70%;
 }
 
-.search-bar {
-    position: absolute;
-    z-index: 2;
-    left: 19%;
-    top: 0;
-}
-.search-bar form,
 .search-post form{
     display: flex;
 }
 
-.search-bar form input[type='search'],
 .search-post form input[type='search']{
     border-radius: 50px 0 0 50px;
     height: 50px;
 }
 
-.search-bar form input[type='search']{
-    background: #ffffffc2;
-}
-.search-bar form input[type='search']:focus,
 .search-post form input[type='search']:focus{
     background: #ffffff;
     outline: 0;
@@ -261,72 +248,16 @@ body{
 }
 
 /* *** Search bar *** */
-.search-bar form button,
 .search-post button {
     border-radius: 0 50px 50px 0;
     background-color: #290688;
     border-color: #290688;
 }
 
-.search-bar form button {
-    background-color: #290688b5;
-}
-
-.search-bar form button:hover,
 .search-post button:hover{
     background-color: #489765;
     border-color: #489765;
 }
-
-ul.users-result{
-    background-color: #f8f9fa;
-    border-radius: 0 0 40px 40px;
-    position: absolute;
-    overflow-y: scroll;
-    display: none;
-    height:150px;
-    width: 100%;
-    z-index: 2;
-    top: 50px;
-    right: 0;
-}
-
-ul.users-result a{
-    text-decoration: none;
-    color: #062230;
-    overflow: hidden;
-}
-
-ul.users-result li{
-    border-bottom: 1px solid #062230;
-    position: relative;
-    font-size: 14px;
-    padding:5px;
-
-}
-
-ul.users-result li:hover{
-    background-color: #062230;
-    color :#FFF
-}
-
-ul.users-result li p {
-    margin: 0 5px;
-}
-
-ul.users-result li img{
-    border-radius: 100%;
-    height: 30px;
-    width:30px;
-}
-
-ul.users-result li i{
-    transform: translateY(-50%);
-    position: absolute;
-    right:5px;
-    top:50%;
-}
-
 
 /* ****** Start Transform Icon and Element ****** */
 
@@ -417,6 +348,11 @@ ul.users-result li i{
 }
 
 @media (max-width: 767px) {
+
+
+    .nav-content > a {
+        margin-top: 30px
+    }
 
     .search-bar {
         position: absolute;

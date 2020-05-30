@@ -104,12 +104,12 @@
 <% if(id == userId) {%>
     <div class="notifications popup popup-notifications" data-popup="popup-notifications">
         <ul id='notificationsList' class="list-unstyled notificationsList popup-inner">
-            <%if(messages.length == 0){%>
-                <div class="no-notifications">
-                    <p>لا يوجد أي تنبيهات بعد &#128237</p>
-                    <img src="/home-images/notification.png" alt="">
-                </div>
-            <%}%>
+        <%if(notifications.length == 0){%>
+            <div class="no-notifications">
+                <p>لا يوجد أي تنبيهات بعد &#128237</p>
+                <img src="/home-images/notification.png" alt="">
+            </div>
+        <%}%>
             <%for(let notification of notifications){%>
                 <li>
                     <%if(notification.postId !== 'undefined'){%>
@@ -141,12 +141,12 @@
     </div>
     <div class="messages notifications popup popup-messages" data-popup="popup-messages">
         <ul class='popup-inner list-unstyled notificationsList'>
-            <%if(messages.length == 0){%>
-                <div class="no-notifications">
-                    <p>لا يوجد أي رسائل بعد &#128237</p>
-                    <img src="/home-images/message.png" alt="">
-                </div>
-            <%}%>
+        <%if(messages.length == 0){%>
+            <div class="no-notifications">
+                <p>لا يوجد أي رسائل بعد &#128237</p>
+                <img src="/home-images/message.png" alt="">
+            </div>
+        <%}%>
         <%for(let message of messages) {%>
             <li class="message">
                 <a href="/profile/<%=message.me%>">

@@ -7,6 +7,6 @@ router.get('/', authProtect.isAuth,
 (req, res, next) => res.redirect('/' + req.session.userId))
 
 router.get('/:id', authProtect.isAuth, bodyParser.urlencoded({extended:true}),
-homeController.userToHome)
+homeController.postsToHome)
 
 module.exports = router

@@ -56,7 +56,7 @@ socket.on('userHome', user => {
                 </div>
                 <div class="messages notifications popup popup-messages" data-popup="popup-messages">
                     <ul class='popup-inner list-unstyled notificationsList'>`
-                    if(user.notifications.length == 0){
+                    if(user.messages.length == 0){
                         theNotification += 
                         `<div class="no-notifications">
                             <p>لا يوجد أي رسائل بعد &#128237</p>
