@@ -81,7 +81,6 @@ $(document).ready(function() {
     // *** Call the plugin *** //
     $('.slider').slick({
         infinite: false,
-        slidesToScroll: 2,
         slidesToShow: 2,
         arrows: false
     })
