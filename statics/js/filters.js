@@ -82,6 +82,7 @@ $(document).ready(function() {
     $('.slider').slick({
         infinite: false,
         slidesToShow: 2,
-        arrows: false
+        arrows: false,
+        dots: true
     })
 })
