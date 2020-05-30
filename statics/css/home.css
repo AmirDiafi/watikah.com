@@ -162,7 +162,7 @@ body{
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, .75), rgba(255,255, 255, 0));
 }
 
-.buttons-filter ul.slider {
+.buttons-filter ul {
     display: flex;
     justify-content: center;
     justify-items: center;
