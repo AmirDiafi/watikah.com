@@ -172,7 +172,7 @@ body{
     position: absolute;
     text-align: start;
     padding :5px 2px;
-    display: none;
+    display: block;
     bottom: 15px;
     width:140px;
     left: 60px;
