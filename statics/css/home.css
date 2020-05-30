@@ -185,8 +185,8 @@ body{
 
 .buttons-filter .slick-dots{
     width: 5px !important;
-    height: 5px;
-    background-color :rgba(0, 0, 0, 0.845);
+    height: 5px !important;
+    background :rgba(0, 0, 0, 0.845) !important;
     padding: 0
 }
 
