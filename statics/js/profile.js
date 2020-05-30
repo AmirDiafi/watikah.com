@@ -57,7 +57,7 @@ $(document).ready(function() {
         if ($(window).scrollTop() <=  200) {
             $('.logo-anchor').css({marginTop: 70})
         } else {
-            $('.logo-anchor').css({marginTop: 30})
+            $('.logo-anchor').css({marginTop: 10})
         }
     })
 
