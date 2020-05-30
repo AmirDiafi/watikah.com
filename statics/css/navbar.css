@@ -15,7 +15,7 @@ body{
     -o-transition: all .3s linear;
     transition: all .3s linear;
     background-color:#004085ab;
-    overflow: hidden;
+    margin-top: 60px;
     position: fixed;
     height: 100vh;
     width:74px;
@@ -172,7 +172,7 @@ body{
     position: absolute;
     text-align: start;
     padding :5px 2px;
-    display: block;
+    display: none;
     bottom: 15px;
     width:140px;
     left: 60px;
@@ -316,6 +316,10 @@ body{
 }
 
 @media (max-width: 767px) {
+
+    .the-navbar {
+        margin-top: 30px;
+    }
 
     .load-screen .logo.cont .the-logo {
         transform: translate(-50%, -50%);
