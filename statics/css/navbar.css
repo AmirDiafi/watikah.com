@@ -13,7 +13,7 @@ body{
     -ms-transition: all .3s linear;
     -o-transition: all .3s linear;
     transition: all .3s linear;
-    background-color:#004085ab;
+    background-color:#004085;
     position: fixed;
     height: 100vh;
     width:74px;

@@ -1,6 +1,8 @@
 <!-- ****** Start The Header ****** -->
 
 <%- include('parts/header') %>
+<link rel="stylesheet" href="/css/slick.css">
+<link rel="stylesheet" href="/css/slick-theme.css">
 <link rel="stylesheet" href="/css/detectAdsBlock.css">
 <link rel="stylesheet" href="/css/navbar.css">
 <link rel="stylesheet" href="/css/posts.css">
@@ -84,7 +86,7 @@
         <div class="col col-12">
             <div class="search-post">
                 <form>
-                    <input type="search" dir="auto" name="search-post" class="form-control" placeholder="Search Module. e.x: Maths">
+                    <input type="search" dir="auto" name="search-post" class="form-control" placeholder=": مثال رياضيات بحث عن المادة">
                     <button type="button" class="btn submit-filter-model btn-primary">
                         <i class="fa fa-filter"></i>
                     </button>
@@ -92,7 +94,7 @@
             </div>
             <hr>
             <div class="buttons-filter">
-                <ul class="list-unstyled">
+                <ul class="list-unstyled slider">
                     <li>الكل</li>
                     <li>بحوث</li>
                     <li>مذكرات</li>
@@ -209,12 +211,15 @@
     <script defer src="/js/sockets.io/notifications.js"></script>
     <script defer src="/js/sockets.io/userHome.js"></script>
 <%}%>
-<!-- ****** Start My jQueries Custom -->
+<!-- ****** Start My jQueries Custom ****** -->
 <script defer src="/js/navbar.js"></script>
 <script defer src="/js/filters.js"></script>
 <script defer src="/js/profile.js"></script>
 <script defer src="/js/particles.min.js"></script>
 <script defer src="/js/app.js"></script>
+
+<!--  ****** Start the Slick Carousel scripts ****** -->
+<script src="/js/slick.min.js"></script>
 
 <!-- ****** Start Setect Adblock ****** -->
 <!-- <script>
