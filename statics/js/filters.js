@@ -92,7 +92,7 @@ $(document).ready(function() {
         focusOnSelect: true,
         focusOnChange: true,
         infinite: true,
-        initialSlide: 0,
+        initialSlide: 3,
         mobileFirst: true,
         responsive: [{
             breakpoint: 1024,
@@ -101,7 +101,7 @@ $(document).ready(function() {
                 infinite: true
             }
         }],
-        rows: 3,
+        rows: 1,
         slideToShow: 3,
         swipe :true,
     })
