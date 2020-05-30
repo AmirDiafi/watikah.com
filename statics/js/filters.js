@@ -10,7 +10,7 @@ $(document).ready(function() {
     // *** Satrt Go Down Button *** //
     $('.go-down').click(function () {
         $('html, body').animate({
-            scrollTop: ($('.allposts').offset().top - 90)
+            scrollTop: ($('.allposts').offset().top - 200)
         }, 700)
     })
 
