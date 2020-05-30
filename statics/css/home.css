@@ -153,11 +153,6 @@ body{
     border-color: #489765;
 }
 
-.buttons-filter {
-    width: 100%;
-    overflow: hidden;
-}
-
 .buttons-filter hr {
     margin: 10px auto 20px;
     width:80%;
@@ -167,11 +162,11 @@ body{
 }
 
 .buttons-filter ul {
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    justify-items: center;
+    justify-items: center; */
     text-align: center;
-    margin: 20px;
+    margin: 20px auto;
 }
 
 .buttons-filter ul li {
