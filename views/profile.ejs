@@ -1,5 +1,6 @@
 
 <%- include('parts/header') %>
+<link rel="stylesheet" href="/css/croppie.css">
 <link rel="stylesheet" href="/css/navbar.css">
 <link rel="stylesheet" href="/css/posts.css">
 <link rel="stylesheet" href="/css/profile.css">
@@ -23,9 +24,9 @@
         <div class="back-edit popup-inner image small">
             <form action="/profile/<%=user._id%>/background-edit" method="POST" enctype="multipart/form-data">
                 <input type="file" name="background" required accept="image/*">
-                <input type="submit" value="Change" class='btn'>
+                <input type="submit" value="تغيير" class='btn'>
             </form>
-            <button class="btn close-edit-back close-popup" >Cancel</button>
+            <!-- <button class="btn close-edit-back close-popup" >Cancel</button> -->
         </div>
     </div>
     <img src="/userBack/<%=user.background%>" alt="background" >
@@ -184,7 +185,7 @@
                     <i class="fa fa-paper-plane"></i>
                 </button>
             </form>
-            <button class="btn close-popup" >Cancel</button>
+            <!-- <button class="btn close-popup" >Cancel</button> -->
         </div>
     </div>
 <% } %>
@@ -198,10 +199,12 @@
 <div class="useredit popup popup-edit" data-popup="popup-edit">
     <div class="usereditform popup-inner image small">
         <form class="header-form" action="/profile/<%=user._id%>/profile-edit" method="POST" enctype="multipart/form-data">
-            <input type="file" name="picture" required accept="image/*">
-            <input type="submit" value="Change" class='btn'>
+            <input type="file" class=cropping name="picture" required accept="image/*">
+            <div class="croppie"></div>
+            <div class="preview-crop-image"></div>
+            <input class="btn-upload-image" type="submit" value="تغيير" class='btn'>
         </form>
-        <button class="btn close-edit close-popup" >Cancel</button>
+        <!-- <button class="btn close-edit close-popup" >Cancel</button> -->
     </div>
 </div>
 <div class="popup popup-2nd" data-popup="popup-2nd">
@@ -227,7 +230,7 @@
                 <option value="lessons">درس</option>
                 <option value="all">أخرى</option>
             </select>
-            <input type="submit" value="Post" class="btn btn-success submit">
+            <input type="submit" value="نشر" class="btn btn-success submit">
         </form>
         <!-- <button class='close-popup btn btn-danger'>Close</button> -->
     </div>
@@ -257,6 +260,9 @@
 <!-- ****** Start the custom scripts ****** -->
 <script defer src="/js/navbar.js"></script>
 <script defer src="/js/profile.js"></script>
+
+<!-- ****** Croppie picture ****** -->
+<script src="/js/croppie.min.js"></script>
 
 </body>
 </html>

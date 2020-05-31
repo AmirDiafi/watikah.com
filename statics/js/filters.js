@@ -95,4 +95,5 @@ $(document).ready(function() {
 
     // *** Instantiate MixItUp *** //
     var mixer = mixitup('#allposts')
+
 })

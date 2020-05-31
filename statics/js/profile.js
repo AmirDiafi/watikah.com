@@ -43,6 +43,53 @@ $(document).ready(function() {
         $(this).prev('span').text('ملفك جاهز')
     })
 
+    $('.popup .popup-inner form input[type="file"].cropping').change(function () {
+
+        var resize = $('.croppie').croppie({
+            enableExif: true,
+            enableOrientation: true,    
+            viewport: { // Default { width: 100, height: 100, type: 'square' } 
+                width: 200,
+                height: 200,
+                type: 'circle' //square
+            },
+            boundary: {
+                width: 300,
+                height: 300
+            }
+        });
+
+        var reader = new FileReader();
+            reader.onload = function (e) {
+            resize.croppie('bind',{
+                url: e.target.result
+            }).then(function(){
+                console.log('jQuery bind complete');
+            });
+            }
+            reader.readAsDataURL(this.files[0]);
+
+
+        $('.btn-upload-image').on('click', function (ev) {
+        resize.croppie('result', {
+            type: 'canvas',
+            size: 'viewport'
+        }).then(function (img) {
+            $.ajax({
+            url: $(this).val,
+            type: "POST",
+            data: {"image":img},
+            success: function (data) {
+                html = '<img src="' + img + '" />';
+                $(".preview-crop-image").html(html);
+            }
+            });
+        });
+        });
+
+
+    })
+
     // Start Messages
     $('.messages.notifications .notificationsList li.message div.see')
     .on('click', function () {
@@ -60,5 +107,7 @@ $(document).ready(function() {
             $('.logo-anchor').css({marginTop: 10})
         }
     })
+
+
 
 })
