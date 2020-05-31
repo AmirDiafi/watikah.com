@@ -54,7 +54,7 @@ $(document).ready(function() {
                 type: 'circle' //square
             },
             boundary: {
-                width: 300,
+                width: '80%',
                 height: 300
             }
         });

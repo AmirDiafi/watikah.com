@@ -211,7 +211,8 @@ body{
     background-color: #358ebb;
     color: #FFF;
     font-weight: bold;
-    border-radius: 50px
+    border-radius: 50px;
+    border: none
 }
 
 .useredit .usereditform .close-edit,
@@ -740,6 +741,11 @@ h3.titles{
     .popup .popup-inner {
         width:80%
     }
+
+    .popup .popup-inner.image{
+        height: auto !important
+    }
+
     .popup .popup-inner form .title,
     .popup .popup-inner form .article,
     .popup .popup-inner form .select{
@@ -875,12 +881,11 @@ h3.titles{
     }
 
     .popup .send-message {
-        
         overflow: visible !important
     }
 
     .popup .popup-inner.small {
-        max-height: 22%;
+        height: 22%;
         overflow: visible !important
     }
 
