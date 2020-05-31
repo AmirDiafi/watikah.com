@@ -270,11 +270,11 @@ body{
 
 .popup .popup-inner {
     width: 50%;
-    height: 65%;
+    height: 75%;
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -40%);
     background: #fff;
     padding: 20px ;
     text-align: center;
@@ -351,13 +351,20 @@ body{
 .popup .popup-inner form .select {
     width: 80%;
     margin: 10px auto;
-    border-radius: 50px;
     background: #e9ecef;
     border-radius: 50px 50px 50px 10px;
 }
 
 .popup .popup-inner form .select.model{
     border-radius: 10px 50px 50px 50px;
+}
+
+.popup .popup-inner form select {
+    width: 80%;
+    margin: 10px auto;
+    border-radius: 50px;
+    background: #e9ecef;
+    text-align: right;
 }
 
 .popup .popup-inner form .submit {

@@ -174,11 +174,17 @@ body{
     width:70% !important;
     text-align: center;
     padding: 5px;
+    transition: all .2s linear;
+    cursor: pointer;
+}
+
+.active {
+    background: #28a745 !important;
 }
 
 .slick-initialized .slick-slide {
     text-align: center;
-    width: 8% !important;
+    width: 5% !important;
 }
 
 .slick-initialized .slick-slide > div {

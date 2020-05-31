@@ -57,27 +57,6 @@ exports.uploadProfileBack = (req, res, next) => {
     })
 }
 
-// exports.postPosts = (req, res, next) => {
-//     authModel.postUserPosts({
-//         postDate: new Date().toLocaleString(),
-//         description: req.body.description,
-//         owenerPostId: req.session.userId,
-//         firstname: req.body.myfirstname,
-//         lastname: req.body.mylastname,
-//         picture: req.body.mypicture,
-//         category: req.body.category,
-//         image: req.file.filename,
-//         sortByDate: Date.now(),
-//         title: req.body.title,
-//         model: req.body.model,
-//         file:'undefined'
-//     }).then(()=>{
-//         res.redirect(req.body.redirect)
-//     }).catch(err => {
-//         console.log(err)
-//     })
-// }
-
 exports.postFiles = (req, res, next) => {
 
     let file = req.file.filename
@@ -99,6 +78,7 @@ exports.postFiles = (req, res, next) => {
         lastname: req.body.mylastname,
         picture: req.body.mypicture,
         category: req.body.category,
+        kindof: req.body.kindof,
         sortByDate: Date.now(),
         title: req.body.title,
         model: req.body.model,

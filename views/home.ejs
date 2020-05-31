@@ -44,6 +44,15 @@
                 <h4>Feliere & Module:</h4>
                 <input type="text" dir="auto" autocomplete="off" name="category" placeholder="Feliere" required class='form-control select'>
                 <input type="text" dir="auto" autocomplete="off" name="model" placeholder="Module" required class='form-control select model'>
+                <select class='form-control' name="kindof" id="" required>
+                    <option value="none" selected disabled hidden> إختر نوع منشورك </option>
+                    <option value="memories">مذكرة</option>
+                    <option value="exposes">بحث</option>
+                    <option value="projects">مشروع</option>
+                    <option value="books">كتاب</option>
+                    <option value="lessons">درس</option>
+                    <option value="all">أخرى</option>
+                </select>
                 <input type="submit" value="Post" class="btn btn-success submit">
             </form>
             <!-- <button class='close-popup btn btn-danger'>Close</button> -->
@@ -95,94 +104,93 @@
             <hr>
             <div class="buttons-filter">
                 <ul class="list-unstyled slider">
-                    <li class='category'>الكل</li>
-                    <li class='category'>بحوث</li>
-                    <li class='category'>مذكرات</li>
-                    <li class='category'>مشاريع</li>
-                    <li class='category'>دروس</li>
+                    <li class="category filter active" data-filter="all">الكل</li>
+                    <li class="category filter" data-filter=".exposes">بحوث</li>
+                    <li class="category filter" data-filter=".memories">مذكرات</li>
+                    <li class="category filter" data-filter=".projects">مشاريع</li>
+                    <li class="category filter" data-filter=".lessons">دروس</li>
+                    <li class="category filter" data-filter=".books">كتب</li>
                 </ul>
             </div>
         </div>
         </div>
         <div id="allposts" class='allposts'>
-            <div>
-                <%for(let post of posts) {%>
-                    <div class='post status'>
-                        <%if(userId == post.owenerPostId) {%>
-                            <i class='fas fa-ellipsis-v edit'></i>
-                        <%}%>
-                        <ul class='edit list-unstyled'>
-                            <form>
-                                <input type="hidden" name="postId" value='<%=post._id%>'>
-                                <input type="hidden" name="owenerPostId" value='<%=userId%>'>
-                                <input type="hidden" name="redirect" value='/<%=post.owenerPostId%>'>
-                                <li>
-                                    <button type="submit" formaction="/profile/<%=post.owenerPostId%>/remove-post" formmethod="POST">
-                                        <i class="fa fa-trash"></i> | حذف
-                                    </button>
-                                </li>
-                            </form>
-                        </ul>
-                        <a href="/profile/<%=post.owenerPostId%>" class='anchor-pic'>
-                            <img src="/userPic/<%=post.picture%>" alt="profile" class="profile-pic">
-                            <span style="text-align: start;" dir="auto" class="username"> <%=post.firstname%> <%=post.lastname%></span>
-                            <span class='timestamp' style="text-align: start;" dir="auto"> <%=post.postDate%></span>
-                        </a>
-                        <h4 style="text-align: start;" dir="auto"><%=post.title%></h4>
-                        <p class='model' style="text-align:start">Feliere:<b> <%=post.category%> </b></p>
-                        <p class='model' style="text-align:start">Module:<b> <%=post.model%></b></p>
-                        <hr>
-                        <%if(post.image !== 'undefined'){%>
-                            <img src="<%=post.image%>" class='post-pic' alt="post">
-                        <%}%>
-                        <%if(post.file !== 'undefined'){%>
-                            <div class="file-content">
-                                <a href="<%=post.file%>" id='file-icon-download-<%=post._id%>' class="file-design" download='watikah-resourses'>
-                                    <img src="" alt="file" class="file">
-                                    <i class="fas fa-arrow-down"></i>
-                                </a>
-                                <h3 style="text-align: start;" dir="auto"> <%=post.title%></h3>
-                            </div>
-                        <%}%>
-                        <div class="trim">
-                            <p class='desc' style="text-align: start;" dir="auto"><%=post.description%></p>
-                            <div class=comments id='comments-<%=post._id%>'>
-                            <form class="add-comment-form" method='POST'>
-                                <input type=hidden id='postId-<%=post._id%>' value='<%=post._id%>'>
-                                <input type=hidden id='owenerPostId-<%=post.owenerPostId%>' value='<%=post.owenerPostId%>'>
-                                <input dir='auto' type=text id='comment-post-content-<%=post._id%>' placeholder='add comment' >
-                                <button id='<%=post._id%>' type="submit" class="btn btn-primary">
-                                    <i class='fas fa-paper-plane'></i>
+            <%for(let post of posts) {%>
+                <div class='post status mix <%=post.kindof%>'>
+                    <%if(userId == post.owenerPostId) {%>
+                        <i class='fas fa-ellipsis-v edit'></i>
+                    <%}%>
+                    <ul class='edit list-unstyled'>
+                        <form>
+                            <input type="hidden" name="postId" value='<%=post._id%>'>
+                            <input type="hidden" name="owenerPostId" value='<%=userId%>'>
+                            <input type="hidden" name="redirect" value='/<%=post.owenerPostId%>'>
+                            <li>
+                                <button type="submit" formaction="/profile/<%=post.owenerPostId%>/remove-post" formmethod="POST">
+                                    <i class="fa fa-trash"></i> | حذف
                                 </button>
-                            </form>
-                                <%for(let comment of post.comments) {%>
-                                    <p style="text-align: start;" dir="auto" class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
-                                        <a href='/profile/<%=comment.me%>' >
-                                            <img src="/userPic/<%=comment.mypicture%>" alt="" style="border-radius: 100%;width:30px;height:30px">
-                                            <span style="text-align: start;" dir="auto" class='fullname'> <%=comment.myfirstname%> <%=comment.mylastname%></span>
-                                        </a>
-                                        <br>
-                                        <span style="text-align: start;" dir="auto"><%=comment.comment%></span>
-                                    </p>
-                                    <%if(comment.me == userId){%>
-                                        <form class='remove-comment-form trash-the-post' id='post-trash-<%=comment._id%>'>
-                                            <i class='fas fa-ellipsis-v remove-cmnt-edit-icon'></i>
-                                            <button class='trash-btn' id='<%=post._id%>-<%=comment._id%>'>
-                                                <i class="fa fa-trash-alt"></i>
-                                            </button>
-                                        </form>
-                                    <%}%>
-                                <%}%> 
+                            </li>
+                        </form>
+                    </ul>
+                    <a href="/profile/<%=post.owenerPostId%>" class='anchor-pic'>
+                        <img src="/userPic/<%=post.picture%>" alt="profile" class="profile-pic">
+                        <span style="text-align: start;" dir="auto" class="username"> <%=post.firstname%> <%=post.lastname%></span>
+                        <span class='timestamp' style="text-align: start;" dir="auto"> <%=post.postDate%></span>
+                    </a>
+                    <h4 style="text-align: start;" dir="auto"><%=post.title%></h4>
+                    <p class='model' style="text-align:start">Feliere:<b> <%=post.category%> </b></p>
+                    <p class='model' style="text-align:start">Module:<b> <%=post.model%></b></p>
+                    <hr>
+                    <%if(post.image !== 'undefined'){%>
+                        <img src="<%=post.image%>" class='post-pic' alt="post">
+                    <%}%>
+                    <%if(post.file !== 'undefined'){%>
+                        <div class="file-content">
+                            <a href="<%=post.file%>" id='file-icon-download-<%=post._id%>' class="file-design" download='watikah-resourses'>
+                                <img src="" alt="file" class="file">
+                                <i class="fas fa-arrow-down"></i>
+                            </a>
+                            <h3 style="text-align: start;" dir="auto"> <%=post.title%></h3>
                         </div>
-                            <i class="fas fa-caret-down desc"></i>
-                            <i class="fas fa-comment-alt comment"> <%=post.comments.length%></i>
-                            <%if(post.image === 'undefined'){%>
-                                <i class="fas fa-arrow-down" > <%=post.downloaders.length%></i>
-                            <%}%>
+                    <%}%>
+                    <div class="trim">
+                        <p class='desc' style="text-align: start;" dir="auto"><%=post.description%></p>
+                        <div class=comments id='comments-<%=post._id%>'>
+                        <form class="add-comment-form" method='POST'>
+                            <input type=hidden id='postId-<%=post._id%>' value='<%=post._id%>'>
+                            <input type=hidden id='owenerPostId-<%=post.owenerPostId%>' value='<%=post.owenerPostId%>'>
+                            <input dir='auto' type=text id='comment-post-content-<%=post._id%>' placeholder='add comment' >
+                            <button id='<%=post._id%>' type="submit" class="btn btn-primary">
+                                <i class='fas fa-paper-plane'></i>
+                            </button>
+                        </form>
+                            <%for(let comment of post.comments) {%>
+                                <p style="text-align: start;" dir="auto" class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
+                                    <a href='/profile/<%=comment.me%>' >
+                                        <img src="/userPic/<%=comment.mypicture%>" alt="" style="border-radius: 100%;width:30px;height:30px">
+                                        <span style="text-align: start;" dir="auto" class='fullname'> <%=comment.myfirstname%> <%=comment.mylastname%></span>
+                                    </a>
+                                    <br>
+                                    <span style="text-align: start;" dir="auto"><%=comment.comment%></span>
+                                </p>
+                                <%if(comment.me == userId){%>
+                                    <form class='remove-comment-form trash-the-post' id='post-trash-<%=comment._id%>'>
+                                        <i class='fas fa-ellipsis-v remove-cmnt-edit-icon'></i>
+                                        <button class='trash-btn' id='<%=post._id%>-<%=comment._id%>'>
+                                            <i class="fa fa-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                <%}%>
+                            <%}%> 
                     </div>
+                        <i class="fas fa-caret-down desc"></i>
+                        <i class="fas fa-comment-alt comment"> <%=post.comments.length%></i>
+                        <%if(post.image === 'undefined'){%>
+                            <i class="fas fa-arrow-down" > <%=post.downloaders.length%></i>
+                        <%}%>
                 </div>
-                <%}%>
             </div>
+            <%}%>
         </div>
     </div>
 </div>
@@ -217,6 +225,9 @@
 <script defer src="/js/profile.js"></script>
 <script defer src="/js/particles.min.js"></script>
 <script defer src="/js/app.js"></script>
+
+<!-- Start call the filter shuffle plugin -->
+<script src="/js/mixitup.min.js"></script>
 
 <!--  ****** Start the Slick Carousel scripts ****** -->
 <script src="/js/slick.min.js"></script>

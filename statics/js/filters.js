@@ -86,4 +86,13 @@ $(document).ready(function() {
         dots: true,
         // infinite: true
     })
+
+    // *** start shuffle Portfolio / filter *** //
+    $('.buttons-filter .slider li.category').click(function () {
+        $('.buttons-filter .slider li.category').removeClass('active')
+        $(this).addClass('active')
+    })
+
+    // *** Instantiate MixItUp *** //
+    var mixer = mixitup('#allposts')
 })
