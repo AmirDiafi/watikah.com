@@ -25,13 +25,21 @@ socket.on('userHome', user => {
                         `<li>`
                             if(notification.postId !== 'undefined'){
                                 theNotification += 
-                                `<div class="notifics">
-                                    <a href="/profile/${notification.me}">
-                                        <img src='/userPic/${notification.mypicture}'>
-                                        <span style="text-align: start;" dir="auto" class="fullname">
-                                            ${notification.myfirstname} ${notification.mylastname}
-                                        </span>
-                                    </a>
+                                    `<div class="notifics">
+                                        <a href="/profile/${notification.me}">
+                                            <span class="img">
+                                                <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">`  
+                                            if(notification.mypicture !== 'default') {
+                                                theNotification += 
+                                                `<img src="/userprofile/${notification.mypicture}" alt='' class="picchanged profile-pic">`  
+                                            }
+                                            theNotification += 
+                                            `</span> 
+                                            
+                                            <span style="text-align: start;" dir="auto" class="fullname"> 
+                                                ${notification.myfirstname} ${notification.mylastname} 
+                                            </span> 
+                                        </a> 
                                     <a href='/post/${notification.postId}'>
                                         <span> | ${notification.event} | <span dir="ltr"> ${notification.dateOfEvent}</span></span>
                                     </a>
@@ -40,10 +48,17 @@ socket.on('userHome', user => {
                                 theNotification += 
                                 `<div class="notifics">
                                     <a href="/profile/${notification.me}">
-                                        <img src='/userPic/${notification.mypicture}'>
-                                        <span style="text-align: start;" dir="auto" class="fullname">
-                                            ${notification.myfirstname} ${notification.mylastname}
-                                        </span>
+                                        <span class="img">
+                                            <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">`  
+                                        if(notification.mypicture !== 'default') {
+                                            theNotification += 
+                                            `<img src="/userprofile/${notification.mypicture}" alt='' class="picchanged profile-pic">` 
+                                        }
+                                        theNotification += 
+                                        `</span>
+                                        <span style="text-align: start;" dir="auto" class="fullname"> 
+                                            ${notification.myfirstname} ${notification.mylastname} 
+                                        </span> 
                                         <span> | ${notification.event} |<span dir="ltr"> ${notification.dateOfEvent}</span></span>
                                     </a>
                                 </div>`
@@ -67,8 +82,17 @@ socket.on('userHome', user => {
                         theNotification += 
                             `<li class="message">
                                 <a href="/profile/${message.me}">
-                                    <img src="/userPic/${message.mypicture}" alt="user" style="width:30px;height:30px;border-radius: 100%">
-                                    <span>${message.myfirstname} ${message.mylastname} | </span>
+                                    <span class="img">
+                                        <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">  `
+                                    if(message.mypicture !== 'default') {
+                                        theNotification += 
+                                        `<img src="/userprofile/${message.mypicture}" alt='' class="picchanged profile-pic"> `
+                                    }
+                                    theNotification += 
+                                    `</span>
+                                    <span style="text-align: start;" dir="auto" class="fullname"> 
+                                        ${message.myfirstname} ${message.mylastname} | 
+                                    </span>
                                 </a>
                                 <p>أرسل لك رسالة</p>
                                 <div class="see">

@@ -71,6 +71,26 @@ socket.on('commented', () => {
 })
 
 document.getElementById('commentBtn').onclick = (e) => {
+        let commentHTMLLive
+        commentHTMLLive =
+        `<p class='comment-at-the-post the-comment'>
+            <a href='/profile/${me}'>
+                    <span class='img'>
+                    <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                    if(post.picture !== 'default') {
+                        commentHTMLLive +=
+                        `<img src="/userprofile/${mypicture}" alt='' class="picchanged profile-pic">` 
+                    }
+                    commentHTMLLive +=
+                    `</span>
+                <span class='fullname'> ${myfirstname} ${mylastname}</span>
+            </a>
+            <br>
+            <span style="text-align: start;" dir="auto">${document.getElementById("comment-post-content-"+post._id).value}</span>
+        </p>`
+
+        document.getElementById(`comments`).innerHTML += commentHTMLLive
+
     e.preventDefault()
     socket.emit('newComment', {
         owenerPostId: document.getElementById('owenerPostId').value,
@@ -81,7 +101,7 @@ document.getElementById('commentBtn').onclick = (e) => {
         mypicture,
         me
     })
-    // if(me !== post.owenerPostId){
+    if(me !== post.owenerPostId){
         socket.emit('sendNotification', {
             userId: document.getElementById('owenerPostId').value,
             postId: document.getElementById('postId').value,
@@ -91,17 +111,7 @@ document.getElementById('commentBtn').onclick = (e) => {
             mypicture,
             me
         })
-    // }
+    }
     
-    socket.on('commented', data => {
-        document.getElementById(`comments`).innerHTML +=
-            `<p class='comment-at-the-post the-comment id='comment-${data.commentId}'>
-                <a href='/post/${data.me}' >
-                    <img src="/userPic/${data.mypicture}" alt="profile" style='border-radius: 100%;width:30px;height:30px'>
-                    <span class='fullname'> ${data.myfirstname} ${data.mylastname}</span>
-                </a>
-                <br>
-                <span style="text-align: start;" dir="auto">${data.comment}</span>
-            </p>`
-    })
+    
 }

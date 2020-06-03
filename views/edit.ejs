@@ -7,21 +7,19 @@
 <%- include('parts/navbar')%>
 <!-- *** Start hiiden inputs *** -->
 <div class="container">
-
     <h1 class="text-center">Edit Profile</h1>
     <form class="text-center edit-info" action="/edit/<%=userId%>/edit-done" method="POST" enctype="multipart/form-data">
-    <div class="text-center pic">
-        <% if(user.picture ==='defaultUser') {%>
-            <img src="/userPic/defaultUser.png" alt="profile" >
-        <%} else {%>
-            <img src="/userPic/<%=user.picture%>" alt="profile" >
-        <%}%>
-    </div>
-    <input type="text" dir="auto" autocomplete="off" name="firstname" value="<%=user.firstname%>" required class="form-control" placeholder="إسمك الأول">
-    <input type="text" dir="auto" autocomplete="off" name="lastname" value="<%=user.lastname%>" required class="form-control" placeholder="(إسمك الأخير (اللقب">
-    <input type="text" dir="auto" autocomplete="off" value="<%=user.bio%>" name="bio" value="" maxlength="100px" class="form-control" placeholder="حولك">
-    <input type="email" readonly dir="auto" autocomplete="off" name="email" value="<%=user.email%>" required class="form-control" placeholder="بريدك الإلكتروني">
-    <button type="submit" class="btn btn-primary">Save  <i class="fa fa-pen"></i></button>
+        <div class="text-center pic">
+            <img src="/defaultuser/defaultUser.jpeg" alt='' class="default">
+            <%if(user.picture !== 'default') {%>
+                <img src="/userprofile/<%=user.picture%>" alt='' class="picchanged">
+            <%}%>
+        </div>
+        <input type="text" dir="auto" autocomplete="off" name="firstname" value="<%=user.firstname%>" required class="form-control" placeholder="إسمك الأول">
+        <input type="text" dir="auto" autocomplete="off" name="lastname" value="<%=user.lastname%>" required class="form-control" placeholder="(إسمك الأخير (اللقب">
+        <input type="text" dir="auto" autocomplete="off" value="<%=user.bio%>" name="bio" value="<%=user.bio%>" maxlength="100" class="form-control" placeholder="إقتبس حول نفسك">
+        <input type="email" readonly dir="auto" autocomplete="off" name="email" value="<%=user.email%>" required class="form-control" placeholder="بريدك الإلكتروني">
+        <button type="submit" class="btn btn-primary">حفض  <i class="fa fa-pen"></i></button>
     </form>
 </div>
 <%- include('parts/footer')%>

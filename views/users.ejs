@@ -14,15 +14,26 @@
     <% for(let user of users) { %>
             <div class="user">
                 <div class="media">
-                    <img src="/userBack/<%=user.background%>" alt="user" class="background">
-                    <img src="/userPic/<%=user.picture%>" alt="user" class="profile">
+                    <img src="/defaultuser/defaultBackground.jpg" alt='' class="default background">
+                    <%if(user.background !== 'default') {%>
+                        <img src="/userprofile/<%=user.background%>" alt='' class="changedback background">
+                    <%}%>
+                    <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile">
+                    <%if(user.picture !== 'default') {%>
+                        <img src="/userprofile/<%=user.picture%>" alt='' class="picchanged profile">
+                    <%}%>
                 </div>
                 <div class="info">
                     <p class='username'><%=user.firstname%> <%=user.lastname%></p>
                     <hr>
                     <p><%=user.followers.length%> يفضله</p>
                     <p><%=user.followings.length%> يفضل</p>
-                    <p><%=user.bio%></p>
+                    <%if(user.bio != null) {%>
+                        <p><q><%=user.bio%></q></p>
+                    <%} else {%>
+                        <p><q>لا يوجد إقتباس</p></p>
+                    <%}%>
+                    <p>مشترك منذ <%=user.dateOfOpen%></p>
                 </div>
                 <a href="/profile/<%=user._id%>" class="btn">View Profile</a>
             </div>

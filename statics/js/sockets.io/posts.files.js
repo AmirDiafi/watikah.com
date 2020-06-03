@@ -6,7 +6,7 @@ socket.emit('getPosts&FilesProfile', {
 socket.on('postsProfile', posts => {
     if(posts.length !== 0) {
         let thepost = `<div> 
-        <h3 class='titles'>Posts <i class='far fa-address-card fa-fw'></i>  ${posts.length}</h3>
+        <h3 class='titles'>المنشورات <i class='far fa-address-card fa-fw'></i>  ${posts.length}</h3>
         `
     for(let post of posts) {
         thepost += `<div class='post status'>`
@@ -21,14 +21,19 @@ socket.on('postsProfile', posts => {
                     <input type="hidden" name="redirect" value='/profile/${post.owenerPostId}'>
                     <li>
                         <button type="submit" formaction="/profile/${post.owenerPostId}/remove-post" formmethod="POST">
-                            <i class="fa fa-trash"></i> | حذف
+                            <i class="fa fa-trash-alt"></i> | حذف
                         </button>
                     </li>
                 </form>
             </ul>
             <a href="/profile/${post.owenerPostId}" class='anchor-pic'>
-                <img src="/userPic/${post.picture}" alt="profile" class="profile-pic">
-                <span style="text-align: start;" dir="auto" class="username"> ${post.firstname} ${post.lastname}</span>
+                <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                if(post.picture !== 'default') {
+                    thepost +=
+                    `<img src="/userprofile/${post.picture}" alt='' class="picchanged profile-pic">` 
+                }
+                thepost +=
+                ` <span style="text-align: start;" dir="auto" class="username"> ${post.firstname} ${post.lastname}</span>
                 <span class='timestamp' style="text-align: start;" dir="auto"> ${post.postDate}</span>
             </a>
             <h4 style="text-align: start;" dir="auto">${post.title}</h4>
@@ -64,9 +69,16 @@ socket.on('postsProfile', posts => {
             for(let comment of post.comments) {
                 thepost +=
                 `<p class='comment-at-the-post the-comment' id='comment-${comment._id}'>
-                    <a href='/profile/${comment.me}' >
-                        <img src="/userPic/${comment.mypicture}" alt="profile" style="border-radius: 100%;width:30px;height:30px">
-                        <span style="text-align: start;" dir="auto" class='fullname'> ${comment.myfirstname} ${comment.mylastname}</span>
+                    <a href='/profile/${comment.me}'>
+                        <span class='img' >
+                            <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                            if(post.picture !== 'default') {
+                                thepost +=
+                                `<img src="/userprofile/${comment.mypicture}" alt='' class="picchanged profile-pic">` 
+                            }
+                            thepost +=
+                        `</span>
+                        <span class='fullname'> ${comment.myfirstname} ${comment.mylastname}</span>
                     </a>
                     <br>
                     <span style="text-align: start;" dir="auto">${comment.comment}</span>
@@ -100,7 +112,6 @@ socket.on('postsProfile', posts => {
     // *** Start The Comment Socket.io *** //
     for(let post of posts) {
 
-    // *** Custom the file icon *** //
     if(post.file !== 'undefined'){
         if($(`#file-icon-download-${post._id}`).attr('href').endsWith('.pdf')) {
             $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/pdf.png')
@@ -129,15 +140,26 @@ socket.on('postsProfile', posts => {
                 me 
             })
             
-            document.getElementById(`comments-${document.getElementById('postId-'+post._id).value}`).innerHTML +=
-                `<p class='comment-at-the-post the-comment'>
-                    <a href='/profile/${me}'>
-                        <img src="/userPic/${mypicture}" alt="profile" style='border-radius: 100%;width:30px;height:30px'>
-                        <span class='fullname'> ${myfirstname} ${mylastname}</span>
-                    </a>
-                    <br>
-                    <span style="text-align: start;" dir="auto">${document.getElementById("comment-post-content-"+post._id).value}</span>
-                </p>`
+            let commentHTMLLive
+            commentHTMLLive =
+            `<p class='comment-at-the-post the-comment'>
+                <a href='/profile/${me}'>
+                        <span class='img'>
+                        <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                        if(post.picture !== 'default') {
+                            commentHTMLLive +=
+                            `<img src="/userprofile/${mypicture}" alt='' class="picchanged profile-pic">` 
+                        }
+                        commentHTMLLive +=
+                        `</span>
+                    <span class='fullname'> ${myfirstname} ${mylastname}</span>
+                </a>
+                <br>
+                <span style="text-align: start;" dir="auto">${document.getElementById("comment-post-content-"+post._id).value}</span>
+            </p>`
+
+            document.getElementById(`comments-${document.getElementById('postId-'+post._id).value}`).innerHTML += commentHTMLLive
+         
             
             if(me !== post.owenerPostId){
                 socket.emit('sendNotification', {
@@ -197,6 +219,11 @@ socket.on('postsProfile', posts => {
 
     //*** Start the jquery animation effect ***//
     $(document).ready(function() {
+
+        // Switch the mode
+        $('body').addClass(localStorage.getItem('switchMode'));
+        $('.post').addClass(localStorage.getItem('switchMode'));
+
         $('.status .trim i.desc').on('click', function () {
             $(this).toggleClass('fa-caret-down fa-caret-up');
             $(this).parent('.trim').find('p.desc').slideToggle();

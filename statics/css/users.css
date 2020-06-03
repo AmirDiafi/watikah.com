@@ -1,3 +1,10 @@
+
+.load-screen {
+    width: 100%;
+    height:calc(100% + 40px);
+    margin-top: -30px !important;
+}
+
 .searchbar {
     margin: 30px auto;
     position: relative;
@@ -51,6 +58,10 @@
     width:100%;
     display: block;
     border-radius: 10px 10px 0 0 ;
+}
+
+.users .user .media .background.changedback {
+    position: absolute;
 }
 
 .users .user .media .profile {

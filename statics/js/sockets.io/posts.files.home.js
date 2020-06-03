@@ -49,16 +49,25 @@ socket.on('postsHome', posts => {
                     mypicture,
                     me
                 })
-            
-            document.getElementById(`comments-${document.getElementById('postId-'+post._id).value}`).innerHTML +=
+            let commentHTMLLive
+            commentHTMLLive =
             `<p class='comment-at-the-post the-comment'>
-                <a href='/profile/${me}' >
-                    <img src="/userPic/${mypicture}" alt="profile" style='border-radius: 100%;width:30px;height:30px'>
+                <a href='/profile/${me}'>
+                        <span class='img'>
+                        <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                        if(post.picture !== 'default') {
+                            commentHTMLLive +=
+                            `<img src="/userprofile/${mypicture}" alt='' class="picchanged profile-pic">` 
+                        }
+                        commentHTMLLive +=
+                        `</span>
                     <span class='fullname'> ${myfirstname} ${mylastname}</span>
                 </a>
                 <br>
                 <span style="text-align: start;" dir="auto">${document.getElementById("comment-post-content-"+post._id).value}</span>
             </p>`
+
+            document.getElementById(`comments-${document.getElementById('postId-'+post._id).value}`).innerHTML += commentHTMLLive
             
             if(me !== post.owenerPostId){
                 socket.emit('sendNotification', {

@@ -49,13 +49,13 @@ $(document).ready(function() {
             enableExif: true,
             enableOrientation: true,    
             viewport: { // Default { width: 100, height: 100, type: 'square' } 
-                width: 200,
-                height: 200,
+                width: 150,
+                height: 150,
                 type: 'circle' //square
             },
             boundary: {
-                width: '80%',
-                height: 300
+                width: '70%',
+                height: 200
             }
         });
 
@@ -64,7 +64,7 @@ $(document).ready(function() {
             resize.croppie('bind',{
                 url: e.target.result
             }).then(function(){
-                console.log('jQuery bind complete');
+                // console.log('jQuery bind complete');
             });
             }
             reader.readAsDataURL(this.files[0]);
@@ -101,13 +101,12 @@ $(document).ready(function() {
 
     //  some custom when on the scrool to the navbar
     $(window).on('scroll', function () {
-        if ($(window).scrollTop() <=  200) {
+        if ($(window).scrollTop() <=  70) {
             $('.logo-anchor').css({marginTop: 60})
         } else {
             $('.logo-anchor').css({marginTop: 10})
         }
+    
     })
-
-
 
 })

@@ -21,7 +21,8 @@ exports.postSignup = (req, res, next) => {
             req.body.lastname,
             req.body.password,
             req.body.email,
-            Date.now()
+            Date.now(),
+            new Date().toLocaleDateString()
         ).then( () => {
             res.redirect('/login')
         }).catch( err => {

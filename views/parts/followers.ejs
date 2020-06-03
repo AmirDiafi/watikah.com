@@ -4,8 +4,13 @@
         <%for(let follower of user.followers){%>
             <div class="follower">
                 <a href="/profile/<%=follower.me%>">
-                    <img src="/userPic/<%=follower.mypicture%>" alt="follower" style="width: 30px;height: 30px; border-radius: 100%;">
-                    <span>
+                    <span class="img">
+                        <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">
+                    <%if(follower.picture !== 'default') {%>
+                        <img src="/userprofile/<%=follower.mypicture%>" alt='' class="picchanged profile-pic">
+                    <%}%>
+                    </span>
+                    <span class="fullname">
                         <%=follower.myfirstname%> <%=follower.mylastname%>
                     </span>
                 </a>

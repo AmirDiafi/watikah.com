@@ -19,7 +19,8 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/profile/<%=userId%>">
-            <img src="/userPic/<%=mypicture%>" alt="">
+            <img src="/defaultuser/defaultUser.jpeg" alt="">
+            <img src="/userprofile/<%=mypicture%>" alt='' class="picchanged">
           </a>
         </li>
         <li class="nav-item">
@@ -55,6 +56,14 @@
                 <a href="/edit/<%=userId%>">
                   <i class="fa fa-user-edit fa-fw"></i> | تعديل
                 </a>
+            </li>
+            <!-- start Dark Mode Switch -->
+            <li>
+              <div class="switch-mode">
+                <i class="fa fa-sun fa-fw"></i>
+                <span class="switch-icon selected-dark" data-choice='.selected-dark' data-color="dark-mode">ظلام</span> |
+                <span class="switch-icon selected-light" data-choice='.selected-light' data-color="light-mode">نهار</span>
+              </div>
             </li>
             <li><i class="fa fa-check fa-fw"></i> | الرسمية</li>
             <li>

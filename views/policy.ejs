@@ -12,7 +12,12 @@ height: 100%;">
 <div class="container footer-with-navbar">
     <h5 class="text-center">
         Welcome
-        <img src="/userPic/<%=mypicture%>" alt="user" style='width:30px;height: 30px;border-radius: 100%;' >
+        <div class="text-center pic">
+            <img src="/defaultuser/defaultUser.jpeg" alt='' class="default">
+            <%if(mypicture !== 'default') {%>
+                <img src="/userprofile/<%=mypicture%>" alt='' class="picchanged">
+            <%}%>
+        </div>
         <%=myfirstname%> <%=mylastname%></h5>
     <a href="#arabic" dir="auto" style="text-align: start;">عربي </a> | 
     <a href="#english"> English</a>
@@ -177,7 +182,7 @@ height: 100%;">
 
 <div class="footer with-nav">
     <div>
-        <p>Developed and Designed with <i class="fa fa-heart"></i> & <i class="fa fa-coffee"></i>, by Amir Diafi. All Rights are recerved &COPY; 2020. watikah.com</p>
+        <p>Developed and Designed with <i class="fa fa-heart"></i> & <i class="fa fa-coffee"></i> by Amir Diafi. All Rights are recerved &COPY; 2020. watikah.com</p>
         <ul>
             <li>
                 <a href="http://">

@@ -18,11 +18,19 @@ div.pic{
     border-radius: 100%;
 } 
 
+img.picchanged {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+}
+
 form.edit-info > input[type='text'],
 form.edit-info > input[type='email'] {
     width:70%;
     margin: 10px auto;
     border-radius: 50px;
+    text-align: start;
 }
 
 form.edit-info > button[type='submit'] {

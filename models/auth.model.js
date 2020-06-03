@@ -5,6 +5,7 @@ const userSchema = mongoose.Schema({
     resetPasswordExpires: Date,
     resetPasswordToken: String,
     dateOfCreate: String,
+    dateOfOpen: String,
     firstname: String,
     lastname: String,
     password: String,
@@ -89,8 +90,8 @@ const postSchema = mongoose.Schema({
 })
 
 // ------ URL DB and Schema Declaration ------ //
-const DB_URL = 'mongodb+srv://DiafiAmir:18265432171004@cluster0-3wwqa.mongodb.net/watikaDB?retryWrites=true&w=majority'
-// const DB_URL = 'mongodb://localhost:27017/clientDB'
+// const DB_URL = 'mongodb+srv://DiafiAmir:18265432171004@cluster0-3wwqa.mongodb.net/watikaDB?retryWrites=true&w=majority'
+const DB_URL = 'mongodb://localhost:27017/clientDB'
 const User = mongoose.model('user', userSchema)
 const Post = mongoose.model('post', postSchema)
 const bcrypt = require('bcryptjs')
@@ -102,7 +103,7 @@ mongoose.set( 'useFindAndModify', false )
 mongoose.set( 'useCreateIndex', true )
 mongoose.set( 'useUnifiedTopology', true )
 
-exports.createUser = ( firstname, lastname, password, email, dateOfCreate ) => {
+exports.createUser = ( firstname, lastname, password, email, dateOfCreate, dateOfOpen ) => {
     return new Promise( (resolve, reject) => {
         mongoose.connect(DB_URL).then( () => {
             User.findOne( {email:email} ).then(result => {
@@ -116,14 +117,15 @@ exports.createUser = ( firstname, lastname, password, email, dateOfCreate ) => {
             }).then( (hashedPassword) => {
                 // mongoose.disconnect()
                 let user = new User({
-                    background: 'defaultBackground.jpg',
                     username: firstname+lastname,
-                    picture: 'defaultUser.jpeg',
+                    dateOfCreate: dateOfCreate,
                     password: hashedPassword,
+                    dateOfOpen: dateOfOpen,
+                    background: 'default',
                     firstname: firstname,
                     lastname: lastname,
-                    dateOfCreate: dateOfCreate,
-                    email: email
+                    picture: 'default',
+                    email: email,
                 })
                 return user.save()
             }).then( () => {

@@ -20,7 +20,12 @@
                 <h3>Reset Password</h3>
                 <hr>
                 <p>
-                    <img src="/userPic/<%=user.picture%>" alt="picture"
+                    <div class="text-center pic">
+                        <img src="/defaultuser/defaultUser.jpeg" alt='' class="default">
+                        <%if(user.picture !== 'default') {%>
+                            <img src="/userprofile/<%=user.picture%>" alt='' class="picchanged">
+                        <%}%>
+                    </div>
                     style="width:30px;height:30px;border-radius:100%">
                     <span>Hi, <b> <%=user.firstname%> <%=user.lastname%></b></span>
                 </p>

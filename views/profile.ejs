@@ -1,9 +1,9 @@
 
 <%- include('parts/header') %>
 <link rel="stylesheet" href="/css/croppie.css">
-<link rel="stylesheet" href="/css/navbar.css">
 <link rel="stylesheet" href="/css/posts.css">
 <link rel="stylesheet" href="/css/profile.css">
+<link rel="stylesheet" href="/css/navbar.css">
 </head>
 <body>
 <%- include('parts/navbar')%>
@@ -29,7 +29,12 @@
             <!-- <button class="btn close-edit-back close-popup" >Cancel</button> -->
         </div>
     </div>
-    <img src="/userBack/<%=user.background%>" alt="background" >
+    <div class="img">
+        <img src="/defaultuser/defaultBackground.jpg" alt='' class="default">
+        <%if(user.background !== 'default') {%>
+            <img src="/userprofile/<%=user.background%>" alt='' class="changedback">
+        <%}%>
+    </div>
     <% if(id == userId) {%>
     <div class="pop-btn back" data-popup="popup-edit-back">
         <i class="fas fa-camera"></i>
@@ -37,12 +42,15 @@
     <%}%>
 </div>
 
-<!-- ****** Follow Btns ******-->
+<!-- ****** Follow Btns and profile picture ******-->
 <div class="follow-btns row">
     <div class="profile-header col col-4">   
         <div class="userpic">
             <div class="header">
-                <img src="/userPic/<%=user.picture%>" alt="profile" >
+                <img src="/defaultuser/defaultUser.jpeg" alt='' class="default">
+                <%if(user.picture !== 'default') {%>
+                    <img src="/userprofile/<%=user.picture%>" alt='' class="picchanged">
+                <%}%>
             </div>
             <h4 dir="auto"><%=user.firstname%> <%=user.lastname%></h4>
             <%if (user.bio) {%>
@@ -53,7 +61,7 @@
                     <hr style="margin:2px auto">
                     <p class="bio">
                         <a href="/edit/<%=userId%>" style="text-decoration: none;">
-                            إقتبس عن نفسك <span class="bio-icon"></span>
+                            <span class="bio-icon"></span>  إقتبس عن نفسك 
                         </a>
                     </p>
                 <%}%>
@@ -116,20 +124,31 @@
                     <%if(notification.postId !== 'undefined'){%>
                         <div class="notifics ">
                             <a href="/profile/<%=notification.me%>">
-                                <img src='/userPic/<%=notification.mypicture%>'>
-                                <span style="text-align: start;" dir="auto" class="fullname">
-                                    <%=notification.myfirstname%> <%=notification.mylastname%>  
-                                </span>
+                                <span class="img">
+                                    <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">  
+                                <%if(notification.mypicture !== 'default') {%>
+                                    <img src="/userprofile/<%=notification.mypicture%>" alt='' class="picchanged profile-pic">  
+                                <%}%>
+                                </span> 
+                                
+                                <span style="text-align: start;" dir="auto" class="fullname"> 
+                                    <%=notification.myfirstname%> <%=notification.mylastname%> 
+                                </span> 
                             </a> 
-                            <a href='/post/<%=notification.postId%>'>
+                            <a href="/post/<%=notification.postId%>"> 
                                 <span> | <%=notification.event%> | <span dir="ltr"> <%=notification.dateOfEvent%></span></span>
                             </a>
                         </div>
                     <%} else if(notification.postId === 'undefined'){%>
                         <div class="notifics">
                             <a href="/profile/<%=notification.me%>">
-                                <img src='/userPic/<%=notification.mypicture%>'>
-                                <span style="text-align: start;" dir="auto" class="fullname">
+                                <span class="img">
+                                    <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">  
+                                <%if(notification.mypicture !== 'default') {%>
+                                    <img src="/userprofile/<%=notification.mypicture%>" alt='' class="picchanged profile-pic"> 
+                                <%}%>
+                                </span>
+                                <span style="text-align: start;" dir="auto" class="fullname"> 
                                     <%=notification.myfirstname%> <%=notification.mylastname%> 
                                 </span> 
                                 <span> | <%=notification.event%> |<span dir="ltr"> <%=notification.dateOfEvent%></span></span>
@@ -151,8 +170,15 @@
         <%for(let message of messages) {%>
             <li class="message">
                 <a href="/profile/<%=message.me%>">
-                    <img src="/userPic/<%=message.mypicture%>" alt="user" style="width:30px;height:30px;border-radius: 100%">
-                    <span><%=message.myfirstname%> <%=message.mylastname%> | </span>
+                    <span class="img">
+                        <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">  
+                    <%if(message.mypicture !== 'default') {%>
+                        <img src="/userprofile/<%=message.mypicture%>" alt='' class="picchanged profile-pic"> 
+                    <%}%>
+                    </span>
+                    <span style="text-align: start;" dir="auto" class="fullname"> 
+                        <%=message.myfirstname%> <%=message.mylastname%> 
+                    </span>
                 </a>
                 <p>أرسل لك رسالة</p>
                 <div class="see">

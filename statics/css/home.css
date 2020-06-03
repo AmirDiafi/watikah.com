@@ -145,21 +145,13 @@ body{
 /* *** Search bar *** */
 .search-post button {
     border-radius: 0 50px 50px 0;
-    background-color: #290688;
-    border-color: #290688;
+    background-color: #062230;
+    border-color: #062230;
+    color :#28a745
 }
 
-.search-post button:hover{
-    background-color: #489765;
-    border-color: #489765;
-}
-
-.buttons-filter hr {
-    margin: 10px auto 20px;
-    width:80%;
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(0, 0, 0, .75), rgba(255,255, 255, 0));
+.buttons-filter{
+    margin-top: 10px;
 }
 
 .buttons-filter ul.slider {
@@ -168,7 +160,7 @@ body{
 }
 
 .buttons-filter .category{
-    background: #290688;
+    background: #004085;
     color: #FFF;
     border-radius: 50px;
     width:70% !important;
@@ -176,6 +168,11 @@ body{
     padding: 5px;
     transition: all .2s linear;
     cursor: pointer;
+}
+
+
+.buttons-filter .category:hover {
+    background: #28a745
 }
 
 .active {

@@ -74,7 +74,7 @@
             <br> مع منصتنا سوف نجعل أعمالك تدوم، ويستفيد من أعمالك الجميع، وتستفيد أنت الكثير
         </p>
         <hr>
-        <h5>لنجعل الحياة مكان أفضل</h5>
+        <h5>معاً نجعل الجامعة مكان أفضل</h5>
         <div class="down">
             <i class="fas fa-chevron-down go-down"></i>
         </div>
@@ -127,13 +127,16 @@
                             <input type="hidden" name="redirect" value='/<%=post.owenerPostId%>'>
                             <li>
                                 <button type="submit" formaction="/profile/<%=post.owenerPostId%>/remove-post" formmethod="POST">
-                                    <i class="fa fa-trash"></i> | حذف
+                                    <i class="fa fa-trash-alt fa-fw"></i> | حذف
                                 </button>
                             </li>
                         </form>
                     </ul>
                     <a href="/profile/<%=post.owenerPostId%>" class='anchor-pic'>
-                        <img src="/userPic/<%=post.picture%>" alt="profile" class="profile-pic">
+                        <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">
+                        <%if(post.picture !== 'default') {%>
+                            <img src="/userprofile/<%=post.picture%>" alt='' class="picchanged profile-pic">
+                        <%}%>
                         <span style="text-align: start;" dir="auto" class="username"> <%=post.firstname%> <%=post.lastname%></span>
                         <span class='timestamp' style="text-align: start;" dir="auto"> <%=post.postDate%></span>
                     </a>
@@ -156,6 +159,7 @@
                     <div class="trim">
                         <p class='desc' style="text-align: start;" dir="auto"><%=post.description%></p>
                         <div class=comments id='comments-<%=post._id%>'>
+                        <hr>
                         <form class="add-comment-form" method='POST'>
                             <input type=hidden id='postId-<%=post._id%>' value='<%=post._id%>'>
                             <input type=hidden id='owenerPostId-<%=post.owenerPostId%>' value='<%=post.owenerPostId%>'>
@@ -164,24 +168,30 @@
                                 <i class='fas fa-paper-plane'></i>
                             </button>
                         </form>
-                            <%for(let comment of post.comments) {%>
-                                <p style="text-align: start;" dir="auto" class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
-                                    <a href='/profile/<%=comment.me%>' >
-                                        <img src="/userPic/<%=comment.mypicture%>" alt="" style="border-radius: 100%;width:30px;height:30px">
-                                        <span style="text-align: start;" dir="auto" class='fullname'> <%=comment.myfirstname%> <%=comment.mylastname%></span>
-                                    </a>
-                                    <br>
-                                    <span style="text-align: start;" dir="auto"><%=comment.comment%></span>
-                                </p>
-                                <%if(comment.me == userId){%>
-                                    <form class='remove-comment-form trash-the-post' id='post-trash-<%=comment._id%>'>
-                                        <i class='fas fa-ellipsis-v remove-cmnt-edit-icon'></i>
-                                        <button class='trash-btn' id='<%=post._id%>-<%=comment._id%>'>
-                                            <i class="fa fa-trash-alt"></i>
-                                        </button>
-                                    </form>
-                                <%}%>
-                            <%}%> 
+                        <hr>
+                        <%for(let comment of post.comments) {%>
+                            <p style="text-align: start;" dir="auto" class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
+                                <a href='/profile/<%=comment.me%>'>
+                                    <span class="img">
+                                        <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic"> 
+                                    <%if(post.picture !== 'default') {%>
+                                        <img src="/userprofile/<%=comment.mypicture%>" alt='' class="picchanged profile-pic"> 
+                                    <%}%>
+                                    </span>
+                                    <span class='fullname'> <%=comment.myfirstname%> <%=comment.mylastname%></span>
+                                </a>
+                                <br>
+                                <span style="text-align: start;" dir="auto"><%=comment.comment%></span>
+                            </p>
+                            <%if(comment.me == userId){%>
+                                <form class='remove-comment-form trash-the-post' id='post-trash-<%=comment._id%>'>
+                                    <i class='fas fa-ellipsis-v remove-cmnt-edit-icon'></i>
+                                    <button class='trash-btn' id='<%=post._id%>-<%=comment._id%>'>
+                                        <i class="fa fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            <%}%>
+                        <%}%> 
                     </div>
                         <i class="fas fa-caret-down desc"></i>
                         <i class="fas fa-comment-alt comment"> <%=post.comments.length%></i>

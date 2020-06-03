@@ -13,7 +13,7 @@ userProfileController.getUserProfile)
 router.post('/:id/profile-edit', authProtect.isAuth, multer({
         storage: multer.diskStorage({
             destination: (req, file, cb) => {
-                cb(null, 'images/userPic')
+                cb(null, 'files/userprofile')
             },
             filename: (req, file, cb) => {
                 cb(null, 'picture-' + Date.now() + req.params.id + '-' + file.originalname)
@@ -25,7 +25,7 @@ userProfileController.uploadProfilePic)
 router.post('/:id/background-edit', authProtect.isAuth, multer({
         storage: multer.diskStorage({
             destination: (req, file, cb) => {
-                cb(null, 'images/userBack')
+                cb(null, 'files/userprofile')
             },
             filename: (req, file, cb) => {
                 cb(null, 'background-' + Date.now() + req.params.id + '-' + file.originalname)

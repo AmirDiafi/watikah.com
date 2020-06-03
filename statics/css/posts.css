@@ -57,12 +57,8 @@
     background: none;
     text-align: inherit;
     border: none;
-    color :rgb(114, 114, 114);
+    color: #dc1125;
     z-index: 2;
-}
-
-.post ul.edit button:hover{
-    color :#000;
 }
 
 .post a.anchor-pic {
@@ -78,6 +74,13 @@
     width: 30px;
     height:100%;
     border-radius: 100%;
+}
+
+.post a.anchor-pic .profile-pic.picchanged {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
 }
 
 .post .username{
@@ -104,12 +107,12 @@
 }
 
 .post hr {
-        margin: 0 auto;
-        width:80%;
-        border: 0;
-        height: 1px;
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, .75), rgba(0,0, 0, 0));
-    }
+    margin: 0 auto;
+    width:80%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, .75), rgba(0,0, 0, 0));
+}
 
 .post .post-pic {
     width:100%;
@@ -145,22 +148,51 @@
     margin: 0;
     padding :5px;
     padding: 5px;
-    border-bottom: .6px solid #eee;
 }
 
 .the-comment .fullname {
     font-size: 13px;
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: 6px
 }
 
 .the-comment a{
     text-decoration :none;
-    color :#555
+    color :#555;
+    display: inline-block;
+}
+
+.the-comment a .img {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    position: relative;
+    overflow: hidden;
+    float: left;
+}
+
+.the-comment a .img img {
+    width: 100%;
+    height :100%;
+    position: absolute;
+    top:0;
+    left:0
+}
+
+.the-comment a .img img.picchanged {
+    z-index: 2;
 }
 
 .the-comment > span {
     display: block;
     font-size: 14px;
-    margin-top: 7px
+    margin-top: 7px;
+    text-align: start;
+    background: #062230;
+    color: #FFF;
+    padding: 10px;
+    border-radius: 3px 30px 30px;
 }
 
 .file .trim p.desc,
@@ -171,8 +203,6 @@
 
 form.add-comment-form {
     display: flex;
-    border-top: 1px solid #EEE;
-    border-bottom: 1px solid #EEE;
     padding-bottom: 10px;
     padding-top: 10px
 }
@@ -243,18 +273,16 @@ form.add-comment-form button[type='submit']:hover i{
     z-index: 3;
     position: relative;
     width:70%;
-    display: inline-block;
+    display: none;
     border-radius: 5px;
-    padding:0;
-    background-color: #eeee;
-    color :#062230;
-    border: 1px solid rgba(223, 223, 223, 0.933)
+    padding:0;    background-color: #6c757d;
+    border: 1px solid #495057;
 }
 
 .remove-comment-form button i.fa-trash-alt {
     border: none;
-    color: #333;
     padding-right: 0;
+    color: #dc1125;
     background: transparent;
     font-size: 12px;
     padding:0 !important;

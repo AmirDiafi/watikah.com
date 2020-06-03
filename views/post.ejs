@@ -28,13 +28,16 @@
                 <input type="hidden" name="redirect" value='/profile/<%=post.owenerPostId%>'>
                 <li>
                     <button type="submit" formaction="/profile/<%=post.owenerPostId%>/remove-post" formmethod="POST">
-                        <i class="fa fa-trash"></i> | Remove
+                        <i class="fa fa-trash-alt"></i> | حذف
                     </button>
                 </li>
             </form>
         </ul>
         <a href="/profile/<%=post.owenerPostId%>" class='anchor-pic'>
-            <img src="/userPic/<%=post.picture%>" alt="profile" class="profile-pic">
+            <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">
+                        <%if(post.picture !== 'default') {%>
+                            <img src="/userprofile/<%=post.picture%>" alt='' class="picchanged profile-pic">
+                        <%}%>
             <span style="text-align: start;" dir="auto" class="username"> <%=post.firstname%> <%=post.lastname%></span>
             <span class='timestamp' style="text-align: start;" dir="auto"> <%=post.postDate%></span>
         </a>
@@ -67,10 +70,15 @@
                 </button>
             </form>
                 <%for(let comment of post.comments) {%>
-                    <p class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
-                        <a href='/profile/<%=comment.me%>' >
-                            <img src="/userPic/<%=comment.mypicture%>" alt="profile" style="border-radius: 100%;width:30px;height:30px">
-                            <span style="text-align: start;" dir="auto" class='fullname'> <%=comment.myfirstname%> <%=comment.mylastname%></span>
+                    <p style="text-align: start;" dir="auto" class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
+                        <a href='/profile/<%=comment.me%>'>
+                            <span class="img">
+                                <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic"> 
+                            <%if(post.picture !== 'default') {%>
+                                <img src="/userprofile/<%=comment.mypicture%>" alt='' class="picchanged profile-pic"> 
+                            <%}%>
+                            </span>
+                            <span class='fullname'> <%=comment.myfirstname%> <%=comment.mylastname%></span>
                         </a>
                         <br>
                         <span style="text-align: start;" dir="auto"><%=comment.comment%></span>
