@@ -101,11 +101,6 @@ body.dark-mode .profile-header .userpic .header img.picchanged {
     border: none
 }
 
-body.dark-mode .container.status .titles {
-    color: #28a745;
-    box-shadow: 0 3px 3px #28a745;
-}
-
 body.dark-mode .follow-btns .bio {
     color: #FFF !important
 }

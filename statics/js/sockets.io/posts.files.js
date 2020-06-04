@@ -6,7 +6,9 @@ socket.emit('getPosts&FilesProfile', {
 socket.on('postsProfile', posts => {
     if(posts.length !== 0) {
         let thepost = `<div> 
-        <h3 class='titles'>المنشورات <i class='far fa-address-card fa-fw'></i>  ${posts.length}</h3>
+        <h3 class='titles'>المنشورات 
+        <img src='/home-images/file.png' />
+        </i>  ${posts.length}</h3>
         `
     for(let post of posts) {
         thepost += `<div class='post status'>`

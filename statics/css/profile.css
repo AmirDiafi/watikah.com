@@ -266,6 +266,11 @@ body{
     margin-top: 20px;
 }
 
+.container.status .titles img {
+    width:30px;
+    height:30px
+}
+
 .follow-btns .bio{
     color: #333;
     font-size: 16px;
