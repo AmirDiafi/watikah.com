@@ -33,9 +33,7 @@ light-mode {
 .dark-mode a,
 .dark-mode h3{
     color: #fefefe !important;
-
 }
-
 
 body.dark-mode{
     color: #fefefe ;
@@ -58,7 +56,8 @@ body.light-mode{
 }
 
 .post.dark-mode a .username,
-.post.dark-mode .timestamp{
+.post.dark-mode .timestamp,
+.post.dark-mode .fullname{
     color: #FFF !important
 }
 
@@ -67,12 +66,12 @@ body.light-mode{
     color: #062230 !important
 }
 
-.post.dark-mode .fullname {
-    color :#FFF 
-}
-
 .post.light-mode .fullname {
     color :#062230 
+}
+
+body.dark-mode h4{
+    color: #FFF !important
 }
 
 body.dark-mode .profile-header .userpic .header img {
