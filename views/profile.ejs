@@ -6,6 +6,25 @@
 <link rel="stylesheet" href="/css/navbar.css">
 </head>
 <body>
+
+    <!--  -->
+
+    <%if(isFollower){%>
+        <style>
+            #followed {
+                display: none;
+            }
+        </style>
+    <%}%>
+    
+    <%if(!isFollower){%>
+        <style>
+            #unfollow {
+                display: none;
+            }
+        </style>
+    <%}%>
+
 <%- include('parts/navbar')%>
 
 <!-- *** Start hiiden inputs *** -->
@@ -87,16 +106,12 @@
         <% if(id != userId) {%>
         <div class="msg-fllwr-icons">
             <li class="fllwr-btn-cont" id='fllwr-btn-cont'>
-                <%if(!isFollower){%>
-                    <button class="btn fav" id="followed">
-                        <i class="far fa-star"></i>
+                    <button class="btn fav" >
+                        <i class="far fa-star" id="followed"></i>
+                        <i class="fas fa-star"  id="unfollow"></i>
                     </button>
-                <%}%>
-                <%if(isFollower){%>
-                    <button class="btn fav" id="unfollow">
-                        <i class="fas fa-star"></i>
-                    </button>
-                <%}%>
+                    <!-- <button class="btn fav ">
+                    </button> -->
             </li>
             <li class="fllwr-btn-cont">
                 <button class="pop-btn btn message" data-popup="popup-send-msg">

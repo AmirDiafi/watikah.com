@@ -145,6 +145,14 @@ body{
 /* *** Search bar *** */
 .search-post button {
     border-radius: 0 50px 50px 0;
+    background-color: #062230 !important;
+    border-color: #062230 !important;
+    color:#28a745 !important;
+    cursor: not-allowed !important;
+}
+
+
+.search-post button:hover  {
     background-color: #062230;
     border-color: #062230;
     color :#28a745

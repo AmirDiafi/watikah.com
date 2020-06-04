@@ -208,11 +208,16 @@ socket.on('postsProfile', posts => {
 }
     
     if(posts.length === 0) {
-        let thepostempty = `<div class='theposts-inner-empty' class='empty-profile'>
+        let thepostempty = `<div class='theposts-inner-empty' class='empty-profile'>`
+        if(userId == me) {
+        thepostempty +=
+            `<p dir='auto'>ليس لك منشورات بعد! &#128064 إرفع منشورك الأول الآن</p>
             <img src='/home-images/profile.png'>`
-            if(userId == me) {
-                thepostempty += `<p dir='auto'>ليس لك منشورات بعد! &#128064 إرفع منشورك الأول الآن</p>`
-            }
+        } else if(userId != me) {
+            thepostempty += 
+            `<p dir='auto'>لا يوجد منشورات بعد</p>
+            <img src='/home-images/profile-2.png'>`
+        }
         `</div>`
         theposts.innerHTML = thepostempty
     }
@@ -221,8 +226,9 @@ socket.on('postsProfile', posts => {
     $(document).ready(function() {
 
         // Switch the mode
-        $('body').addClass(localStorage.getItem('switchMode'));
-        $('.post').addClass(localStorage.getItem('switchMode'));
+        $('body, .post').removeClass('dark-mode light-mode');
+        $('body, .post ').addClass(localStorage.getItem('switchMode'));
+   
 
         $('.status .trim i.desc').on('click', function () {
             $(this).toggleClass('fa-caret-down fa-caret-up');

@@ -1,5 +1,6 @@
 <div class="followings col-6 popup-following">
     <h3 class="titles">يفضل <%=user.followings.length%></h3>
+    <hr>
     <%if(user.followings.length !== 0){%>
         <%for(let following of user.followings){%>
             <div class="following">
@@ -15,6 +16,7 @@
                     </span>
                 </a>
             </div>
+            <hr>
         <%}%>
     <%} else {%>
         <div class="no-followers">

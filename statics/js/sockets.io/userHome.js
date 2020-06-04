@@ -112,7 +112,11 @@ socket.on('userHome', user => {
             theNotifications.innerHTML = theNotification
         }
 }
-
+$(document).ready(function () {
+    // *** Start switch the mode *** //
+    $('body, .post , .notifications ul, .the-follow-inner, .send-message, .file').removeClass('dark-mode light-mode');
+    $('body, .post , .notifications ul, .the-follow-inner, .send-message, .file').addClass(localStorage.getItem('switchMode'));
+    
     // *** Show The Popup By The Button Of Popup *** //
     $('.pop-btn').on('click', function () {
         $('.'+ $(this).data('popup')).fadeIn(500);
@@ -136,5 +140,6 @@ socket.on('userHome', user => {
        $(this).parent('li.message').siblings().next('p.msg-cntnt').slideUp(500)
        $(this).parent('li.message').next('p.msg-cntnt').slideToggle(500)
    })
+})
 
 })

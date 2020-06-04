@@ -2,10 +2,12 @@
 
 $(document).ready(function () {
     // Set the background mode user has select
-    $('body').removeClass();
-    $('body').addClass(localStorage.getItem('switchMode'));
-    $('.post').removeClass('dark-mode light-mode');
-    $('.post').addClass(localStorage.getItem('switchMode'));
+    if($('body').hasClass('light-mode')) {
+        $('.selected-light').addClass('selected');
+    }
+    $('.switch-icon').removeClass('selected');
+    $('body, .post , .notifications ul, .the-follow-inner, .send-message, .file').removeClass('dark-mode light-mode');
+    $('body, .post , .notifications ul, .the-follow-inner, .send-message, .file').addClass(localStorage.getItem('switchMode'));
     $(localStorage.getItem('choice')).addClass('selected');
 
     // ------ Start Show/hide the list ------ //
@@ -29,12 +31,12 @@ $(document).ready(function () {
     $('.switch-mode span').click(function () {
         $(this).addClass('selected').siblings().removeClass('selected');
         localStorage.setItem('choice', $(this).data('choice'));
-        $('body').removeClass();
-        $('body').addClass($(this).data('color'));
         localStorage.setItem('switchMode', $(this).data('color'));
-        $('.post').removeClass('dark-mode light-mode');
-        $('.post').addClass($(this).data('color'));
+        $('body, .post , .notifications ul, .the-follow-inner, .send-message, .file').removeClass('dark-mode light-mode');
+        $('body, .post, .notifications ul, .the-follow-inner, .send-message, .file').addClass($(this).data('color'));
+       
     })
+
 })
 
 

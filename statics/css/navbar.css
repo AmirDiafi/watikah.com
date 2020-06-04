@@ -20,6 +20,23 @@ body.dark-mode hr {
 
 /* Start The Daek/Light Mode */
 
+.dark-mode {
+    color: #fefefe !important;
+    background-color: #222 !important;
+}
+
+light-mode {
+    color: #222 !important;
+    background-color: #FFF !important;
+}
+
+.dark-mode a,
+.dark-mode h3{
+    color: #fefefe !important;
+
+}
+
+
 body.dark-mode{
     color: #fefefe ;
     background-color: #1c1c1c;
@@ -83,11 +100,6 @@ body.dark-mode .profile-header .userpic .header img.picchanged {
 .post.dark-mode .trim i {
     border: none
 }
-
-/* body.dark-mode .fllwr-btn-cont .btn, .follow-count li p{
-    background: #007bff !important;
-    box-shadow: 0 2px 2px #007bff !important ;
-} */
 
 body.dark-mode .container.status .titles {
     color: #28a745;
