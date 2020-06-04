@@ -933,7 +933,7 @@ h3.titles{
     }
 
     .follow-count li.fllwr-btn-cont button.fav i{
-        line-height: 15px;
+        line-height: 13px;
     }
 
     .follow-count li.fllwr-btn-cont button.message {
@@ -998,7 +998,7 @@ h3.titles{
 
     .followers-following .the-follow-inner .followers .follower a .fullname,
     .followers-following .the-follow-inner .followings .following a .fullname {
-        font-size: 8px;
+        font-size: 6px;
         margin-top: 4px;
     }
 
@@ -1071,7 +1071,7 @@ h3.titles{
         width: 30%;
     }
 
-    .notifications .notificationsList li a span:last-child{
+    .notifications .notificationsList li a span{
         font-size: 10px;
     }
 
@@ -1087,7 +1087,7 @@ h3.titles{
     
     .followers-following .the-follow-inner .followers .follower a,
     .followers-following .the-follow-inner .followings .following a{
-        font-size: 10px;
+        font-size: 8px;
         display: block;
         text-align: start;
     }
