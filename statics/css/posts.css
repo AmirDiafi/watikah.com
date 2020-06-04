@@ -288,7 +288,18 @@ form.add-comment-form button[type='submit']:hover i{
     padding:0 !important;
 }
 
-/* Start File content */
+/* Start File content and trim */
+
+.post .trim .comments {
+    max-height: 300px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+.the-comment > span {
+    max-height: 300px;
+    overflow: auto;
+}
 
 .file-content{
     padding: 10px;
