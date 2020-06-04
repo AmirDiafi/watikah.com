@@ -1,8 +1,8 @@
 <div class="followings col-6 popup-following">
     <h3 class="titles">يفضل <%=user.followings.length%></h3>
-    <hr>
     <%if(user.followings.length !== 0){%>
         <%for(let following of user.followings){%>
+            <hr>
             <div class="following">
                 <a href="/profile/<%=following.userId%>">
                     <span class="img">

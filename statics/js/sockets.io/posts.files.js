@@ -7,7 +7,7 @@ socket.on('postsProfile', posts => {
     if(posts.length !== 0) {
         let thepost = `<div> 
         <h3 class='titles'>المنشورات 
-        <img src='/home-images/file.png' />
+        <img src='/home-images/posts.png' />
         </i>  ${posts.length}</h3>
         `
     for(let post of posts) {

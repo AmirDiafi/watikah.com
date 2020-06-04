@@ -267,8 +267,8 @@ body{
 }
 
 .container.status .titles img {
-    width:30px;
-    height:30px
+    width:100px;
+    height:100px
 }
 
 .follow-btns .bio{
@@ -462,19 +462,21 @@ h3.titles{
 }
 
 .follow-count li.fllwr-btn-cont button.fav {
-    right: 10px;
+    right: 20px;
     bottom: 10px;
+    padding: 0;
+}
+
+.follow-count li.fllwr-btn-cont button.message {
+    right: 20px;
+    bottom: 65px;
 }
 
 .follow-count li.fllwr-btn-cont button.fav i{
     width:100%;
     height:100%;
     line-height: 40px;
-}
 
-.follow-count li.fllwr-btn-cont button.message {
-    right: 10px;
-    bottom: 65px;
 }
 
 .fllwr-btn-cont .btn,
@@ -933,7 +935,7 @@ h3.titles{
     }
 
     .follow-count li.fllwr-btn-cont button.fav i{
-        line-height: 13px;
+        line-height: 28px;
     }
 
     .follow-count li.fllwr-btn-cont button.message {

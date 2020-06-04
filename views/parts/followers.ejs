@@ -2,6 +2,7 @@
     <h3 class="titles">يفضله <%=user.followers.length%></h3>
     <%if(user.followers.length !== 0){%>
         <%for(let follower of user.followers){%>
+            <hr>
             <div class="follower">
                 <a href="/profile/<%=follower.me%>">
                     <span class="img">
