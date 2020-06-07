@@ -21,6 +21,10 @@
             <div class="form">
                 <h3>تسجيل الدخول</h3>
                 <hr>
+                <div>
+                    <p>ليس لديك حساب؟ <a href="/signup"> إفتح حساب جديد</a></p>
+                </div>
+                <hr>
                 <%if(authErr){%>
                     <p class="alert alert-danger">
                         <%= authErr %>
@@ -52,12 +56,10 @@
                         <input dir="auto" style="text-align: start;" type="password" required autocomplete="off" name="password" >
                         <label for="text">كلمة المرور</label>
                     </div>
-                    <p class="forgot-password"><a href="/forgot">نسيت كلمة السر?</a></p>
+                    <p class="forgot-password"><a href="/forgot">نسيت كلمة المرور؟</a></p>
                     <button type="submit">دخول <i class="fa fa-arrow-right"></i></button>
                 </form>
-                <div>
-                    <p>ليس لديك حساب؟ <a href="/signup"> فتح حساب جديد</a></p>
-                </div>
+                <hr>
             </div>
         </div>
     </div>

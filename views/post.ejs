@@ -11,8 +11,8 @@
 <input type="hidden" id="myfirstname" value='<%=myfirstname%>'>
 <input type="hidden" id="mylastname" value='<%=mylastname%>'>
 <input type="hidden" id="mypicture" value='<%=mypicture%>'>
-<input type="hidden" id="user" value='<%=id%>'>
 <input type="hidden" id="me" value='<%=userId%>'>
+<input type="hidden" id="postId" value='<%=postId%>'>
 
 <!-- ****** Start The Navbar ****** -->
 <%- include('parts/navbar')%>
@@ -51,7 +51,7 @@
         <%if(post.file !== 'undefined'){%>
             <input type="hidden" id="isFile" value="<%=post.file%>">
             <div class="file-content">
-                <a href="<%=post.file%>" id='file-icon-download' class="file-design" download="watikah-sourses">
+                <a href="/<%=post.file%>" id='file-icon-download' class="file-design" download="watikah-resourses">
                     <img src="" alt="file" class="file">
                     <i class="fas fa-arrow-down"></i>
                 </a> 
@@ -61,16 +61,18 @@
         <div class="trim">
             <p class='desc' style="text-align: start;" dir="auto"><%=post.description%></p>
             <div class=comments id='comments'>
-            <form class="add-comment-form"  method='POST'>
-                <input type=hidden id='postId' value='<%=post._id%>'>
-                <input type=hidden id='owenerPostId' value='<%=post.owenerPostId%>'>
-                <input dir='auto' type=text id='comment-post-content' placeholder='add comment' >
-                <button id='commentBtn' type="submit" class="btn btn-primary">
-                    <i class='fas fa-paper-plane'></i>
-                </button>
-            </form>
+                <hr>
+                <form class="add-comment-form">
+                    <input type=hidden id='postId' value='<%=post._id%>'>
+                    <input type=hidden id='owenerPostId' value='<%=post.owenerPostId%>'>
+                    <input dir='auto' type=text id='comment-post-content' placeholder='أضف تعليق' >
+                    <button id='<%=post._id%>' disabled type="button" class="btn submit">
+                        <i class='fas fas fa-comment-alt'></i>
+                    </button>
+                </form>
+                <hr>
                 <%for(let comment of post.comments) {%>
-                    <p style="text-align: start;" dir="auto" class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
+                    <p class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
                         <a href='/profile/<%=comment.me%>'>
                             <span class="img">
                                 <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic"> 
@@ -83,6 +85,14 @@
                         <br>
                         <span style="text-align: start;" dir="auto"><%=comment.comment%></span>
                     </p>
+                    <%if(comment.me == userId){%>
+                        <form class='remove-comment-form trash-the-post' id='post-trash-<%=comment._id%>'>
+                            <i class='fas fa-ellipsis-v remove-cmnt-edit-icon'></i>
+                            <button class='trash-btn' id='<%=post._id%>-<%=comment._id%>'>
+                                <i class="fa fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    <%}%>
                 <%}%>
             </div>
             <i class="fas fa-caret-down desc"></i>
@@ -96,11 +106,10 @@
 
 <!-- ****** Start The Scripts ****** -->
 <%- include('parts/footer')%>
-<script src="/js/navbar.js"></script>
-<script src="/js/profile.js"></script>
+<script defer src="/js/navbar.js"></script>
+<script defer src="/js/profile.js"></script>
 <!-- ****** Start the Sockets.io scripts ****** -->
-<script src="/socket.io/socket.io.js"></script>
-<!-- *** jQuery and socket post custom *** -->
-<script src="/js/post.js"></script>
+<script defer src="/socket.io/socket.io.js"></script>
+<script defer src="/js/post.js"></script>
 </body>
 </html>

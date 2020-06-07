@@ -8,8 +8,6 @@ module.exports = (io) => {
                 socket.emit('getPostsFailed')
             })
         })
-    })
-    io.on('connection' , socket => {
         socket.on('getPosts&FilesProfile', userId => {
             getPostsProfile(userId.userId).then(posts => {
                 socket.emit('postsProfile', posts)

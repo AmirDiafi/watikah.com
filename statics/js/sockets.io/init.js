@@ -14,16 +14,19 @@ const mypicture = document.getElementById('mypicture').value
 const userId = document.getElementById('user').value
 const me = document.getElementById('me').value
 
-socket.on('followedDone', () => {
+// socket.on('followedDone', () => {
     
-})
+// })
 
-socket.on('unfollowedDone', () => {
-    socket.emit('following end')
-})
+// socket.on('messageSentDone', (data) => {
+//     console.log('sent success')
+// })
 
-socket.on('commented', () => {
+// socket.on('unfollowedDone', () => {
     
-})
+// })
+
+// socket.on('commented', (data) => {
+// })
 
 

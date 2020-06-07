@@ -91,23 +91,6 @@ exports.postFiles = (req, res, next) => {
     })
 }
 
-exports.sendMessage = (req, res, next) => {
-    authModel.message({
-        dateOfMessage: new Date().toLocaleString(),
-        myfirstname: req.body.myfirstname,
-        mylastname: req.body.mylastname,
-        mypicture: req.body.mypicture,
-        message: req.body.message,
-        userId: req.body.userId,
-        sortByDate: new Date(),
-        me: req.body.me
-    }).then(()=>{
-        res.redirect(req.body.redirect)
-    }).catch(err => {
-        console.log(err)
-    })
-}
-
 exports.removePost = (req, res, next) => {
     authModel.removePost({
         postId: req.body.postId,

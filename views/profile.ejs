@@ -106,12 +106,10 @@
         <% if(id != userId) {%>
         <div class="msg-fllwr-icons">
             <li class="fllwr-btn-cont" id='fllwr-btn-cont'>
-                    <button class="btn fav" >
-                        <i class="far fa-star" id="followed"></i>
-                        <i class="fas fa-star"  id="unfollow"></i>
-                    </button>
-                    <!-- <button class="btn fav ">
-                    </button> -->
+                <button class="btn fav">
+                    <i class="far fa-star" id="followed"></i>
+                    <i class="fas fa-star"  id="unfollow"></i>
+                </button>
             </li>
             <li class="fllwr-btn-cont">
                 <button class="pop-btn btn message" data-popup="popup-send-msg">
@@ -129,7 +127,7 @@
     <div class="notifications popup popup-notifications" data-popup="popup-notifications">
         <ul id='notificationsList' class="list-unstyled notificationsList popup-inner">
         <%if(notifications.length == 0){%>
-            <div class="no-notifications">
+            <div class="no-notifications" id="no-notifications">
                 <p>لا يوجد أي تنبيهات بعد &#128237</p>
                 <img src="/home-images/notification.png" alt="">
             </div>
@@ -175,9 +173,9 @@
         </ul>
     </div>
     <div class="messages notifications popup popup-messages" data-popup="popup-messages">
-        <ul class='popup-inner list-unstyled notificationsList'>
+        <ul id='messagesList' class='popup-inner list-unstyled notificationsList'>
         <%if(messages.length == 0){%>
-            <div class="no-notifications">
+            <div class="no-notifications" id='no-messages'>
                 <p>لا يوجد أي رسائل بعد &#128237</p>
                 <img src="/home-images/message.png" alt="">
             </div>
@@ -221,12 +219,15 @@
                 <input type="hidden" name="redirect" value='<%=id%>'>
                 <input type="hidden" name="userId" value='<%=id%>'>
                 <input type="hidden" name="me" value='<%=userId%>'>
-                <input type="text" dir="auto" autocomplete='off' name="message" required class='form-control' placeholder="Type Message">
-                <button type="submit" formaction="/profile/send-message" formmethod="POST" class="btn">
-                    <i class="fa fa-paper-plane"></i>
+                <input type="text" required maxlength="300" id='message-content' dir="auto" autocomplete='off' name="message" required class='form-control' placeholder="Type Message">
+                <button type="button" disabled id='message-button' class="btn send">
+                    <i class="fa fa-envelope fa-fw" ></i>
                 </button>
+                <hr>
+                <p id="err-send-msg">300</p>
             </form>
             <!-- <button class="btn close-popup" >Cancel</button> -->
+
         </div>
     </div>
 <% } %>
@@ -291,11 +292,12 @@
 <script defer src="/socket.io/socket.io.js"></script>
 <script defer src="/js/sockets.io/init.js"></script>
 <script defer src="/js/sockets.io/posts.files.js"></script>
-<% if(id == userId) {%>
-    <script defer src="/js/sockets.io/notifications.js"></script>
-<%}%>
 <% if(id != userId) {%>
     <script defer src="/js/sockets.io/follow.js"></script>  
+<%}%>
+
+<% if(id == userId) {%>
+    <script defer src="/js/sockets.io/notifications.js"></script>
 <%}%>
 
 <!-- ****** Start the custom scripts ****** -->

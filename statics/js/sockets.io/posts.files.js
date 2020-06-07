@@ -49,7 +49,7 @@ socket.on('postsProfile', posts => {
             if(post.file !== 'undefined'){
                 thepost +=
                 `<div class="file-content"'>
-                    <a href="${post.file}" id='file-icon-download-${post._id}' class="file-design" download="watikah-resourses">
+                    <a href="/${post.file}" id='file-icon-download-${post._id}' class="file-design" download="watikah-resourses">
                         <img src="" alt="file" class="file">
                         <i class="fas fa-arrow-down"></i>
                     </a> 
@@ -60,12 +60,12 @@ socket.on('postsProfile', posts => {
             `<div class="trim">
                 <p class='desc' style="text-align: start;" dir="auto">${post.description}</p>
                 <div class=comments id='comments-${post._id}'>
-                <form class="add-comment-form"  method='POST'>
+                <form class="add-comment-form" >
                     <input type=hidden id='postId-${post._id}' value='${post._id}'>
                     <input type=hidden id='owenerPostId-${post.owenerPostId}' value='${post.owenerPostId}'>
                     <input dir='auto' type=text id='comment-post-content-${post._id}' placeholder='add comment' >
-                    <button id='${post._id}' type="submit" class="btn btn-primary">
-                        <i class='fas fa-paper-plane'></i>
+                    <button id='${post._id}' disabled type="button" class="btn submit">
+                        <i class='fas fa-comment-alt'></i>
                     </button>
                 </form>`
             for(let comment of post.comments) {
@@ -90,7 +90,7 @@ socket.on('postsProfile', posts => {
                     <form class='remove-comment-form trash-the-post' id='post-trash-${comment._id}'>
                         <i class='fas fa-ellipsis-v remove-cmnt-edit-icon'></i>
                         <button class='trash-btn' id='${post._id}-${comment._id}'>
-                            <i class="fa fa-trash-alt"></i>
+                            <i class="fa fa-trash-alt "></i>
                         </button>
                     </form>
                     `
@@ -129,6 +129,36 @@ socket.on('postsProfile', posts => {
             $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/file.png')
         }
     }
+// ****** Start execute the fucntion comment and notifications and Custom the download icons ****** //
+    // *** Custom the comment icons *** //
+    let comment = document.getElementById("comment-post-content-"+post._id).oninput = function() {
+        if(document.getElementById("comment-post-content-"+post._id).value !== '') {
+            if(document.getElementById(post._id)) {
+                let CmntBtn = document.getElementById(post._id)
+                CmntBtn.removeAttribute('disabled')
+                CmntBtn.style.backgroundColor = "#28a745"
+                CmntBtn.style.color = "#062230"
+                CmntBtn.style.marginLeft = "-20px"
+                CmntBtn.style.borderRadius = "50px"
+                CmntBtn.style.cursor = 'pointer'
+                CmntBtn.innerHTML = `<i class="fa fa-paper-plane" id='msg-icon'></i>`
+            } 
+        }else {
+            if(document.getElementById(post._id)) {
+                let CmntBtn = document.getElementById(post._id)
+                CmntBtn.setAttribute('disabled', 'disabled')
+                CmntBtn.style.backgroundColor = "#062230"
+                CmntBtn.style.color = "#28a745"
+                CmntBtn.style.marginLeft = "-2px"
+                CmntBtn.style.borderRadius = '0 50px 50px 0'
+                CmntBtn.style.cursor = 'not-allowed'
+                CmntBtn.innerHTML = `<i class="fas fa-comment-alt" id='msg-icon'></i>`
+            }
+        }
+    }
+    comment()
+
+    // *** First by clicking at button *** //
         document.getElementById(post._id).onclick = (e) => {
             e.preventDefault()
             if(document.getElementById("comment-post-content-"+post._id).value !== '') {
@@ -161,12 +191,13 @@ socket.on('postsProfile', posts => {
             </p>`
 
             document.getElementById(`comments-${document.getElementById('postId-'+post._id).value}`).innerHTML += commentHTMLLive
-         
+            document.getElementById("comment-post-content-"+post._id).value = ''
+            comment()
             
             if(me !== post.owenerPostId){
                 socket.emit('sendNotification', {
                     msg: ' علق على منشور لك',
-                    dateOfEvent: new Date().toLocaleString(),
+                    dateOfEvent: new Date().toLocaleDateString(),
                     userId: post.owenerPostId,
                     sortByDate: new Date(),
                     postId: post._id,
@@ -177,9 +208,65 @@ socket.on('postsProfile', posts => {
                 })
             }
         
-        }
+            }
         }
         
+        // Second by press at the enter key 'keyCode == 13'
+        document.getElementById("comment-post-content-"+post._id).addEventListener('keypress', function(e) {
+            if(e.keyCode == 13) {
+                e.preventDefault()
+                if(document.getElementById("comment-post-content-"+post._id).value !== '') {
+                    socket.emit('newComment', {
+                        owenerPostId: document.getElementById('owenerPostId-'+post.owenerPostId).value,
+                        comment: document.getElementById("comment-post-content-"+post._id).value,
+                        postId: document.getElementById('postId-'+post._id).value,
+                        myfirstname,
+                        mylastname,
+                        mypicture,
+                        me 
+                    })
+                    
+                    let commentHTMLLive
+                    commentHTMLLive =
+                    `<p class='comment-at-the-post the-comment'>
+                        <a href='/profile/${me}'>
+                                <span class='img'>
+                                <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                                if(post.picture !== 'default') {
+                                    commentHTMLLive +=
+                                    `<img src="/userprofile/${mypicture}" alt='' class="picchanged profile-pic">` 
+                                }
+                                commentHTMLLive +=
+                                `</span>
+                            <span class='fullname'> ${myfirstname} ${mylastname}</span>
+                        </a>
+                        <br>
+                        <span style="text-align: start;" dir="auto">${document.getElementById("comment-post-content-"+post._id).value}</span>
+                    </p>`
+        
+                    document.getElementById(`comments-${document.getElementById('postId-'+post._id).value}`).innerHTML += commentHTMLLive
+                    document.getElementById("comment-post-content-"+post._id).value = ''
+                    comment()
+                    
+                    if(me !== post.owenerPostId){
+                        socket.emit('sendNotification', {
+                            msg: ' علق على منشور لك',
+                            dateOfEvent: new Date().toLocaleDateString(),
+                            userId: post.owenerPostId,
+                            sortByDate: new Date(),
+                            postId: post._id,
+                            myfirstname,
+                            mylastname,
+                            mypicture,
+                            me
+                        })
+                    }
+                
+                }
+            }
+        })
+        
+        //*** Remove the comment ***//
         for(let comment of post.comments) {
             if(comment.me == me){
             document.getElementById(post._id+'-'+comment._id).onclick = (e) => {
@@ -230,7 +317,6 @@ socket.on('postsProfile', posts => {
         // Switch the mode
         $('body, .post').removeClass('dark-mode light-mode');
         $('body, .post ').addClass(localStorage.getItem('switchMode'));
-   
 
         $('.status .trim i.desc').on('click', function () {
             $(this).toggleClass('fa-caret-down fa-caret-up');

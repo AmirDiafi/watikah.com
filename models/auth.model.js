@@ -1,17 +1,24 @@
 const mongoose = require('mongoose')
 const userSchema = mongoose.Schema({
-    background: String,
-    picture: String,
     resetPasswordExpires: Date,
     resetPasswordToken: String,
     dateOfCreate: String,
     dateOfOpen: String,
+    background: String,
     firstname: String,
     lastname: String,
     password: String,
     username: String,
+    picture: String,
     email: String,
     bio: String,
+    saves: {
+        type: [{
+            postId: String,
+            dateOfSave: String,
+        default:[]
+        }]
+    },
     followings: {
         type: [{
             userId: String,
@@ -70,6 +77,12 @@ const postSchema = mongoose.Schema({
     title: String,
     model: String,
     file: String,
+    savers: {
+        type: [{
+            saverId: String,
+        default:[]
+        }]
+    },
     comments: {
         type: [{
             myfirstname: String,
@@ -683,6 +696,49 @@ exports.newDownload = async (data) => {
              }}}
         )
         mongoose.disconnect()
+    }  catch (error) {
+        mongoose.disconnect()
+        throw new Error(error)
+    }
+}
+
+exports.newPostSave = async (postData) => {
+    try {
+        await mongoose.connect(DB_URL)
+        await User.updateOne(
+            {_id:postData.me},
+            { $push: { saves: {
+                dateOfSave: postData.dateOfSave,
+                postId: postData.postId
+             }}}
+        )
+        await Post.updateOne(
+            {_id:postData.postId},
+            { $push: { savers: {
+                saverId: postData.me
+             }}}
+        )
+    }  catch (error) {
+        mongoose.disconnect()
+        throw new Error(error)
+    }
+}
+
+exports.unsavepost = async (postData) => {
+    try {
+        await mongoose.connect(DB_URL)
+        await User.updateOne(
+            {_id:postData.me},
+            { $pull: { saves: {
+                postId: postData.postId
+             }}}
+        )
+        await Post.updateOne(
+            {_id:postData.postId},
+            { $pull: { savers: {
+                saverId: postData.me
+             }}}
+        )
     }  catch (error) {
         mongoose.disconnect()
         throw new Error(error)

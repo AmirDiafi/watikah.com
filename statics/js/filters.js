@@ -1,12 +1,5 @@
 /*global $, document, alert, console, log*/
 $(document).ready(function() {
-    
-    // *** filter just for select module that choosen *** //
-    let module = $('.param-category').text()
-    $('.status.container .status-filter .status').filter(function () {
-        $(this).toggle($(this).find('.category-val').text().search(module) >= 0);
-    });
-
     // *** Satrt Go Down Button *** //
     $('.go-down').click(function () {
         $('html, body').animate({
@@ -57,14 +50,6 @@ $(document).ready(function() {
     $('.remove-cmnt-edit-icon').on('click', function() {
         $(this).next('.trash-btn').slideToggle()
     })
-    //*** nitialization Nicescroll *** //
-    // $('#theusers, .popup-inner').niceScroll({
-    //     zindex:999,
-    //     cursorcolor: '#004085',
-    //     cursorborder: "none",
-    //     cursorborderradius: 0,
-    //     cursorwidth: 7,
-    // })
 
     // *** Trim the name of file *** //
     function TrimText(selector, maxLength) {
@@ -79,13 +64,15 @@ $(document).ready(function() {
     TrimText(".file-content h3", 25);
 
     // *** Call the plugin *** //
-    $('.slider').slick({
-        infinite: false,
-        slidesToShow: 2,
-        arrows: false,
-        dots: true,
-        // infinite: true
-    })
+    if(document.getElementById('slider')) {
+        $('#slider').slick({
+            infinite: false,
+            slidesToShow: 2,
+            arrows: false,
+            dots: true,
+            // infinite: true
+        })
+    }
 
     // *** start shuffle Portfolio / filter *** //
     $('.buttons-filter .slider li.category').click(function () {
@@ -94,6 +81,9 @@ $(document).ready(function() {
     })
 
     // *** Instantiate MixItUp *** //
-    var mixer = mixitup('#allposts')
+    if(document.getElementById('slider')){
+        var mixer = mixitup('#allposts')
+    } 
+
 
 })

@@ -1,6 +1,7 @@
 const fllwrBtnCont = document.getElementById('fllwr-btn-cont')
 const unfollowBtn = document.getElementById('unfollow')
 const followBtn = document.getElementById('followed')
+const messageBtn = document.getElementById('message-button')
 
     followBtn.onclick = function (e) {
         e.preventDefault()
@@ -18,7 +19,7 @@ const followBtn = document.getElementById('followed')
         })
         socket.emit('sendNotification', {
             msg:' معجب بصفحتك',
-            dateOfEvent: new Date().toLocaleString(),
+            dateOfEvent: new Date().toLocaleDateString(),
             sortByDate: new Date(),
             postId: 'undefined',
             myfirstname,
@@ -44,76 +45,64 @@ const followBtn = document.getElementById('followed')
         })
     }
 
+    messageBtn.onclick = function (e) {
+        e.preventDefault()
+        if (document.getElementById('message-content')) {
+          
+            if (document.getElementById('message-content').value !== '') {
+                // *** Send the messages to the database ***//
+                socket.emit('newMessage', {
+                    message: document.getElementById('message-content').value,
+                    dateOfMessage: new Date().toLocaleString(),
+                    sortByDate: new Date(),
+                    myfirstname,
+                    mylastname,
+                    mypicture,
+                    userId,
+                    me
+                })
 
+                // *** Change the button status to done *** //
+                document.getElementById('message-content').remove()
+                this.style.width = '100%'
+                this.style.marginLeft = 0
+                this.textContent = ''
+                this.innerHTML = `<i class="fa fa-check fa-fw"></i> تم الإرسال بنجاح`
+                this.removeAttribute('id')
+            }
+     
+        }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// if(followBtn) {
-    // followBtn.onclick = function (e) {
-        // $('followed').on('click' , function() {
-        //     e.preventDefault()
-        //     fllwrBtnCont.innerHTML = 
-        //     `
-        //     <button class="btn fav" id="unfollow" >
-        //         <i class="fas fa-star"></i>
-        //     </button>
-        //     `
-        //     socket.emit('newFollower', {
-        //         myfirstname, mylastname, mypicture, userId, me,
-        //         userfirstname, userlastname, userpicture
-        //     })
-        //     socket.emit('sendNotification', {
-        //         msg:' معجب بصفحتك',
-        //         dateOfEvent: new Date().toLocaleString(),
-        //         sortByDate: new Date(),
-        //         postId: 'undefined',
-        //         myfirstname,
-        //         mylastname,
-        //         mypicture,
-        //         userId,
-        //         me
-        //     })
-        // })
-    // }
-
-// } 
-
-// if(unfollowBtn) {
-//     unfollowBtn.onclick = (e) => {
+    // *** Ecplicit Prevention of the text enter *** //
+    document.getElementById('message-content').addEventListener('keypress', function(e) {
+        if(e.keyCode == 13) {
+            e.preventDefault()
+            if (document.getElementById('message-content')) {
+              
+                if (document.getElementById('message-content').value !== '') {
+                    // *** Send the messages to the database ***//
+                    socket.emit('newMessage', {
+                        message: document.getElementById('message-content').value,
+                        dateOfMessage: new Date().toLocaleString(),
+                        sortByDate: new Date(),
+                        myfirstname,
+                        mylastname,
+                        mypicture,
+                        userId,
+                        me
+                    })
     
-    // $('unfollow').on('click' , function() {
-    //     e.preventDefault()
-    //     fllwrBtnCont.innerHTML = 
-    //     `
-    //     <button class="btn fav" id="followed" >
-    //         <i class="far fa-star"></i>
-    //     </button>
-    //     `
-    //     socket.emit('removeFollower', {
-    //         userId, me
-    //     })
-    // })
-//     }
-// }
+                    // *** Change the button status to done *** //
+                    document.getElementById('message-content').remove()
+                    messageBtn.style.width = '100%'
+                    messageBtn.style.marginLeft = 0
+                    messageBtn.textContent = ''
+                    messageBtn.innerHTML = `<i class="fa fa-check fa-fw"></i> تم الإرسال بنجاح`
+                    messageBtn.removeAttribute('id')
+                }
+         
+            }
+        }
+    })
 

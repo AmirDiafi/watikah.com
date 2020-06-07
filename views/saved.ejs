@@ -1,121 +1,25 @@
 <!-- ****** Start The Header ****** -->
 
 <%- include('parts/header') %>
-<link rel="stylesheet" href="/css/slick.css">
-<link rel="stylesheet" href="/css/slick-theme.css">
-<link rel="stylesheet" href="/css/detectAdsBlock.css">
 <link rel="stylesheet" href="/css/navbar.css">
 <link rel="stylesheet" href="/css/posts.css">
 <link rel="stylesheet" href="/css/profile.css">
-<link rel="stylesheet" href="/css/home.css">
 </head>
-<body class="light-mode">
+<body>
 
 <!-- *** Start hiiden inputs *** -->
-<input type="hidden" id="user" value='<%=id%>'>
-<input type="hidden" id="me" value='<%=userId%>'>
-<input type="hidden" id="mypicture" value='<%=mypicture%>'>
 <input type="hidden" id="myfirstname" value='<%=myfirstname%>'>
 <input type="hidden" id="mylastname" value='<%=mylastname%>'>
+<input type="hidden" id="mypicture" value='<%=mypicture%>'>
+<input type="hidden" id="postId" value='<%=postId%>'>
+<input type="hidden" id="me" value='<%=userId%>'>
 
 <!-- ****** Start The Navbar ****** -->
 <%- include('parts/navbar')%>
-
-<!-- ****** Start The header content ****** -->
-<div class="container">
-
-    <!-- ****** Add Btns and events ******-->
-    <% if(id == userId) {%>
-        <div id="theNotification"></div>
-    <% } %>
-
-    <!-- ****** popups ****** -->
-    <div class="popup popup-2nd" data-popup="popup-2nd">
-        <div class="popup-inner file">
-            <form action="/profile/<%=userId%>/post-file" method="POST" enctype="multipart/form-data">
-                <!-- *** User Info for files *** -->
-                <input type="hidden" name="mypicture" value="<%=mypicture%>">
-                <input type="hidden" name="myfirstname" value="<%=myfirstname%>">
-                <input type="hidden" name="mylastname" value="<%=mylastname%>">
-                <input type="hidden" name='redirect' value='/<%=userId%>'>
-                <input type="file" name="file" required max="1" accept='image/*, .doc, .docx, .pdf, .xlsx, xls, .ppt, .pptx, .pub, .txt,application/vnd.ms-word, application/vnd.ms-excel, application/mspowerpoint, text/plain, application/pdf'>
-                <input type="text" dir="auto" autocomplete="off" name="title" maxlength="250" required placeholder="Title" class="form-control title">
-                <textarea name="description" autocomplete="off" dir="auto" cols="15" required rows="5" required placeholder="Description" class="form-control article"></textarea>
-                <h4>Feliere & Module:</h4>
-                <input type="text" dir="auto" autocomplete="off" name="category" placeholder="Feliere" required class='form-control select'>
-                <input type="text" dir="auto" autocomplete="off" name="model" placeholder="Module" required class='form-control select model'>
-                <select class='form-control' name="kindof" id="" required>
-                    <option value="none" selected disabled hidden> إختر نوع منشورك </option>
-                    <option value="memories">مذكرة</option>
-                    <option value="exposes">بحث</option>
-                    <option value="projects">مشروع</option>
-                    <option value="books">كتاب</option>
-                    <option value="lessons">درس</option>
-                    <option value="all">أخرى</option>
-                </select>
-                <input type="submit" value="نشر" class="btn btn-success submit">
-            </form>
-            <!-- <button class='close-popup btn btn-danger'>Close</button> -->
-        </div>
-    </div>
-</div>
-
-<!-- ****** Start the home sections ******  -->
-<div class="section main" >
-    <img src="/home-images/home.jpg" alt="sections">
-    <div class="text">
-        <h4>مرحبا بكم في منصة الطالب</h4>
-        <hr>
-        <p>
-            هل تعبت من تضييع وقتك في البحث عن مذكرات تخرج، بحوث، نماذج إختبارات، وكتب لإنجاز أعمالك؟ 
-            <br>
-            هل تعلم أن الجامعة لا تحتفظ بأعمالك(مذكراتك، بحوثك، مشاريعك)
-            بالتالي جهودك تضيع مع الوقت بلا نفع؟
-            <br> مع منصتنا سوف نجعل أعمالك تدوم، ويستفيد من أعمالك الجميع، وتستفيد أنت الكثير
-        </p>
-        <hr>
-        <h5>معاً نجعل الدراسة أحسن</h5>
-        <div class="down">
-            <i class="fas fa-chevron-down go-down"></i>
-        </div>
-    </div>
-    <div class="ovarlay" id='particles-js'>
-    </div>
-</div>
-<div class="container">
-    <div class="home-sections">
-        <div class="row">
-        <!-- ****** Start Embeded Ads ****** -->
-        <!-- <div class="ads ads-right col col-12">
-            <div>
-                <iframe src="" frameborder="0" id="BlockAdsApp"></iframe>
-            </div>
-            <i class="fa fa-times-circle"></i>
-        </div> -->
-        <div class="col col-12">
-            <div class="search-post">
-                <form>
-                    <input type="search" dir="auto" name="search-post" class="form-control" placeholder="بحث عن المادة">
-                    <button type="button" disabled class="btn submit-filter-model btn-primary">
-                        <i class="fa fa-filter"></i>
-                    </button>
-                </form>
-            </div>
-            <hr>
-            <div class="buttons-filter">
-                <ul class="list-unstyled" id='slider'>
-                    <li class="category filter active" data-filter="all">الكل</li>
-                    <li class="category filter" data-filter=".exposes">بحوث</li>
-                    <li class="category filter" data-filter=".memories">مذكرات</li>
-                    <li class="category filter" data-filter=".projects">مشاريع</li>
-                    <li class="category filter" data-filter=".lessons">دروس</li>
-                    <li class="category filter" data-filter=".books">كتب</li>
-                </ul>
-            </div>
-        </div>
-        </div>
-        <div id="allposts" class='allposts'>
-            <%for(let post of posts) {%>
+<div class="container post-cont" id="mysaved">
+    <%for(let post of posts) {%>
+        <%for(let saver of post.savers) {%>
+            <%if(saver.saverId == userId){%>
                 <div class='post status mix <%=post.kindof%>'>
                     <%if(userId == post.owenerPostId) {%>
                         <i class='fas fa-ellipsis-v edit'></i>
@@ -220,56 +124,18 @@
                     </div>
                 </div>
             <%}%>
-        </div>
-    </div>
+        <%}%>
+    <%}%>
 </div>
-
-<!-- <div id="BlockAdsMsg">
-    <div class="innerCountainer">
-        <h4 class="text-center">Stop AdBlock</h4>
-        <p class="alert alert-danger">
-            من فضلك قم بإقاف معطل اللإعلانات من على موقعنا لإكمال التصفح.
-        </p>
-        <p class="alert alert-success">
-            نقوم بعرض إعلانات على صفحتنا لكي نضمن أن لا تتوقف سيرفاراتنا. فنحن ندفع من أجل هذا.
-            وحيث أن هذه الإعلانات لن تضرك أبدا.. فنحن لا نعرضها بشكل مزعج أو بشكل عشوائي.. ولا حتى ضمن محتوانا الأكاديمي, 
-            أو في مكان مزعج لك.
-        </p>
-    </div>
-</div> -->
 
 <!-- ****** Start The Scripts ****** -->
 <%- include('parts/footer')%>
-<!-- ****** Start My jQueries Custom ****** -->
 <script defer src="/js/navbar.js"></script>
 <script defer src="/js/filters.js"></script>
 <script defer src="/js/profile.js"></script>
-<script defer src="/js/particles.min.js"></script>
-<script defer src="/js/app.js"></script>
 
 <!-- ****** Start the Sockets.io scripts ****** -->
 <script defer src="/socket.io/socket.io.js"></script>
-<script defer src="/js/sockets.io/posts.files.home.js"></script>
-<script defer src="/js/save.js"></script>
-<% if(id == userId) {%>
-    <script defer src="/js/sockets.io/notifications.js"></script>
-    <script defer src="/js/sockets.io/userHome.js"></script>
-<%}%>
-
-<!-- Start call the filter shuffle plugin -->
-<script src="/js/mixitup.min.js"></script>
-
-<!--  ****** Start the Slick Carousel scripts ****** -->
-<script src="/js/slick.min.js"></script>
-
-<!-- ****** Start Setect Adblock ****** -->
-<!-- <script>
-    if (!document.getElementById('BlockAdsApp')) {
-        document.getElementById('BlockAdsMsg').style.display = 'block'
-    } else {
-        document.getElementById('BlockAdsMsg').style.display = 'none'
-    }
-</script> -->
-
+<script defer src="/js/sockets.io/save.js"></script>
 </body>
 </html>

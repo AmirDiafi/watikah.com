@@ -51,7 +51,4 @@ userProfileController.postFiles)
 router.post('/:id/remove-post', bodyParser.urlencoded({extended:true}),
 userProfileController.removePost)
 
-router.post('/send-message', bodyParser.urlencoded({extended:true}),
-userProfileController.sendMessage)
-
 module.exports = router
