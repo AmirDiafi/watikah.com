@@ -46,8 +46,7 @@ socket.on('postsHome', posts => {
                         CmntBtn.removeAttribute('disabled')
                         CmntBtn.style.backgroundColor = "#28a745"
                         CmntBtn.style.color = "#062230"
-                        CmntBtn.style.marginLeft = "-20px"
-                        CmntBtn.style.borderRadius = "50px"
+                        CmntBtn.style.marginLeft = "-5px"
                         CmntBtn.style.cursor = 'pointer'
                         CmntBtn.innerHTML = `<i class="fa fa-paper-plane" id='msg-icon'></i>`
                     } 
@@ -58,7 +57,6 @@ socket.on('postsHome', posts => {
                         CmntBtn.style.backgroundColor = "#062230"
                         CmntBtn.style.color = "#28a745"
                         CmntBtn.style.marginLeft = "-2px"
-                        CmntBtn.style.borderRadius = '0 50px 50px 0'
                         CmntBtn.style.cursor = 'not-allowed'
                         CmntBtn.innerHTML = `<i class="fas fa-comment-alt" id='msg-icon'></i>`
                     }

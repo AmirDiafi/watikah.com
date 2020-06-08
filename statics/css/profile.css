@@ -168,13 +168,14 @@ body{
 }
 
 .send-message input[type='text']{
-    width: 30%;
+    width: 35%;
     display: inline-block;
     margin: 0;
     border-color :#062230;
     border-radius: 50px 0 0 50px;
     padding-right: 20px;
     transition: all .3s linear;
+    padding-inline-start: 20px;
 }
 
 .send-message input[type='text']:focus {
@@ -187,7 +188,7 @@ body{
     background-color: #062230;
     color :#28a745;
     display: inline-block;
-    width:25%;
+    width:20%;
     margin-left: -2px;
     border-radius: 0 50px 50px 0;
     position: relative;
@@ -479,11 +480,7 @@ h3.titles{
     position: fixed;
     width: 50px;
     height: 50px;
-    border-radius: 50px;
-}
-
-.follow-count li.fllwr-btn-cont button{
-    color: #28a745;
+    border-radius: 50px;color: #28a745;
     background-color: #062230;
     box-shadow: 0 2px 3px #020202;
     z-index: 2;
@@ -958,18 +955,8 @@ h3.titles{
         right: 10px;
         bottom: 65px;
         z-index: 2;
-        width: 30px;
-        height: 30px;
+        font-size: 20px;
     }
-
-    .follow-count li.fllwr-btn-cont button.fav i{
-        line-height: 25px;
-    }
-
-    .follow-count li.fllwr-btn-cont button.message {
-        bottom: 40px;
-    }
-
     .profile-header{
         padding :5px;
         height: 100px;
