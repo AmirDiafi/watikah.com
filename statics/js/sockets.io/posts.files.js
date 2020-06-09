@@ -105,8 +105,30 @@ socket.on('postsProfile', posts => {
                     `<i class="fas fa-arrow-down" > ${post.downloaders.length}</i>`
                 }
             thepost +=  `
-                </div>
-            </div>`
+            <div class="saveme" style="display: inline-block;">`
+            if(post.savers.length != 0){
+                for(let saver of post.savers) {
+                    var isSaved = post.savers.find(saver => saver.saverId == userId)
+                }
+                if(!isSaved){
+                    thepost +=
+                    `<i class="far fa-bookmark savepost"></i>
+                    <i class="fas fa-bookmark unsavepost" style="display: none; opacity: 0;"></i>`
+                } else if(isSaved) {
+                    thepost +=
+                        `<i class="far fa-bookmark savepost" style="display: none; opacity: 0;"></i>
+                        <i class="fas fa-bookmark unsavepost" ></i>`
+                    }
+                } else {
+                    thepost +=
+                    `<i class="far fa-bookmark savepost"></i>
+                    <i class="fas fa-bookmark unsavepost" style="display: none; opacity: 0;"></i>`
+                }
+                thepost +=
+                `<input type="hidden" value="${post._id}">
+            </div>
+        </div>
+    </div>`
         }
     thepost +=  `</div>`
     theposts.innerHTML = thepost
@@ -352,6 +374,41 @@ socket.on('postsProfile', posts => {
         };
     
         TrimText(".file-content h3", 25);
+
+        // *** Start the save button effect ***//
+        $('.savepost').on('click', function () {
+            $(this).css({
+                opacity : 0,
+                display : "none"
+            })
+            $(this).next('i').css({
+                opacity: 1,
+                display: "block"
+            })
+            let postId = $(this).parent().find('input').val()
+            socket.emit('newPostSave', {
+                dateOfSave: new Date().toLocaleDateString(),
+                postId,
+                me
+            })
+            
+        })
+        
+        $('.unsavepost').on('click', function () {
+            $(this).css({
+                opacity : 0,
+                display : "none"
+            })
+            $(this).prev('i').css({
+                opacity: 1,
+                display: "block"
+            })
+            let postId = $(this).parent().find('input').val()
+            socket.emit('unsavePost', {
+                postId,
+                me
+            })
+        })
 
     })
 })

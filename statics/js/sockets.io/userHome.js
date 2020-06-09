@@ -94,7 +94,7 @@ socket.on('userHome', user => {
                                     ${message.myfirstname} ${message.mylastname} | 
                                 </span>
                             </a>
-                            <p>أرسل لك رسالة</p>
+                            <p>أرسل لك رسالة الأن</p>
                             <div class="see">
                                 <i class="fa fa-eye fa-fw"></i>
                             </div>

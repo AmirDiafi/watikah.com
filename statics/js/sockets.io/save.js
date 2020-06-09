@@ -1,8 +1,13 @@
+//*** from All ***//
+const myfirstname = document.getElementById('myfirstname').value
+const mylastname = document.getElementById('mylastname').value
+const mypicture = document.getElementById('mypicture').value
+const me = document.getElementById('me').value
+
 // *** Start save post *** //
 let socket = io()
-let id = document.getElementById('me').value
 socket.on('connect', () => {
-    socket.emit('joinNotificationRoom', id)
+    socket.emit('joinNotificationRoom', me)
     socket.emit('getPosts&FilesHome')
 })
 
@@ -56,7 +61,6 @@ $('.unsavepost').on('click', function () {
 
             for(let saver of post.savers) {
                 if(saver.saverId = userId){
-        
                     // ****** Start custom the files icon ***//
                     if(post.file !== 'undefined' && document.getElementById(`file-icon-download-${post._id}`)){
                         if($(`#file-icon-download-${post._id}`).attr('href').endsWith('.pdf')) {
@@ -73,7 +77,8 @@ $('.unsavepost').on('click', function () {
                             $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/file.png')
                         }
                     }
-                    // ******Start execute the fucntion comment and notifications ****** //
+                }
+                // ******Start execute the fucntion comment and notifications ****** //
                     // *** Custom the comment icons *** //
                     if(document.getElementById("comment-post-content-"+post._id)) {
                         let comment = document.getElementById("comment-post-content-"+post._id).oninput = function() {
@@ -99,12 +104,12 @@ $('.unsavepost').on('click', function () {
                                 }
                             }
                         }
-                        comment()
+                    comment()
                     
                 
                     // *** First by clicking at button *** //
-                    document.getElementById(post._id).onclick = () => {
-                        // e.preventDefault()
+                    document.getElementById(post._id).onclick = (e) => {
+                        e.preventDefault()
                         if(document.getElementById("comment-post-content-"+post._id).value !== '') {
                             socket.emit('newComment', {
                                 owenerPostId: document.getElementById('owenerPostId-'+post.owenerPostId).value,
@@ -137,20 +142,8 @@ $('.unsavepost').on('click', function () {
                             document.getElementById(`comments-${post._id}`).innerHTML += commentHTMLLive
                             document.getElementById("comment-post-content-"+post._id).value = ''
                             comment()
-                            if(me !== post.owenerPostId){
-                            socket.emit('sendNotification', {
-                                msg: ' علق على منشور لك',
-                                dateOfEvent: new Date().toLocaleString(),
-                                userId: post.owenerPostId,
-                                sortByDate: new Date(),
-                                postId: post._id,
-                                myfirstname,
-                                mylastname,
-                                mypicture,
-                                me
-                            })
                         }
-                        }
+                        
                     }
         
                     // Second by press at the enter key 'keyCode == 13'
@@ -189,20 +182,6 @@ $('.unsavepost').on('click', function () {
                                 document.getElementById(`comments-${document.getElementById('postId-'+post._id).value}`).innerHTML += commentHTMLLive
                                 document.getElementById("comment-post-content-"+post._id).value = ''
                                 comment()
-                                
-                                if(me !== post.owenerPostId){
-                                    socket.emit('sendNotification', {
-                                        msg: ' علق على منشور لك',
-                                        dateOfEvent: new Date().toLocaleString(),
-                                        userId: post.owenerPostId,
-                                        sortByDate: new Date(),
-                                        postId: post._id,
-                                        myfirstname,
-                                        mylastname,
-                                        mypicture,
-                                        me
-                                    })
-                                }
                             
                             }
                         }
@@ -235,9 +214,7 @@ $('.unsavepost').on('click', function () {
                         }
                     }
 
-                }
-                
-                }
+                    }
             }
             
         }
