@@ -15,12 +15,18 @@ $(document).ready(function () {
         $(this).next('ul').slideToggle(500)
     })
 
-    $('.nav-item.list > ul, .navbar').on('click', function(e) {
+    $('body').on('click', function() {
+        $('.nav-item.list ul').slideUp(500)
+        $('.list-button .bar:first-of-type').removeClass('one');
+        $('.list-button .bar:last-of-type').removeClass('three');
+        $('.list-button .bar:nth-of-type(2)').removeClass('tow');
+    })
+
+    $('.nav-item.list, .navbar').on('click', function(e) {
         e.stopPropagation()
     })
 
     // ------ Start Transform Icons ------ //
-
     $('.list-button').click(function () {
         $('.list-button .bar:first-of-type').toggleClass('one');
         $('.list-button .bar:last-of-type').toggleClass('three');

@@ -219,6 +219,10 @@ body{
     font-weight: 700;
 }
 
+.light-mode p#err-send-msg {
+    color: #212121
+}
+
 .send-message button.close-popup{
     color :#FFF
 }

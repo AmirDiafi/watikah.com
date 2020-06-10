@@ -3,7 +3,7 @@ $(document).ready(function() {
     // *** Satrt Go Down Button *** //
     $('.go-down').click(function () {
         $('html, body').animate({
-            scrollTop: ($('.allposts').offset().top - 200)
+            scrollTop: ($('.allposts').offset().top - 320)
         }, 700)
     })
 
@@ -63,6 +63,12 @@ $(document).ready(function() {
 
     TrimText(".file-content h3", 25);
 
+    // *** start shuffle Portfolio / filter *** //
+    $('li.filter').on('click', function () {
+        $('li.filter').removeClass('active')
+        $(this).addClass('active')
+    })
+
     // *** Call the plugin *** //
     if(document.getElementById('slider')) {
         $('#slider').slick({
@@ -72,16 +78,8 @@ $(document).ready(function() {
             dots: true,
             // infinite: true
         })
-    }
 
-    // *** start shuffle Portfolio / filter *** //
-    $('.buttons-filter .slider li.category').click(function () {
-        $('.buttons-filter .slider li.category').removeClass('active')
-        $(this).addClass('active')
-    })
-
-    // *** Instantiate MixItUp *** //
-    if(document.getElementById('slider')){
+        // *** Instantiate MixItUp *** //
         var mixer = mixitup('#allposts')
     } 
 
