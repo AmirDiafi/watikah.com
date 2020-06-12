@@ -14,11 +14,11 @@
     <% for(let user of users) { %>
             <div class="user">
                 <div class="media">
-                    <img src="/defaultuser/defaultBackground.jpg" alt='' class="default background">
+                    <img src="/home-images/defaultBackground.jpg" alt='' class="default background">
                     <%if(user.background !== 'default') {%>
                         <img src="/userprofile/<%=user.background%>" alt='' class="changedback background">
                     <%}%>
-                    <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile">
+                    <img src="/home-images/defaultUser.jpeg" alt='' class="default profile">
                     <%if(user.picture !== 'default') {%>
                         <img src="/userprofile/<%=user.picture%>" alt='' class="picchanged profile">
                     <%}%>

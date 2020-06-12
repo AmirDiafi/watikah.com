@@ -29,7 +29,7 @@ socket.on('postsProfile', posts => {
                 </form>
             </ul>
             <a href="/profile/${post.owenerPostId}" class='anchor-pic'>
-                <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">` 
                 if(post.picture !== 'default') {
                     thepost +=
                     `<img src="/userprofile/${post.picture}" alt='' class="picchanged profile-pic">` 
@@ -73,7 +73,7 @@ socket.on('postsProfile', posts => {
                 `<p class='comment-at-the-post the-comment' id='comment-${comment._id}'>
                     <a href='/profile/${comment.me}'>
                         <span class='img' >
-                            <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                            <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">` 
                             if(post.picture !== 'default') {
                                 thepost +=
                                 `<img src="/userprofile/${comment.mypicture}" alt='' class="picchanged profile-pic">` 
@@ -197,7 +197,7 @@ socket.on('postsProfile', posts => {
             `<p class='comment-at-the-post the-comment'>
                 <a href='/profile/${me}'>
                         <span class='img'>
-                        <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                        <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">` 
                         if(post.picture !== 'default') {
                             commentHTMLLive +=
                             `<img src="/userprofile/${mypicture}" alt='' class="picchanged profile-pic">` 
@@ -251,7 +251,7 @@ socket.on('postsProfile', posts => {
                     `<p class='comment-at-the-post the-comment'>
                         <a href='/profile/${me}'>
                                 <span class='img'>
-                                <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                                <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">` 
                                 if(post.picture !== 'default') {
                                     commentHTMLLive +=
                                     `<img src="/userprofile/${mypicture}" alt='' class="picchanged profile-pic">` 

@@ -82,6 +82,10 @@ body.dark-mode .profile-header .userpic .header img.picchanged {
     background: transparent;
 }
 
+body.dark-mode #BlockAdsMsg h4{
+    color :#212121 !important
+}
+
 .post.dark-mode ul.edit {
     background: #062230;
     color: #FFF

@@ -20,12 +20,12 @@
                 `<div class="notifics">
                     <a href="/profile/${data.me}">
                         <span class="img">
-                            <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">`  
-                                if(data.mypicture !== 'default') {
-                                    notific += 
-                                    `<img src="/userprofile/${data.mypicture}" alt='' class="picchanged profile-pic">`  
-                                }
-                            notific += 
+                            <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">`  
+                    if(data.mypicture !== 'default') {
+                        notific += 
+                        `<img src="/userprofile/${data.mypicture}" alt='' class="picchanged profile-pic">`  
+                    }
+                notific += 
                         `</span> 
                         <span style="text-align: start;" dir="auto" class="fullname">
                             ${data.myfirstname} ${data.mylastname} 
@@ -40,11 +40,11 @@
                     <a href="/profile/${data.me}">
                         <span class="img">
                             <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">`  
-                                if(data.mypicture !== 'default') {
-                                    notific += 
-                                    `<img src="/userprofile/${data.mypicture}" alt='' class="picchanged profile-pic">`  
-                                }
-                                notific += 
+                    if(data.mypicture !== 'default') {
+                        notific += 
+                        `<img src="/userprofile/${data.mypicture}" alt='' class="picchanged profile-pic">`  
+                    }
+                    notific += 
                         `</span> 
                         <span style="text-align: start;" dir="auto" class="fullname">
                             ${data.myfirstname} ${data.mylastname} 
@@ -70,7 +70,7 @@
         `<li class="message">
             <a href="/profile/${data.me}">
                 <span class="img">
-                    <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">  `
+                    <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">  `
                 if(data.mypicture !== 'default') {
                     messageContent += 
                     `<img src="/userprofile/${data.mypicture}" alt='' class="picchanged profile-pic"> `
@@ -81,7 +81,7 @@
                     ${data.myfirstname} ${data.mylastname} | 
                 </span>
             </a>
-            <p>أرسل لك رسالة</p>
+            <p>أرسل إليك رسالة الأن</p>
             <div class="see">
                 <i class="fa fa-eye fa-fw"></i>
             </div>

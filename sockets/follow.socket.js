@@ -28,9 +28,7 @@ module.exports = (io) => {
             })
         })
         socket.on('newPostSave', data => {
-            console.log('saved to DB', data);
             newPostSave(data).then(()=>{
-                console.log('saved to DB', data);
                 socket.emit('newPostSaveDone', data)
             }).catch(err=>{
                 socket.emit('msavePostailed')

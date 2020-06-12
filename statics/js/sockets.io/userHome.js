@@ -28,7 +28,7 @@ socket.on('userHome', user => {
                             `<div class="notifics">
                                 <a href="/profile/${notification.me}">
                                     <span class="img">
-                                        <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">`  
+                                        <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">`  
                                     if(notification.mypicture !== 'default') {
                                         theNotification += 
                                         `<img src="/userprofile/${notification.mypicture}" alt='' class="picchanged profile-pic">`  
@@ -49,7 +49,7 @@ socket.on('userHome', user => {
                             `<div class="notifics">
                                 <a href="/profile/${notification.me}">
                                     <span class="img">
-                                        <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">`  
+                                        <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">`  
                                     if(notification.mypicture !== 'default') {
                                         theNotification += 
                                         `<img src="/userprofile/${notification.mypicture}" alt='' class="picchanged profile-pic">` 
@@ -83,7 +83,7 @@ socket.on('userHome', user => {
                         `<li class="message">
                             <a href="/profile/${message.me}">
                                 <span class="img">
-                                    <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">  `
+                                    <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">  `
                                 if(message.mypicture !== 'default') {
                                     theNotification += 
                                     `<img src="/userprofile/${message.mypicture}" alt='' class="picchanged profile-pic"> `
@@ -94,7 +94,7 @@ socket.on('userHome', user => {
                                     ${message.myfirstname} ${message.mylastname} | 
                                 </span>
                             </a>
-                            <p>أرسل لك رسالة الأن</p>
+                            <p>أرسل لك رسالة</p>
                             <div class="see">
                                 <i class="fa fa-eye fa-fw"></i>
                             </div>

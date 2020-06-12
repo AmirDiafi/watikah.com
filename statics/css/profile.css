@@ -356,6 +356,12 @@ body{
     height: 100%;
 }
 
+.popup-2nd .popup-inner form input[type=text],
+.popup-2nd .popup-inner form select option,
+.popup-2nd .popup-inner form textarea {
+    text-align: right;
+}
+
 .popup .popup-inner form .title{
     width: 80%;
     padding: 10px;
@@ -374,7 +380,7 @@ body{
     padding: 10px;
     border: none;
     background: #e9ecef;
-    border-radius: 10px 50px 50px 50px;
+    border-radius: 5px 30px 30px 30px;
     padding-inline-start: 10px;
 }
 

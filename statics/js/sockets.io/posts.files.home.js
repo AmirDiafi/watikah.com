@@ -83,7 +83,7 @@ socket.on('postsHome', posts => {
                 `<p class='comment-at-the-post the-comment'>
                     <a href='/profile/${me}'>
                             <span class='img'>
-                            <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                            <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">` 
                             if(post.picture !== 'default') {
                                 commentHTMLLive +=
                                 `<img src="/userprofile/${mypicture}" alt='' class="picchanged profile-pic">` 
@@ -137,7 +137,7 @@ socket.on('postsHome', posts => {
                         `<p class='comment-at-the-post the-comment'>
                             <a href='/profile/${me}'>
                                     <span class='img'>
-                                    <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                                    <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">` 
                                     if(post.picture !== 'default') {
                                         commentHTMLLive +=
                                         `<img src="/userprofile/${mypicture}" alt='' class="picchanged profile-pic">` 

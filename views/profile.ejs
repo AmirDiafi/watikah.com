@@ -49,7 +49,7 @@
         </div>
     </div>
     <div class="img">
-        <img src="/defaultuser/defaultBackground.jpg" alt='' class="default">
+        <img src="/home-images/defaultBackground.jpg" alt='' class="default">
         <%if(user.background !== 'default') {%>
             <img src="/userprofile/<%=user.background%>" alt='' class="changedback">
         <%}%>
@@ -66,7 +66,7 @@
     <div class="profile-header col col-4">   
         <div class="userpic">
             <div class="header">
-                <img src="/defaultuser/defaultUser.jpeg" alt='' class="default">
+                <img src="/home-images/defaultUser.jpeg" alt='' class="default">
                 <%if(user.picture !== 'default') {%>
                     <img src="/userprofile/<%=user.picture%>" alt='' class="picchanged">
                 <%}%>
@@ -138,7 +138,7 @@
                         <div class="notifics ">
                             <a href="/profile/<%=notification.me%>">
                                 <span class="img">
-                                    <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">  
+                                    <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">  
                                 <%if(notification.mypicture !== 'default') {%>
                                     <img src="/userprofile/<%=notification.mypicture%>" alt='' class="picchanged profile-pic">  
                                 <%}%>
@@ -156,7 +156,7 @@
                         <div class="notifics">
                             <a href="/profile/<%=notification.me%>">
                                 <span class="img">
-                                    <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">  
+                                    <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">  
                                 <%if(notification.mypicture !== 'default') {%>
                                     <img src="/userprofile/<%=notification.mypicture%>" alt='' class="picchanged profile-pic"> 
                                 <%}%>
@@ -184,7 +184,7 @@
             <li class="message">
                 <a href="/profile/<%=message.me%>">
                     <span class="img">
-                        <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">  
+                        <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">  
                     <%if(message.mypicture !== 'default') {%>
                         <img src="/userprofile/<%=message.mypicture%>" alt='' class="picchanged profile-pic"> 
                     <%}%>
@@ -253,17 +253,17 @@
     <div class="popup-inner file">
         <form action="/profile/<%=userId%>/post-file" method="POST" enctype="multipart/form-data">
             <!-- *** User Info for files *** -->
-            <input type="hidden" name="mypicture" value="<%=user.picture%>">
-            <input type="hidden" name="myfirstname" value="<%=user.firstname%>">
-            <input type="hidden" name="mylastname" value="<%=user.lastname%>">
-            <input type="hidden" name='redirect' value='/profile/<%=userId%>'>
-            <input type="file" name="file" required max="1" accept='.doc, .docx, .pdf, .xlsx, xls, .ppt, .pptx, .pub, .txt,application/vnd.ms-word, application/vnd.ms-excel, application/mspowerpoint, text/plain, application/pdf'>
-            <input type="text" dir="auto" autocomplete="off" name="title" maxlength="25" required placeholder="Title" class="form-control title">
-            <textarea name="description" dir='auto' autocomplete="off" cols="15" maxlength="250" required rows="5" placeholder="Description" class="form-control article"></textarea>
-            <h4>Feliere & Module:</h4>
-            <input type="text" dir="auto" autocomplete="off" name="category" placeholder="Feliere" required class='form-control select'>
-            <input type="text" dir="auto" autocomplete="off" name="model" placeholder="Module" required class='form-control  model select'>
-            <select class='form-control' name="kindof" id="" required>
+            <input type="hidden" name="mypicture" value="<%=mypicture%>">
+            <input type="hidden" name="myfirstname" value="<%=myfirstname%>">
+            <input type="hidden" name="mylastname" value="<%=mylastname%>">
+            <input type="hidden" name='redirect' value='/<%=userId%>'>
+            <input type="file" name="file" required max="1" accept='image/*, .doc, .docx, .pdf, .xlsx, xls, .ppt, .pptx, .pub, .txt,application/vnd.ms-word, application/vnd.ms-excel, application/mspowerpoint, text/plain, application/pdf'>
+            <input type="text" dir="auto" autocomplete="off" name="title" maxlength="250" required placeholder="العنوان" class="form-control title">
+            <textarea name="description" autocomplete="off" dir="auto" cols="15" required rows="5" required placeholder="أضف وصف" class="form-control article"></textarea>
+            <h4>الفرع و المقياس / Feliere & Module:</h4>
+            <input type="text" dir="auto" autocomplete="off" name="category" placeholder="Feliere/الفرع" required class='form-control select'>
+            <input type="text" dir="auto" autocomplete="off" name="model" placeholder="Module/المقياس" required class='form-control select model'>
+            <select dir="rtl" class='form-control' name="kindof" id="" required>
                 <option value="none" selected disabled hidden> إختر نوع منشورك </option>
                 <option value="memories">مذكرة</option>
                 <option value="exposes">بحث</option>

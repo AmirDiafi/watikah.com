@@ -39,12 +39,12 @@
                 <input type="hidden" name="mylastname" value="<%=mylastname%>">
                 <input type="hidden" name='redirect' value='/<%=userId%>'>
                 <input type="file" name="file" required max="1" accept='image/*, .doc, .docx, .pdf, .xlsx, xls, .ppt, .pptx, .pub, .txt,application/vnd.ms-word, application/vnd.ms-excel, application/mspowerpoint, text/plain, application/pdf'>
-                <input type="text" dir="auto" autocomplete="off" name="title" maxlength="250" required placeholder="Title" class="form-control title">
-                <textarea name="description" autocomplete="off" dir="auto" cols="15" required rows="5" required placeholder="Description" class="form-control article"></textarea>
-                <h4>Feliere & Module:</h4>
-                <input type="text" dir="auto" autocomplete="off" name="category" placeholder="Feliere" required class='form-control select'>
-                <input type="text" dir="auto" autocomplete="off" name="model" placeholder="Module" required class='form-control select model'>
-                <select class='form-control' name="kindof" id="" required>
+                <input type="text" dir="auto" autocomplete="off" name="title" maxlength="250" required placeholder="العنوان" class="form-control title">
+                <textarea name="description" autocomplete="off" dir="auto" cols="15" required rows="5" required placeholder="أضف وصف"  class="form-control article"></textarea>
+                <h4>الفرع و المقياس / Feliere & Module:</h4>
+                <input type="text" dir="auto" autocomplete="off" name="category" placeholder="Feliere/الفرع" required class='form-control select'>
+                <input type="text" dir="auto" autocomplete="off" name="model" placeholder="Module/المقياس" required class='form-control select model'>
+                <select dir="rtl" class='form-control' name="kindof" id="" required>
                     <option value="none" selected disabled hidden> إختر نوع منشورك </option>
                     <option value="memories">مذكرة</option>
                     <option value="exposes">بحث</option>
@@ -86,12 +86,25 @@
     <div class="home-sections">
         <div class="row">
         <!-- ****** Start Embeded Ads ****** -->
-        <div class="ads ads-right col col-12">
-            <div>
-                <iframe src="" frameborder="0" id="BlockAdsApp"></iframe>
+            <div class="ads ads-right col col-12">
+                <div>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- first ads -->
+                <ins
+                    id="BlockAdsApp"
+                    class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-8967420236427435"
+                    data-ad-slot="7511159599"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                </div>
+                <i class="fa fa-times-circle"></i>
             </div>
-            <i class="fa fa-times-circle"></i>
-        </div>
         <div class="col col-12">
             <div class="search-post">
                 <form>
@@ -133,7 +146,7 @@
                         </form>
                     </ul>
                     <a href="/profile/<%=post.owenerPostId%>" class='anchor-pic'>
-                        <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic">
+                        <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">
                         <%if(post.picture !== 'default') {%>
                             <img src="/userprofile/<%=post.picture%>" alt='' class="picchanged profile-pic">
                         <%}%>
@@ -173,7 +186,7 @@
                                 <p class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
                                     <a href='/profile/<%=comment.me%>'>
                                         <span class="img">
-                                            <img src="/defaultuser/defaultUser.jpeg" alt='' class="default profile-pic"> 
+                                            <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic"> 
                                         <%if(post.picture !== 'default') {%>
                                             <img src="/userprofile/<%=comment.mypicture%>" alt='' class="picchanged profile-pic"> 
                                         <%}%>
@@ -235,6 +248,11 @@
             وحيث أن هذه الإعلانات لن تضرك أبدا.. فنحن لا نعرضها بشكل مزعج أو بشكل عشوائي.. ولا حتى ضمن محتوانا الأكاديمي, 
             أو في مكان مزعج لك.
         </p>
+        <p class="alert alert-danger">
+            Our Forum website is made possible by displaying online
+            advertisements to our visitors for keeping it at the server oui paying for.
+            So please consider supporting us by displaying your ad blocker.
+        </p>
     </div>
 </div>
 
@@ -264,13 +282,13 @@
 <script src="/js/slick.min.js"></script>
 
 <!-- ****** Start Setect Adblock ****** -->
-<!-- <script>
+<script>
     if (!document.getElementById('BlockAdsApp')) {
         document.getElementById('BlockAdsMsg').style.display = 'block'
     } else {
         document.getElementById('BlockAdsMsg').style.display = 'none'
     }
-</script> -->
+</script>
 
 </body>
 </html>
