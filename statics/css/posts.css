@@ -116,6 +116,7 @@
 
 .post .post-pic {
     width:100%;
+    max-height: 400px;
     margin:20px auto;
     border-radius: 5px;
 }
@@ -304,7 +305,7 @@ form.add-comment-form button.submit i{
 
 /* Start File content and trim */
 
-.post .trim .comments {
+.post .trim .inner-comments {
     max-height: 300px;
     overflow: auto;
     margin-bottom: 10px;

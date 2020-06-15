@@ -10,7 +10,7 @@ socket.on('postsProfile', posts => {
         <img src='/home-images/posts.png' />
         </i>  ${posts.length}</h3>
         `
-    for(let post of posts) {
+        for(let post of posts) {
         thepost += `<div class='post status'>`
             if(userId == me) {
                 thepost += `<i class='fas fa-ellipsis-v edit'></i>`
@@ -59,45 +59,47 @@ socket.on('postsProfile', posts => {
             thepost +=
             `<div class="trim">
                 <p class='desc' style="text-align: start;" dir="auto">${post.description}</p>
-                <div class=comments id='comments-${post._id}'>
-                <form class="add-comment-form" >
-                    <input type=hidden id='postId-${post._id}' value='${post._id}'>
-                    <input type=hidden id='owenerPostId-${post.owenerPostId}' value='${post.owenerPostId}'>
-                    <input dir='auto' type=text id='comment-post-content-${post._id}' placeholder='add comment' >
-                    <button id='${post._id}' disabled type="button" class="btn submit">
-                        <i class='fas fa-comment-alt'></i>
-                    </button>
-                </form>`
-            for(let comment of post.comments) {
-                thepost +=
-                `<p class='comment-at-the-post the-comment' id='comment-${comment._id}'>
-                    <a href='/profile/${comment.me}'>
-                        <span class='img' >
-                            <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">` 
-                            if(post.picture !== 'default') {
-                                thepost +=
-                                `<img src="/userprofile/${comment.mypicture}" alt='' class="picchanged profile-pic">` 
-                            }
-                            thepost +=
-                        `</span>
-                        <span class='fullname'> ${comment.myfirstname} ${comment.mylastname}</span>
-                    </a>
-                    <br>
-                    <span style="text-align: start;" dir="auto">${comment.comment}</span>
-                </p>`
-                if(comment.me == me){
-                    thepost += `
-                    <form class='remove-comment-form trash-the-post' id='post-trash-${comment._id}'>
-                        <i class='fas fa-ellipsis-v remove-cmnt-edit-icon'></i>
-                        <button class='trash-btn' id='${post._id}-${comment._id}'>
-                            <i class="fa fa-trash-alt "></i>
+                <div class=comments>
+                    <form class="add-comment-form" >
+                        <input type=hidden id='postId-${post._id}' value='${post._id}'>
+                        <input type=hidden id='owenerPostId-${post.owenerPostId}' value='${post.owenerPostId}'>
+                        <input dir='rtl' type=text id='comment-post-content-${post._id}'  placeholder='أترك تعليق'  >
+                        <button id='${post._id}' disabled type="button" class="btn submit">
+                            <i class='fas fa-comment-alt'></i>
                         </button>
                     </form>
+                    <div class="inner-comments" id='comments-${post._id}'>`
+                for(let comment of post.comments) {
+                    thepost +=
+                        `<p class='comment-at-the-post the-comment' id='comment-${comment._id}'>
+                        <a href='/profile/${comment.me}'>
+                            <span class='img'>
+                                <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                        if(post.picture !== 'default') {
+                            thepost +=
+                                `<img src="/userprofile/${comment.mypicture}" alt='' class="picchanged profile-pic">` 
+                        }
+                        thepost +=
+                            `</span>
+                            <span class='fullname'> ${comment.myfirstname} ${comment.mylastname}</span>
+                        </a>
+                        <br>
+                        <span style="text-align: start;" dir="auto">${comment.comment}</span>
+                    </p>`
+                        if(comment.me == me){
+                            thepost += `
+                            <form class='remove-comment-form trash-the-post' id='post-trash-${comment._id}'>
+                                <i class='fas fa-ellipsis-v remove-cmnt-edit-icon'></i>
+                                <button class='trash-btn' id='${post._id}-${comment._id}'>
+                                    <i class="fa fa-trash-alt "></i>
+                                </button>
+                            </form>
                     `
+                    }
                 }
-            }
             thepost += 
-                `</div>
+                    `</div>
+                </div>
                     <i class="fas fa-caret-down desc"></i>
                     <i class="fas fa-comment-alt comment"> ${post.comments.length}</i>`
                 if(post.image === 'undefined'){
@@ -151,34 +153,39 @@ socket.on('postsProfile', posts => {
             $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/file.png')
         }
     }
-// ****** Start execute the fucntion comment and notifications and Custom the download icons ****** //
-    // *** Custom the comment icons *** //
-    let comment = document.getElementById("comment-post-content-"+post._id).oninput = function() {
-        if(document.getElementById("comment-post-content-"+post._id).value !== '') {
-            if(document.getElementById(post._id)) {
-                let CmntBtn = document.getElementById(post._id)
-                CmntBtn.removeAttribute('disabled')
-                CmntBtn.style.backgroundColor = "#28a745"
-                CmntBtn.style.color = "#062230"
-                CmntBtn.style.marginLeft = "-5px"
-                CmntBtn.style.cursor = 'pointer'
-                CmntBtn.innerHTML = `<i class="fa fa-paper-plane" id='msg-icon'></i>`
-            } 
-        }else {
-            if(document.getElementById(post._id)) {
-                let CmntBtn = document.getElementById(post._id)
-                CmntBtn.setAttribute('disabled', 'disabled')
-                CmntBtn.style.backgroundColor = "#062230"
-                CmntBtn.style.color = "#28a745"
-                CmntBtn.style.marginLeft = "-2px"
-                CmntBtn.style.cursor = 'not-allowed'
-                CmntBtn.innerHTML = `<i class="fas fa-comment-alt" id='msg-icon'></i>`
+    // ****** Start execute the fucntion comment and notifications and Custom the download icons ****** //
+        // *** Custom the comment icons *** //
+        function myCommentButton() {
+            if(document.getElementById("comment-post-content-"+post._id).value !== '') {
+                if(document.getElementById(post._id)) {
+                    let CmntBtn = document.getElementById(post._id)
+                    CmntBtn.removeAttribute('disabled')
+                    CmntBtn.style.backgroundColor = "#28a745"
+                    CmntBtn.style.color = "#062230"
+                    CmntBtn.style.marginLeft = "-5px"
+                    CmntBtn.style.cursor = 'pointer'
+                    CmntBtn.innerHTML = `<i class="fa fa-paper-plane" id='msg-icon'></i>`
+                }
+            }else {
+                if(document.getElementById(post._id)) {
+                    let CmntBtn = document.getElementById(post._id)
+                    CmntBtn.setAttribute('disabled', 'disabled')
+                    CmntBtn.style.backgroundColor = "#062230"
+                    CmntBtn.style.color = "#28a745"
+                    CmntBtn.style.marginLeft = "-2px"
+                    CmntBtn.style.cursor = 'not-allowed'
+                    CmntBtn.innerHTML = `<i class="fas fa-comment-alt" id='msg-icon'></i>`
+                }
             }
         }
-    }
-    comment()
+        myCommentButton()
 
-    // *** First by clicking at button *** //
+        // *** Custom the comment icons *** //
+        document.getElementById("comment-post-content-"+post._id).oninput = () => {
+            myCommentButton()
+        }
+
+        // *** First by clicking at button *** //
         document.getElementById(post._id).onclick = (e) => {
             e.preventDefault()
             if(document.getElementById("comment-post-content-"+post._id).value !== '') {
@@ -192,8 +199,7 @@ socket.on('postsProfile', posts => {
                 me 
             })
             
-            let commentHTMLLive
-            commentHTMLLive =
+            let commentHTMLLive =
             `<p class='comment-at-the-post the-comment'>
                 <a href='/profile/${me}'>
                         <span class='img'>
@@ -210,9 +216,8 @@ socket.on('postsProfile', posts => {
                 <span style="text-align: start;" dir="auto">${document.getElementById("comment-post-content-"+post._id).value}</span>
             </p>`
 
-            document.getElementById(`comments-${document.getElementById('postId-'+post._id).value}`).innerHTML += commentHTMLLive
+            document.getElementById(`comments-${post._id}`).innerHTML += commentHTMLLive
             document.getElementById("comment-post-content-"+post._id).value = ''
-            comment()
             
             if(me !== post.owenerPostId){
                 socket.emit('sendNotification', {
@@ -229,6 +234,7 @@ socket.on('postsProfile', posts => {
             }
         
             }
+            myCommentButton()
         }
         
         // Second by press at the enter key 'keyCode == 13'
@@ -246,8 +252,7 @@ socket.on('postsProfile', posts => {
                         me 
                     })
                     
-                    let commentHTMLLive
-                    commentHTMLLive =
+                    let commentHTMLLive =
                     `<p class='comment-at-the-post the-comment'>
                         <a href='/profile/${me}'>
                                 <span class='img'>
@@ -264,9 +269,8 @@ socket.on('postsProfile', posts => {
                         <span style="text-align: start;" dir="auto">${document.getElementById("comment-post-content-"+post._id).value}</span>
                     </p>`
         
-                    document.getElementById(`comments-${document.getElementById('postId-'+post._id).value}`).innerHTML += commentHTMLLive
+                    document.getElementById(`comments-${post._id}`).innerHTML += commentHTMLLive
                     document.getElementById("comment-post-content-"+post._id).value = ''
-                    comment()
                     
                     if(me !== post.owenerPostId){
                         socket.emit('sendNotification', {
@@ -284,6 +288,7 @@ socket.on('postsProfile', posts => {
                 
                 }
             }
+            myCommentButton()
         })
         
         //*** Remove the comment ***//

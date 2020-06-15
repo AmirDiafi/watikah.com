@@ -37,9 +37,10 @@ socket.on('postsHome', posts => {
                     $(`#file-icon-download-${post._id}`).find('img').attr('src', '/home-images/file.png')
                 }
             }
+
             // ******Start execute the fucntion comment and notifications ****** //
-            // *** Custom the comment icons *** //
-            let comment = document.getElementById("comment-post-content-"+post._id).oninput = function() {
+
+            function myCommentButton() {
                 if(document.getElementById("comment-post-content-"+post._id).value !== '') {
                     if(document.getElementById(post._id)) {
                         let CmntBtn = document.getElementById(post._id)
@@ -49,7 +50,7 @@ socket.on('postsHome', posts => {
                         CmntBtn.style.marginLeft = "-5px"
                         CmntBtn.style.cursor = 'pointer'
                         CmntBtn.innerHTML = `<i class="fa fa-paper-plane" id='msg-icon'></i>`
-                    } 
+                    }
                 }else {
                     if(document.getElementById(post._id)) {
                         let CmntBtn = document.getElementById(post._id)
@@ -62,63 +63,66 @@ socket.on('postsHome', posts => {
                     }
                 }
             }
-            comment()
-        
+            myCommentButton()
+
+            // *** Custom the comment icons *** //
+            document.getElementById("comment-post-content-"+post._id).oninput = () => {
+                myCommentButton()
+            }
+
             // *** First by clicking at button *** //
             document.getElementById(post._id).onclick = (e) => {
                 e.preventDefault()
                 if(document.getElementById("comment-post-content-"+post._id).value !== '') {
-                socket.emit('newComment', {
-                    owenerPostId: document.getElementById('owenerPostId-'+post.owenerPostId).value,
-                    comment: document.getElementById("comment-post-content-"+post._id).value,
-                    postId: document.getElementById('postId-'+post._id).value,
-                    myfirstname,
-                    mylastname,
-                    mypicture,
-                    me 
-                })
-                
-                let commentHTMLLive
-                commentHTMLLive =
-                `<p class='comment-at-the-post the-comment'>
-                    <a href='/profile/${me}'>
-                            <span class='img'>
-                            <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">` 
-                            if(post.picture !== 'default') {
-                                commentHTMLLive +=
-                                `<img src="/userprofile/${mypicture}" alt='' class="picchanged profile-pic">` 
-                            }
-                            commentHTMLLive +=
-                            `</span>
-                        <span class='fullname'> ${myfirstname} ${mylastname}</span>
-                    </a>
-                    <br>
-                    <span style="text-align: start;" dir="auto">${document.getElementById("comment-post-content-"+post._id).value}</span>
-                </p>`
-    
-                document.getElementById(`comments-${document.getElementById('postId-'+post._id).value}`).innerHTML += commentHTMLLive
-                document.getElementById("comment-post-content-"+post._id).value = ''
-                comment()
-                
-                if(me !== post.owenerPostId){
-                    socket.emit('sendNotification', {
-                        msg: ' علق على منشور لك',
-                        dateOfEvent: new Date().toLocaleDateString(),
-                        userId: post.owenerPostId,
-                        sortByDate: new Date(),
-                        postId: post._id,
+                    socket.emit('newComment', {
+                        owenerPostId: document.getElementById('owenerPostId-'+post.owenerPostId).value,
+                        comment: document.getElementById("comment-post-content-"+post._id).value,
+                        postId: document.getElementById('postId-'+post._id).value,
                         myfirstname,
                         mylastname,
                         mypicture,
-                        me
+                        me 
                     })
+                    
+                    let commentHTMLLive =
+                    `<p class='comment-at-the-post the-comment'>
+                        <a href='/profile/${me}'>
+                                <span class='img'>
+                                <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic">` 
+                        if(post.picture !== 'default') {
+                            commentHTMLLive +=
+                            `<img src="/userprofile/${mypicture}" alt='' class="picchanged profile-pic">` 
+                        }
+                        commentHTMLLive +=
+                        `</span>
+                            <span class='fullname'> ${myfirstname} ${mylastname}</span>
+                        </a>
+                        <br>
+                        <span style="text-align: start;" dir="auto">${document.getElementById("comment-post-content-"+post._id).value}</span>
+                    </p>`
+
+                    document.getElementById(`comments-${post._id}`).innerHTML += commentHTMLLive
+                    document.getElementById("comment-post-content-"+post._id).value = ''
+                    
+                    if(me !== post.owenerPostId){
+                        socket.emit('sendNotification', {
+                            msg: ' علق على منشور لك',
+                            dateOfEvent: new Date().toLocaleDateString(),
+                            userId: post.owenerPostId,
+                            sortByDate: new Date(),
+                            postId: post._id,
+                            myfirstname,
+                            mylastname,
+                            mypicture,
+                            me
+                        })
+                    }
                 }
-            
-                }
+                myCommentButton()
             }
 
             // Second by press at the enter key 'keyCode == 13'
-            document.getElementById("comment-post-content-"+post._id).addEventListener('keypress', function(e) {
+            document.getElementById("comment-post-content-"+post._id).addEventListener('keypress', (e) => {
                 if(e.keyCode == 13) {
                     e.preventDefault()
                     if(document.getElementById("comment-post-content-"+post._id).value !== '') {
@@ -150,9 +154,8 @@ socket.on('postsHome', posts => {
                             <span style="text-align: start;" dir="auto">${document.getElementById("comment-post-content-"+post._id).value}</span>
                         </p>`
             
-                        document.getElementById(`comments-${document.getElementById('postId-'+post._id).value}`).innerHTML += commentHTMLLive
+                        document.getElementById(`comments-${post._id}`).innerHTML += commentHTMLLive
                         document.getElementById("comment-post-content-"+post._id).value = ''
-                        comment()
                         
                         if(me !== post.owenerPostId){
                             socket.emit('sendNotification', {
@@ -169,10 +172,11 @@ socket.on('postsHome', posts => {
                         }
                     
                     }
+                    myCommentButton()
                 }
             })
 
-            //*** Remove the comment ***//
+            // *** Remove the comment *** //
             for(let comment of post.comments) {
                 if(comment.me == me){
                 document.getElementById(post._id+'-'+comment._id).onclick = (e) => {

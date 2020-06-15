@@ -55,7 +55,7 @@
                     <p class='model' style="text-align:start">Module:<b> <%=post.model%></b></p>
                     <hr>
                     <%if(post.image !== 'undefined'){%>
-                        <img src="<%=post.image%>" class='post-pic' alt="post">
+                        <img src="/<%=post.image%>" class='post-pic' alt="post">
                     <%}%>
                     <%if(post.file !== 'undefined'){%>
                         <div class="file-content">
@@ -68,41 +68,43 @@
                     <%}%>
                     <div class="trim">
                         <p class='desc' style="text-align: start;" dir="auto"><%=post.description%></p>
-                        <div class="comments" id='comments-<%=post._id%>'>
+                        <div class="comments">
                             <hr>
                             <form class="add-comment-form">
                                 <input type=hidden id='postId-<%=post._id%>' value='<%=post._id%>'>
                                 <input type=hidden id='owenerPostId-<%=post.owenerPostId%>' value='<%=post.owenerPostId%>'>
-                                <input dir='auto' type=text id='comment-post-content-<%=post._id%>' placeholder='أضف تعليق' >
+                                <input dir='rtl' type=text id='comment-post-content-<%=post._id%>' placeholder='أترك تعليق' >
                                 <button id='<%=post._id%>' disabled type="button" class="btn submit addcmnt">
                                     <i class='fas fas fa-comment-alt'></i>
                                 </button>
                             </form>
                             <hr>
-                            <%for(let comment of post.comments) {%>
-                                <p class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
-                                    <a href='/profile/<%=comment.me%>'>
-                                        <span class="img">
-                                            <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic"> 
-                                        <%if(post.picture !== 'default') {%>
-                                            <img src="/userprofile/<%=comment.mypicture%>" alt='' class="picchanged profile-pic"> 
-                                        <%}%>
-                                        </span>
-                                        <span class='fullname'> <%=comment.myfirstname%> <%=comment.mylastname%></span>
-                                    </a>
-                                    <br>
-                                    <span style="text-align: start;" dir="auto"><%=comment.comment%></span>
-                                </p>
-                                
-                                <%if(comment.me == userId){%>
-                                    <form class='remove-comment-form trash-the-post' id='post-trash-<%=comment._id%>'>
-                                        <i class='fas fa-ellipsis-v remove-cmnt-edit-icon'></i>
-                                        <button class='trash-btn' id='<%=post._id%>-<%=comment._id%>'>
-                                            <i class="fa fa-trash-alt"></i>
-                                        </button>
-                                    </form>
+                            <div class="inner-comments" id='comments-<%=post._id%>'>
+                                <%for(let comment of post.comments) {%>
+                                    <p class='comment-at-the-post the-comment' id='comment-<%=comment._id%>'>
+                                        <a href='/profile/<%=comment.me%>'>
+                                            <span class="img">
+                                                <img src="/home-images/defaultUser.jpeg" alt='' class="default profile-pic"> 
+                                            <%if(post.picture !== 'default') {%>
+                                                <img src="/userprofile/<%=comment.mypicture%>" alt='' class="picchanged profile-pic"> 
+                                            <%}%>
+                                            </span>
+                                            <span class='fullname'> <%=comment.myfirstname%> <%=comment.mylastname%></span>
+                                        </a>
+                                        <br>
+                                        <span style="text-align: start;" dir="auto"><%=comment.comment%></span>
+                                    </p>
+                                    
+                                    <%if(comment.me == userId){%>
+                                        <form class='remove-comment-form trash-the-post' id='post-trash-<%=comment._id%>'>
+                                            <i class='fas fa-ellipsis-v remove-cmnt-edit-icon'></i>
+                                            <button class='trash-btn' id='<%=post._id%>-<%=comment._id%>'>
+                                                <i class="fa fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    <%}%> 
                                 <%}%> 
-                            <%}%> 
+                            </div>
                         </div>
                         <i class="fas fa-caret-down desc"></i>
                         <i class="fas fa-comment-alt comment"> <%=post.comments.length%></i>
