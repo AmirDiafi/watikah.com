@@ -103,8 +103,8 @@ const postSchema = mongoose.Schema({
 })
 
 // ------ URL DB and Schema Declaration ------ //
-const DB_URL = 'mongodb+srv://DiafiAmir:18265432171004@cluster0-3wwqa.mongodb.net/watikaDB?retryWrites=true&w=majority'
-// const DB_URL = 'mongodb://localhost:27017/clientDB'
+// const DB_URL = 'mongodb+srv://DiafiAmir:18265432171004@cluster0-3wwqa.mongodb.net/watikaDB?retryWrites=true&w=majority'
+const DB_URL = 'mongodb://localhost:27017/clientDB'
 const User = mongoose.model('user', userSchema)
 const Post = mongoose.model('post', postSchema)
 const bcrypt = require('bcryptjs')
